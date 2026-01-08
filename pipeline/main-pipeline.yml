@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+      - develop
+      - staging
+      - master
+
+pr:
+  branches:
+    include:
+      - develop
+      - staging
+      - master
+
+resources:
+  repositories:
+    - repository: templates
+      name: DevOps-templates/pipelines-templates
+      type: git
+      ref: feature/infrastructure-as-code
+
+extends:
+  template: pipeline/main.yml@templates
+  parameters:
+    release: iac

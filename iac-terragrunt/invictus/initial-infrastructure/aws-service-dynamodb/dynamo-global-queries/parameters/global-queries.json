@@ -1,0 +1,508 @@
+[
+  {
+    "name_query": {
+      "S": "astro#get-transactions-detail-backup"
+    },
+    "query": {
+      "S": "SELECT s.ticket_number AS ticketNumber,\ns.ticket_serie AS ticketSerie,\nCAST(AES_DECRYPT(s.sale_key, '$secretKeyAES') AS CHAR) AS saleKey,\ns.success_at AS successAt,\ns.seller_id AS sellerId,\ns.id_product AS idProduct,\nJSON_UNQUOTE(JSON_EXTRACT(s.hierarchy, '$[1].code')) AS equipment,\nJSON_UNQUOTE(JSON_EXTRACT(s.hierarchy, '$[2].code')) AS saleSiteCode,\nJSON_UNQUOTE(JSON_EXTRACT(s.hierarchy, '$[3].code')) AS officeCode,\ns.status AS status,\ns.drawing_date AS drawingDate,\nsd.lotterie AS idLottery,\nLPAD(CAST(AES_DECRYPT(sd.number, '$secretKeyAES2') AS CHAR), 8, '*') AS number,\nsd.sign AS sign,\nsd.value AS value\nFROM Astro.SUPER_STAR_DETAIL sd\nINNER JOIN Astro.SUPER_STAR s ON sd.id_astro = s.id_astro\nWHERE s.success_at BETWEEN '$dateHistory' AND '$dateGenerated'\nAND s.id_product IN ($idProductsBackup)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "awards#get-event-result"
+    },
+    "query": {
+      "S": "SELECT * FROM\nawards.EVENT_RESULTS where\nid_list_event=$idListEvent and id_event_drawing=$idDraw and \nresult_confirmed is not\nnull;"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "awards#get-lottery-result"
+    },
+    "query": {
+      "S": "SELECT * FROM\nawards.LOTTERY_RESULTS where\nid_lottery=$idLottery and\nid_lottery_drawing=$idDraw and\nwinning_number_confirmed is not null;"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-incentives-without-config"
+    },
+    "query": {
+      "S": "SELECT\n\tinc.id_incentive as idIncentive ,\n\tname,\n\tdescription\nFROM\n\tINCENTIVES inc\nWHERE\n\tinc.config IS NULL and inc.type = 1"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-incentives"
+    },
+    "query": {
+      "S": "SELECT\n\tinc.id_incentive as idIncentive ,\n\tname,\n\tdescription,\n\tpci.id_product as idProduct\nFROM\n\tINCENTIVES inc\nINNER JOIN PRODUCTS_CHANCES_INCENTIVES pci ON\n\tpci.id_incentive = inc.id_incentive\nWHERE\n\tinc.type = 1 AND\n\tinc.status = 1"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-lotteries-by-product"
+    },
+    "query": {
+      "S": "SELECT\nDISTINCT \n    PLD.id_product as idProduct,\n    L.id_lottery AS idLottery,\n    L.name AS name\n  FROM LOTTERIES L\n  JOIN LOTTERIES_DRAWINGS LD\n  JOIN SUBCATEGORIES_LOTTERY_DRAWING SLD\n  JOIN PRODUCTS_LOTTERIES_DRAWINGS PLD\nON\n  L.id_lottery = LD.id_lottery\n  AND LD.drawing_code = SLD.drawing_code\n  AND SLD.id_subcategory_lottery_drawing = PLD.id_subcategory_lottery_drawing\nWHERE\n    SLD.status not in (3,4,5) and\n   L.status = 1\n   AND PLD.id_product = $idProduct"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-products-to-lotteries-games"
+    },
+    "query": {
+      "S": "SELECT\n\tP.id_product AS idProduct,\n        P.product_initials AS productInitials,\n        P.name AS name\n  FROM PRODUCTS P"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-transactions-accumulated-detail-backup"
+    },
+    "query": {
+      "S": "SELECT c.ticket_number AS ticketNumber,\nc.ticket_serie AS ticketSerie,\nCAST(AES_DECRYPT(c.sale_key, '$secretKeyAES') AS CHAR) AS saleKey,\nc.success_at AS successAt,\nc.seller_id AS sellerId,\nc.id_product AS idProduct,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[1].code')) AS equipment,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[2].code')) AS saleSiteCode,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[3].code')) AS officeCode,c.status AS status,\nlt.pos_code as idLottery,\nDATE_FORMAT(c.drawing_date, '%d/%m/%Y') AS dateDraw,\nc.drawing_date AS dateDraw,\nLPAD(CAST(AES_DECRYPT(cd.number, '$secretKeyAES2') AS CHAR), 8, '*') AS number,\ncd.direct_total_value as totalValue\nFROM lotteriesgames.CHANCES c\nINNER JOIN lotteriesgames.CHANCES_DETAIL cd ON cd.id_chance = c.id_chance\nINNER JOIN lotteriesgames.CHANCES_LOTTERIES cl ON cl.id_chance = cd.id_chance\nLEFT JOIN lotteriesgames.LOTTERIES lt ON cl.id_lottery = lt.id_lottery\nWHERE c.id_product IN ($idProductsBackup)\nAND c.success_at BETWEEN '$dateHistory' AND '$dateGenerated'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-transactions-detail-backup"
+    },
+    "query": {
+      "S": "SELECT cd.detail_position AS detailPosition,\ncd.id_chance AS idChance,\nc.ticket_number AS ticketNumber,\nc.ticket_serie AS ticketSerie,\ncl.id_lottery AS idLottery,\nlt.pos_code AS lotteryCode,\nLPAD(CAST(AES_DECRYPT(cd.number, '$secretKeyAES') AS CHAR), 8, '*') AS number,\ncd.direct_total_value AS directTotalValue,\ncd.digits2_total_value AS digits2TotalValue,\ncd.combined_total_value AS combinedTotalValue,\ncd.digits1_total_value AS digits1TotalValue,\nc.success_at AS successAt,\nIFNULL (isd.id_element,isd.incentive_value) as idIncentive,\nisd.total_value AS incentiveTotalValue\nFROM lotteriesgames.CHANCES_DETAIL cd\nINNER JOIN lotteriesgames.CHANCES_LOTTERIES cl ON cl.id_chance = cd.id_chance\nINNER JOIN lotteriesgames.CHANCES c ON cd.id_chance = c.id_chance\nLEFT JOIN lotteriesgames.INCENTIVES_SAIL_DETAILS isd ON isd.id_chance = c.id_chance AND isd.detail_position = cd.detail_position\nLEFT JOIN lotteriesgames.LOTTERIES lt ON cl.id_lottery = lt.id_lottery\nWHERE c.id_product IN ($idProductsBackup)\nAND c.success_at BETWEEN '$dateHistory' AND '$dateGenerated'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "chances#get-transactions-header-backup"
+    },
+    "query": {
+      "S": "SELECT c.id_chance AS idChance,\nc.ticket_number AS ticketNumber,\nc.ticket_serie AS ticketSerie,\nCAST(AES_DECRYPT(c.sale_key, '$secretKeyAES') AS CHAR) AS saleKey,\nc.success_at AS successAt,\nc.seller_id AS sellerId,\nc.id_product AS idProduct,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[1].code')) AS equipment,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[2].code')) AS saleSiteCode,\nJSON_UNQUOTE(JSON_EXTRACT(c.hierarchy, '$[3].code')) AS officeCode,c.status AS status,\nDATE_FORMAT(c.drawing_date, '%d/%m/%Y') AS drawDate,\nJSON_EXTRACT(i.config, '$.event') as idIncentive\nFROM lotteriesgames.CHANCES c\nLEFT JOIN (\nSELECT DISTINCT(id_chance) as id_chance, id_incentive\nFROM lotteriesgames.INCENTIVES_SAIL_DETAILS\n) isd ON isd.id_chance = c.id_chance\nLEFT JOIN lotteriesgames.INCENTIVES i on isd.id_incentive = i.id_incentive\nWHERE c.id_product IN ($idProductsBackup)\nAND c.success_at BETWEEN '$dateHistory' AND '$dateGenerated'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "collected#get-emails-by-id"
+    },
+    "query": {
+      "S": "SELECT m.id_module_mail AS idMail, m.description_module_mail AS email\nFROM collected.MODULE_MAIL m\nWHERE m.id_module_mail IN ( $idEmails )"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "hierarchies#get-commission-category-from-pos"
+    },
+    "createdAt": {
+      "S": "1758654120"
+    },
+    "query": {
+      "S": "SELECT p.id_commission_category AS idCommissionCategory\nFROM POINTS_OF_SALE p\nWHERE id_point_of_sale = $idPos"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "hierarchies#get-equipment-by-code-id"
+    },
+    "query": {
+      "S": "SELECT e.code AS codeEquipment, e.id_equipment idEquipment FROM hierarchies.EQUIPMENTS e WHERE e.id_equipment IN ($idEquipmen)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "hierarchies#get-product-homologation"
+    },
+    "createdAt": {
+      "S": "1735920630"
+    },
+    "query": {
+      "S": "SELECT homologated_point_of_sale_id, homologated_equipment_id\nFROM hierarchies.HOMOLOGATED_DATA\nWHERE status = 1 \nAND (id_point_of_sale= $idPos OR id_point_of_sale= 0) \nAND (id_equipment = $idEquipment OR id_equipment = 0)\nAND id_product = $idProduct"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "lotteries#get-drawing-info"
+    },
+    "query": {
+      "S": "SELECT ld.id_lottery AS idldottery,\nld.drawing_code AS drawingCode,\nld.drawing_date AS drawingDate,\nld.close_date AS closeDate,\nld.created_at AS createdAt,\nld.updated_at AS updatedAt,\nld.draw_id AS drawId\nFROM lotteriesgames.LOTTERIES_DRAWINGS ld\nWHERE ld.draw_id IN ($drawingCodes)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "lotteries#get-drawings-close-hour-subcategories-backup"
+    },
+    "query": {
+      "S": "SELECT sd.id_subcategory as idSubCategory,\nlt.close_hour AS closeHour,\nlt.drawing_hour AS drawingHour,\nld.drawing_date as drawingDate\nFROM lotteriesgames.SUBCATEGORIES_LOTTERY_DRAWING sd\nINNER JOIN lotteriesgames.LOTTERIES_DRAWINGS ld ON sd.drawing_code = ld.drawing_code\nINNER JOIN lotteriesgames.LOTTERY_TIME_ZONE lt ON sd.id_lottery_time_zone = lt.id_lottery_time_zone\nWHERE sd.id_subcategory IN ($idSubCategories) AND ld.drawing_date >= DATE(NOW())\nAND lt.close_hour > '$closeHour'\nGROUP BY sd.id_subcategory, lt.close_hour\nORDER BY ld.drawing_date, lt.close_hour"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "lotteries#get-holidays"
+    },
+    "query": {
+      "S": "SELECT hd.id_holiday AS idHoliday,\nhd.holiday_date AS holidayDate\nFROM lotteriesgames.HOLIDAYS hd\nWHERE hd.holiday_date = '$date'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "lotteries#get-lotteries-info"
+    },
+    "query": {
+      "S": "SELECT\nLT.id_lottery as idLottery,\nLT.name,\nLT.pos_code AS posCode\nFROM lotteriesgames.LOTTERIES LT\nWHERE LT.id_lottery in ($idLotteries)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "millonario#get-transactions-detail-backup"
+    },
+    "query": {
+      "S": "SELECT\nc.ticket_number as ticketNumber, c.ticket_serie as ticketSerie, c.sale_key as saleKey, c.success_at as successAt,\nc.seller_id as sellerId, c.id_product as idProduct, c.equipment as equipment, c.hierarchy as hierarchy, c.status as status,\ncl.id_lottery as idLottery, c.date_draw as dateDraw, AES_DECRYPT(cl.number, '$secretKeyAES') as number,  c.total_value as totalValue\nFROM millonario.CHANCES_DETAIL_MILLONARIO cl\nINNER JOIN millonario.CHANCES_MILLONARIO c ON cl.id_Chance = c.id_Chance\nAND c.id_product IN ($idProductsBackup)\nAND c.success_at BETWEEN '$dateHistory'  AND '$dateGenerated'\nAND cl.id_draw = '$drawId'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#find-directory"
+    },
+    "configuration": {
+      "S": "{\n\"Bucket\": \"configuration-$accountNumber\",\n\"Prefix\":\"$directory\",\n\"Delimiter\":\"/\"\n}"
+    },
+    "type": {
+      "S": "S3Service"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#format_papelery_types"
+    },
+    "query": {
+      "S": "SELECT id_papelery_type as idPapeleryType, description, number_width as numberWidth, total_number_printing_lines as totalNumberPrintingLines, status, size_font as sizeFont\nFROM PAPELERY_TYPES pt;"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#get-all-print-formats"
+    },
+    "query": {
+      "S": "SELECT pf.id_print_formats as idPrintFormats, pf.name, pf.state, pt.description as papeleryTypeName, tt.name as technologyTypeName, pf.created_at as createdAt, pf.updated_at as updatedAt, pft.id_sub_category as idSubCategory, pft.id_product as idProduct\nFROM PRINT_FORMATS pf\nINNER JOIN PRINT_FORMATS_TECHNOLOGY pft ON pft.id_print_formats = pf.id_print_formats\nINNER JOIN PAPELERY_TYPES pt ON pt.id_papelery_type  = pft.id_papelery_type\nINNER JOIN TECHNOLOGY_TYPES tt ON tt.id_technology_type = pft.id_technology_type"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#get-print-format-technology-by-subcategory"
+    },
+    "query": {
+      "S": "SELECT  id_product AS idProduct, id_print_formats AS idPrintFormats FROM papelery.PRINT_FORMATS_TECHNOLOGY where id_product =  $idProduct"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#obtain_print_resource"
+    },
+    "configuration": {
+      "S": "{\n\"service\":\"/obtain-print-resource\",\n\"object_service\":\"action\"\n}"
+    },
+    "type": {
+      "S": "Custom"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#print-formats"
+    },
+    "query": {
+      "S": "SELECT pf.id_print_formats as idPrintFormats, pf.name, pf.state, pt.description as papeleryTypeName, p.name as productName, p.num_ticket as numTicket, tt.name as technologyTypeName, pf.created_at as createdAt, pf.updated_at as updatedAt\nFROM PRINT_FORMATS pf\nINNER JOIN PRINT_FORMATS_TECHNOLOGY pft ON pft.id_print_formats = pf.id_print_formats\nINNER JOIN PAPELERY_TYPES pt ON pt.id_papelery_type  = pft.id_papelery_type\nINNER JOIN PRODUCTS p ON p.id_product = pft.id_product\nINNER JOIN TECHNOLOGY_TYPES tt ON tt.id_technology_type = pft.id_technology_type"
+    },
+    "queryCount": {
+      "S": "SELECT COUNT(idPrintFormats) FROM (SELECT pf.id_print_formats as idPrintFormats, pf.name, pf.state, pt.description as papeleryTypeName, p.name as productName, tt.name as technologyTypeName\nFROM PRINT_FORMATS pf\nINNER JOIN PRINT_FORMATS_TECHNOLOGY pft ON pft.id_print_formats = pf.id_print_formats\nINNER JOIN PAPELERY_TYPES pt ON pt.id_papelery_type  = pft.id_papelery_type\nINNER JOIN PRODUCTS p ON p.id_product = pft.id_product\nINNER JOIN TECHNOLOGY_TYPES tt ON tt.id_technology_type = pft.id_technology_type\nGROUP BY pf.id_print_formats) as formats"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#products"
+    },
+    "query": {
+      "S": "SELECT id_product as idProduct, name, num_ticket as numTicket, product_initials as productInitials, created_at as createdAt, updated_at as updatedAt \nFROM PRODUCTS WHERE status = 1"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "papelery#technologies"
+    },
+    "query": {
+      "S": "SELECT id_technology_type AS idTechnologyType, name, description, created_at as createdAt, updated_at as updatedAt, driver\nFROM TECHNOLOGY_TYPES"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "payments#query-product-tops"
+    },
+    "query": {
+      "S": "SELECT id_product , minimum_transaction_value ,maximum_transaction_value ,\nmultiple FROM PRODUCT_TOPS pt WHERE id_product = $idProduct AND status=1"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-all-products"
+    },
+    "query": {
+      "S": "SELECT id_product, id_sub_category, id_provider, product_provider_code, name, description, icon, status, created_at, updated_at, product_initials, `position`, url, iva_tax, bills, bills_sequence, num_ticket\nFROM products.PRODUCTS"
+    },
+    "queryCount": {
+      "S": "SELECT count(*)\nFROM products.PRODUCTS"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-all-subcategories"
+    },
+    "query": {
+      "S": "SELECT id_sub_category AS idSubCategory, name\nFROM products.SUB_CATEGORIES"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-chance-id-sub-category"
+    },
+    "query": {
+      "S": "SELECT\n\tp.id_sub_category as idSubCategory\nFROM\n\tPRODUCTS p\nwhere\n\tp.product_initials = 'CHA'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-id-types"
+    },
+    "query": {
+      "S": "SELECT id_types, name, status\nFROM products.ID_TYPES"
+    },
+    "queryCount": {
+      "S": "SELECT count(*)\nFROM products.ID_TYPES"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-product-for-idProduct"
+    },
+    "createdAt": {
+      "S": "1672753641"
+    },
+    "query": {
+      "S": "SELECT id_product AS idProduct, id_provider AS idProvider, iva_tax AS ivaTax, product_provider_code AS productProviderCode, name AS name, product_initials AS productInitials, status AS status, bills AS bills, bills_sequence AS billsSequence, num_ticket AS numTicket, id_sub_category AS idSubCategory, apply_beps AS applyBeps FROM products.PRODUCTS where id_product = $idProduct"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-products-by-subcategories"
+    },
+    "query": {
+      "S": "SELECT id_product AS idProduct, id_sub_category, id_provider, product_provider_code, name, description, icon, status, created_at, updated_at, product_initials, position, url, iva_tax, bills, bills_sequence, num_ticket\nFROM products.PRODUCTS\nwhere id_sub_category IN ($idSubCategories)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-provider-from-package"
+    },
+    "createdAt": {
+      "S": "1672753641"
+    },
+    "query": {
+      "S": "SELECT pa.id_package AS idPackage, pa.package_provider_code AS packageProviderCode, pa.name AS packageName, pa.price AS price, p.id_product AS idProduct, p.id_provider AS idProvider, p.product_provider_code AS productProviderCode, p.iva_tax AS ivaTax, p.name AS productName, p.num_ticket AS numTicket, p.product_initials AS productInitials, pr.provider_code AS providerCode, pa.status AS status FROM products.PACKAGES pa INNER JOIN products.PRODUCTS p ON pa.id_product = p.id_product INNER JOIN products.PROVIDERS  pr ON p.id_provider = pr.id_provider WHERE pa.id_package = $idPackage"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-provider-from-product"
+    },
+    "createdAt": {
+      "S": "1672753641"
+    },
+    "query": {
+      "S": "SELECT p.id_product AS idProduct,\np.id_provider AS idProvider,\np.product_provider_code AS productProviderCode,\np.iva_tax AS ivaTax,\np.name AS productName,\np.product_initials AS productInitials,\np.status AS status,\npr.provider_code AS providerCode,\np.num_ticket AS numTicket \nFROM products.PRODUCTS p \nINNER JOIN products.PROVIDERS pr ON p.id_provider = pr.id_provider\nWHERE id_product = $idProduct"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "raffles#get-transactions-detail-backup"
+    },
+    "query": {
+      "S": "SELECT rs.consecutive_jsa AS consecutiveJsa,\nrs.jsa_series AS jsaSeries,\nCAST(AES_DECRYPT(rs.sale_key, '$secretKeyAES') AS CHAR) AS saleKey,\nrs.sale_date AS saleDate,\nrs.seller_user_code AS sellerId,\nrs.product_code AS idProduct,\nrs.team_code AS teamCode,\nrs.sales_site_code AS salesSiteCode,\nrs.office_code AS officeCode,\nrs.state_code AS stateCode,\nrd.draw_id AS drawId,\nrd.id_lottery AS idLottery,\nLPAD(CAST(AES_DECRYPT(rd.number, '$secretKeyAES2') AS CHAR), 8, '\n') AS number,\nrd.total_value_pay AS totalValuePay,\nLPAD(rc.series, 3, '\n') AS serie\nFROM raffles.RAFFLES_SALES_DETAILS rd\nINNER JOIN raffles.RAFFLES_SALES rs ON rd.id_raffle_sale = rs.id_raffle_sale\nINNER JOIN raffles.RAFFLES_CONFIG rc ON rs.raffle_code = rc.id_raffle\nWHERE rs.product_code IN ($idProductsBackup)\nAND rs.sale_date BETWEEN '$dateHistory' AND '$dateGenerated'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "sellers#get-commission-by-id-seller-id-product"
+    },
+    "query": {
+      "S": "SELECT ps.id_product AS idProduct,\nps.id_user AS idUser,\nps.fixed_commission AS fixedCommission,\nps.variable_commission AS variableCommission\nFROM payments.PRODUCT_SELLERS ps\nWHERE ps.id_product IN ($idProducts)\nAND ps.id_user IN ($idUsers)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "sellers#get-seller-by-id-seller"
+    },
+    "query": {
+      "S": "SELECT s.idp_id AS sellerId,\ns.identification_number AS identificationNumber,\ns.email AS email,\ns.identification_exp_date AS expeditionDate,\ns.address AS address, s.born_date AS birthdate,\ns.gender_id AS gender,\ns.first_name AS firstName,\ns.second_name AS secondName,s.first_surname AS firstSurname,\ns.office_id AS idOffice,\ns.second_surname AS secondSurname,\ns.phone_number AS phoneNumber\nFROM sellers.SELLERS s\nWHERE s.idp_id IN ($idSellers)"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "sellers#get-seller-by-id"
+    },
+    "createdAt": {
+      "S": "1730406000"
+    },
+    "query": {
+      "S": "SELECT s.id_commission_category AS idCommissionCategory, s.contract_type_id AS idContractType\nFROM sellers.SELLERS s\nWHERE s.idp_id ='$idSeller' LIMIT 1"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "sellers#get-sellers-by-commision-category"
+    },
+    "createdAt": {
+      "S": "1730406000"
+    },
+    "query": {
+      "S": "SELECT s.idp_id AS vendedor_codigo, \nCONCAT(s.first_name, ' ', s.first_surname) as vendedor_nombre\nFROM sellers.SELLERS s\nWHERE s.id_commission_category= '$idCommisionCategory'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "sellers#get-sellers-by-contract-type"
+    },
+    "createdAt": {
+      "S": "1730406000"
+    },
+    "query": {
+      "S": "SELECT s.idp_id AS id\nFROM sellers.SELLERS s\nWHERE s.contract_type_id= '$idContractActivity'"
+    },
+    "type": {
+      "S": "database"
+    }
+  },
+  {
+    "name_query": {
+      "S": "products#get-products-by-subcategory"
+    },
+    "query": {
+      "S": "SELECT id_product AS idProduct, id_sub_category, id_provider, product_provider_code, name, description, icon, status, created_at, updated_at, product_initials, position, url, iva_tax, bills, bills_sequence, num_ticket\nFROM products.PRODUCTS\nWHERE id_sub_category IN ($idSubCategories)"
+    },
+    "type": {
+      "S": "database"
+    }
+  }
+]

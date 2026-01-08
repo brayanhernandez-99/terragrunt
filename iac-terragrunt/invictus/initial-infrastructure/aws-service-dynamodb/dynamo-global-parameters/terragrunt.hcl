@@ -1,0 +1,21 @@
+include "root" {
+  path = find_in_parent_folders("root.hcl")
+}
+
+terraform {
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-dynamodb"
+}
+
+inputs = {
+  name_table_dynamo   = "global-parameters"
+  attribute_name      = "id"
+  attribute_type      = "S"
+  use_sort_key        = true
+  sort_key_name       = "application"
+  sort_key_type       = "S"
+  dynamodb_items_json = [
+    for item in jsondecode(
+      file("${get_terragrunt_dir()}/parameters/global-parameters.json")
+    ) : jsonencode(item)
+  ]
+}

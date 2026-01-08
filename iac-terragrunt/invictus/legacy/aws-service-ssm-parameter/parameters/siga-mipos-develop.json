@@ -1,0 +1,36 @@
+[
+  { "idOperationCreate": 1, "siglaSiga": "CAG", "idProductRed": 329 },
+  { "idOperationPay": 2, "siglaSiga": "GIR", "idProductRed": 330 },
+  { "idProductShipments": 41, "siglaSiga": "ADE", "idProductRed": 41 },
+  { "idProductDepositBBVA": 10113, "siglaSiga": "BBD", "idProductRed": 10113 },
+  {
+    "idProductRedCorrespondentDepositNoTarjet": 68,
+    "siglaSiga": "DPT",
+    "idProductRed": 68
+  },
+  {
+    "idProductRedCorrespondentWithdrawalNoTarjet": 10006,
+    "siglaSiga": "RET",
+    "idProductRed": 10006
+  },
+  {
+    "idProductRedCorrespondentPayTarjetNoTarjet": 10032,
+    "siglaSiga": "PTC",
+    "idProductRed": 10032
+  },
+  {
+    "idProductRedCorrespondentPayWalletNoTarjet": 10011,
+    "siglaSiga": "PCA",
+    "idProductRed": 10011
+  },
+  {
+    "idProductRedCollectBancoAgrario": 395664,
+    "siglaSiga": "BAC",
+    "idProductRed": 395664
+  },
+  {
+    "idProductRedInternationalWiretransfer": 395647,
+    "siglaSiga": "PIS",
+    "idProductRed": 395647
+  }
+]

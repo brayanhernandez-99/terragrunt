@@ -1,0 +1,12 @@
+resource "aws_instance" "ec2_ftp" {
+  ami                         = var.ami
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = [var.sg_id]
+  iam_instance_profile        = var.instance_profile_name
+  associate_public_ip_address = false
+
+  tags = {
+    Name = var.instance_name
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "jsonMaskConfig2": {
+    "cardMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 2,
+      "unmaskedEndCharacters": 4
+    },
+    "cardFields": [],
+    "emailMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharactersBeforeAt": 2,
+      "unmaskedEndCharactersAfterAt": 2,
+      "maskAtTheRate": false
+    },
+    "emailFields": [
+      "user.email",
+      "client.emailClient",
+      "model.client.emailClient",
+      "data.model.client.emailClient",
+      "operations[*].data.model.client.emailClient",
+      "model.prints[*].model.client.emailClient",
+      "data.model.prints[*].model.client.emailClient"
+    ],
+    "passwordMaskOptions": {
+      "maskWith": "*",
+      "maxMaskedCharacters": 10,
+      "unmaskedStartCharacters": 0,
+      "unmaskedEndCharacters": 0
+    },
+    "passwordFields": ["password", "model.password", "model[*].password"],
+    "phoneMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 2,
+      "unmaskedEndCharacters": 1
+    },
+    "phoneFields": [
+      "user.phone_number",
+      "client.phoneNumberClient",
+      "model.client.phoneNumberClient",
+      "data.model.client.phoneNumberClient",
+      "operations[*].data.model.client.phoneNumberClient",
+      "model.prints[*].model.client.phoneNumberClient",
+      "data.model.prints[*].model.client.phoneNumberClient"
+    ],
+    "stringMaskOptions": {
+      "maskWith": "*",
+      "maskOnlyFirstOccurance": false,
+      "maskAll": true,
+      "maskSpace": false
+    },
+    "stringFields": [
+      "user.identificationNumber",
+      "client.identificationNumber",
+      "model.client.identificationNumber",
+      "data.model.client.identificationNumber",
+      "operations[*].data.model.client.identificationNumber",
+      "model.prints[*].model.client.identificationNumber",
+      "data.model.prints[*].model.client.identificationNumber",
+      "saleKey",
+      "keySale",
+      "model.saleKey",
+      "model.operation.saleKey",
+      "data.model.saleKey",
+      "data.model.keySale",
+      "operation.saleKey",
+      "operations[*].saleKey",
+      "operations[*].data.model.saleKey",
+      "operations[*].data.model.operation.saleKey",
+      "model.prints[*].model.saleKey",
+      "model.prints[*].model.operation.saleKey",
+      "data.model.prints[*].model.saleKey",
+      "data.model.prints[*].model.operation.saleKey",
+      "model.numbers[*].asterisk",
+      "model.numbers[*].number",
+      "model.numbers[*].stringNumber",
+      "model.numbersString[*].stringNumber",
+      "data.model.numbers[*].asterisk",
+      "data.model.numbers[*].number",
+      "data.model.numbers[*].stringNumber",
+      "data.model.numbersString[*].stringNumber",
+      "operations[*].data.model.numbers[*].asterisk",
+      "operations[*].data.model.numbers[*].number",
+      "operations[*].data.model.numbers[*].stringNumber",
+      "operations[*].data.model.numbersString[*].stringNumber",
+      "model.prints[*].model.numbers[*].asterisk",
+      "model.prints[*].model.numbers[*].number",
+      "model.prints[*].model.numbers[*].stringNumber",
+      "model.prints[*].model.numbersString[*].stringNumber",
+      "data.model.prints[*].model.numbers[*].asterisk",
+      "data.model.prints[*].model.numbers[*].number",
+      "data.model.prints[*].model.numbers[*].stringNumber",
+      "data.model.prints[*].model.numbersString[*].stringNumber",
+      "numbers[*].asterisk",
+      "numbers[*].number",
+      "numbers[*].stringNumber",
+      "model.boards[*].balls[*]",
+      "model.boards[*].superBall.ball",
+      "model.externalResponse.datos.boards[*].selections[*]",
+      "model.printData[*].num0",
+      "model.printData[*].num1",
+      "model.printData[*].num2",
+      "model.printData[*].num3",
+      "model.printData[*].num4",
+      "model.printData[*].num5"
+    ],
+    "uuidMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 4,
+      "unmaskedEndCharacters": 2
+    },
+    "uuidFields": [
+      "user.id",
+      "userId",
+      "operation.uuid",
+      "model.operation.uuid",
+      "operations[*].uuid",
+      "operations[*].data.model.operation.uuid",
+      "model.prints[*].model.operation.uuid"
+    ]
+  },
+  "stringMaskConfig": {
+    "stringFields": ["AES_ENCRYPT"],
+    "stringMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 4,
+      "unmaskedEndCharacters": 2
+    }
+  }
+}
