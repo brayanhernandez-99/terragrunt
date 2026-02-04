@@ -1,4 +1,20 @@
-# Crear definiciones de tareas dinámicas para Fargate
+# Crear service discovery interno en el namespace de Cloudmap.
+resource "aws_service_discovery_service" "cloudmap_service" {
+  name        = var.name_service
+  description = "Service discovery interno para microservicios en ECS"
+
+  dns_config {
+    namespace_id   = var.cloudmap_namespace_id
+    routing_policy = "MULTIVALUE"
+
+    dns_records {
+      type = "A"
+      ttl  = 15
+    }
+  }
+}
+
+# Crear definiciones de tareas dinámicas para Fargate.
 resource "aws_ecs_task_definition" "ecs_task" {
   family                   = var.name_service
   network_mode             = "awsvpc"
@@ -9,10 +25,10 @@ resource "aws_ecs_task_definition" "ecs_task" {
   container_definitions = jsonencode([
     {
       name      = var.name_service
-      image     = var.ecs_task.container_image
+      image     = var.ecs_task.image
       essential = true
       portMappings = [
-        for mapping in var.ecs_task.container_port_mappings : {
+        for mapping in var.ecs_task.portMappings : {
           containerPort = mapping.containerPort
           hostPort      = mapping.hostPort
         }
@@ -23,27 +39,19 @@ resource "aws_ecs_task_definition" "ecs_task" {
           value = env_var.value
         }
       ]
+      secrets = [
+        for secret in var.ecs_task.secrets : {
+          name      = secret.name
+          valueFrom = secret.valueFrom
+        }
+      ]
       healthCheck = {
-        command     = ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
-        interval    = 30
-        timeout     = 5
-        retries     = 3
-        startPeriod = 80
+        command     = var.ecs_task.health_check.command
+        interval    = var.ecs_task.health_check.interval
+        timeout     = var.ecs_task.health_check.timeout
+        retries     = var.ecs_task.health_check.retries
+        startPeriod = var.ecs_task.health_check.startPeriod
       }
-      # credentialSpecs = []
-      # entryPoint = []
-      # command = []
-      # secretOptions = []
-      # environmentFiles = []
-      # mountPoints = []
-      # volumesFrom = []
-      # secrets = []
-      # dnsServers = []
-      # dnsSearchDomains = []
-      # extraHosts = []
-      # dockerSecurityOptions =  []
-      # dockerLabels =  {}
-      # ulimits = []
       logConfiguration = {
         logDriver = "awslogs"
         options = {
@@ -58,18 +66,19 @@ resource "aws_ecs_task_definition" "ecs_task" {
   execution_role_arn = var.ecs_task_execution_role_arn
   task_role_arn      = var.ecs_task_role_arn
 
-  lifecycle {
-    ignore_changes = [container_definitions]
-  }
+  # lifecycle {
+  #   ignore_changes = [container_definitions]
+  # }
 }
 
 # Crear servicios ECS para Fargate
 resource "aws_ecs_service" "ecs_service" {
-  name            = var.name_service
-  cluster         = var.ecs_cluster_id
-  task_definition = aws_ecs_task_definition.ecs_task.arn
-  launch_type     = "FARGATE"
-  desired_count   = 1
+  name                          = var.name_service
+  cluster                       = var.ecs_cluster_id
+  task_definition               = aws_ecs_task_definition.ecs_task.arn
+  launch_type                   = "FARGATE"
+  desired_count                 = 1
+  availability_zone_rebalancing = "ENABLED"
 
   load_balancer {
     target_group_arn = aws_lb_target_group.nlb_target_group.arn
@@ -81,20 +90,10 @@ resource "aws_ecs_service" "ecs_service" {
     subnets         = var.subnet_ids
     security_groups = [var.security_group_id]
   }
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
-}
 
-resource "aws_lb_listener" "nlb_listener" {
-  load_balancer_arn = var.nlb_arn
-  port              = var.listener_port
-  protocol          = "TCP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.nlb_target_group.arn
-  }
+  # lifecycle {
+  #   ignore_changes = [task_definition]
+  # }
 }
 
 # Target Group para el ECS
@@ -112,6 +111,17 @@ resource "aws_lb_target_group" "nlb_target_group" {
     timeout             = var.target_group_config.health_check_timeout
     healthy_threshold   = var.target_group_config.healthy_threshold
     unhealthy_threshold = var.target_group_config.unhealthy_threshold
+  }
+}
+
+resource "aws_lb_listener" "nlb_listener" {
+  load_balancer_arn = var.nlb_arn
+  port              = var.listener_port
+  protocol          = "TCP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.nlb_target_group.arn
   }
 }
 

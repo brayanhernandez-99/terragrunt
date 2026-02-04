@@ -11,50 +11,50 @@ terraform {
 }
 
 dependency "ecs" {
-  config_path         = "../aws-service-ecs"
-  mock_outputs        = {
-    listener_port     = 0000
+  config_path = "../aws-service-ecs"
+  mock_outputs = {
+    listener_port = 0000
   }
 }
 
 dependency "load_balancer" {
-  config_path         = "../../initial-infrastructure/aws-service-load-balancer"
-  mock_outputs        = {
-    nlb_dns_name      = "mock-nlb-dns-name"
+  config_path = "../../initial-infrastructure/aws-service-load-balancer"
+  mock_outputs = {
+    nlb_dns_name = "mock-nlb-dns-name"
   }
 }
 
-inputs                = {
-  ssm_parameters      = {
+inputs = {
+  ssm_parameters = {
     PRODUCER_BASE_URL = {
-      type            = "String"
-      name            = "/GLOBAL/PRODUCER_${upper(local.service)}_BASE_URL"
-      value           = "http://${dependency.load_balancer.outputs.nlb_dns_name}:${dependency.ecs.outputs.listener_port}/"
-      description     = "Configuración de máscaras de los logs"
+      type        = "String"
+      name        = "/GLOBAL/PRODUCER_${upper(local.service)}_BASE_URL"
+      value       = "http://${dependency.load_balancer.outputs.nlb_dns_name}:${dependency.ecs.outputs.listener_port}/"
+      description = "Configuración de máscaras de los logs"
     }
-    LOG_LEVEL         = {
-      type            = "String"
-      name            = "/${upper(local.service)}/LOGLEVEL"
-      value           = "#{parameter_log_level}#"
-      description     = "Nivel de log de ${local.service}"
+    LOG_LEVEL = {
+      type        = "String"
+      name        = "/${upper(local.service)}/LOGLEVEL"
+      value       = "#{parameter_log_level}#"
+      description = "Nivel de log de ${local.service}"
     }
-    CAPS_FILE_SIZE    = {
-      type            = "String"
-      name            = "/${upper(local.service)}/CAPS_FILE_SIZE"
-      value           = "#{parameter_caps_file_size}#"
-      description     = "Tamaño en MB para la carga de archivos de topes"
+    CAPS_FILE_SIZE = {
+      type        = "String"
+      name        = "/${upper(local.service)}/CAPS_FILE_SIZE"
+      value       = "#{parameter_caps_file_size}#"
+      description = "Tamaño en MB para la carga de archivos de topes"
     }
-    CONNECTION_LIMIT  = {
-      type            = "String"
-      name            = "/${upper(local.service)}/CONNECTION_LIMIT"
-      value           = "200"
-      description     = "connectionLimit"
+    CONNECTION_LIMIT = {
+      type        = "String"
+      name        = "/${upper(local.service)}/CONNECTION_LIMIT"
+      value       = "200"
+      description = "connectionLimit"
     }
-    QUEUE_LIMIT       = {
-      type            = "String"
-      name            = "/${upper(local.service)}/QUEUE_LIMIT"
-      value           = "10"
-      description     = "queueLimit"
+    QUEUE_LIMIT = {
+      type        = "String"
+      name        = "/${upper(local.service)}/QUEUE_LIMIT"
+      value       = "10"
+      description = "queueLimit"
     }
   }
 }

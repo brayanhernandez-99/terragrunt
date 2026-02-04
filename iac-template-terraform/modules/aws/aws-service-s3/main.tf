@@ -11,7 +11,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   dynamic "rule" {
     for_each = var.lifecycle_rules
     content {
-      id     = rule.value.id
+      id = rule.value.id
 
       filter {
         and {

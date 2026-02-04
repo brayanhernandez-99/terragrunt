@@ -1,11 +1,11 @@
 resource "aws_cognito_identity_pool" "identity_pool" {
   identity_pool_name               = "invictus-identity-pool"
-  allow_unauthenticated_identities = false  
+  allow_unauthenticated_identities = false
 
   cognito_identity_providers {
     provider_name           = "cognito-idp.us-east-1.amazonaws.com/${var.user_pool_id}"
     client_id               = var.user_pool_client_id
-    server_side_token_check = false  
+    server_side_token_check = false
   }
 }
 
@@ -15,9 +15,9 @@ resource "aws_iam_role" "authenticated_role" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
+      Effect    = "Allow"
       Principal = { Federated = "cognito-identity.amazonaws.com" }
-      Action = "sts:AssumeRoleWithWebIdentity"
+      Action    = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = {
           "cognito-identity.amazonaws.com:aud" = "${aws_cognito_identity_pool.identity_pool.id}"
@@ -33,7 +33,6 @@ resource "aws_iam_role" "authenticated_role" {
 resource "aws_iam_policy" "cognito_get_credentials_policy" {
   name        = "Cognito-unauthenticated"
   description = "Permite obtener credenciales temporales en Cognito"
-  
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -49,22 +48,22 @@ resource "aws_iam_policy" "cognito_get_credentials_policy" {
 
 resource "aws_iam_role_policy_attachment" "cognito_credentials_attachment" {
   role       = aws_iam_role.authenticated_role.name
-  policy_arn = aws_iam_policy.cognito_get_credentials_policy.arn  
+  policy_arn = aws_iam_policy.cognito_get_credentials_policy.arn
 }
 
 resource "aws_iam_role_policy_attachment" "cognitopower" {
   role       = aws_iam_role.authenticated_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonCognitoPowerUser"  
+  policy_arn = "arn:aws:iam::aws:policy/AmazonCognitoPowerUser"
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonESCognitoAccess" {
   role       = aws_iam_role.authenticated_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonESCognitoAccess"  
+  policy_arn = "arn:aws:iam::aws:policy/AmazonESCognitoAccess"
 }
 
 resource "aws_iam_role_policy_attachment" "AWSIoTConfigAccess" {
   role       = aws_iam_role.authenticated_role.name
-  policy_arn = "arn:aws:iam::aws:policy/AWSIoTConfigAccess"  
+  policy_arn = "arn:aws:iam::aws:policy/AWSIoTConfigAccess"
 }
 
 resource "aws_iam_role_policy_attachment" "AWSIoTDataAccess" {

@@ -26,7 +26,7 @@ variable "apply_lifecycle_rules" {
 
 variable "lifecycle_rules" {
   description = "Lista de reglas de ciclo de vida para el bucket S3"
-  type        = list(object({
+  type = list(object({
     id                       = string
     status                   = string
     prefix                   = string

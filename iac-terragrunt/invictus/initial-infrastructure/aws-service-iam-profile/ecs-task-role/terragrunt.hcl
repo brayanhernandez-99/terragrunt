@@ -7,15 +7,15 @@ terraform {
 }
 
 inputs = {
-  iam_role_name     = "ecs-task-role"
-  iam_policies_map  = {
-    policy1         = {
-      name          = "ecs-task-policy-all"
-      policy_json   = jsonencode({
-        "Version": "2012-10-17",
-        "Statement": [
+  iam_role_name = "ecs-task-role"
+  iam_policies_map = {
+    policy1 = {
+      name = "ecs-task-policy-all"
+      policy_json = jsonencode({
+        "Version" : "2012-10-17",
+        "Statement" : [
           {
-            "Action": [
+            "Action" : [
               "dynamodb:*",
               "ecr:*",
               "iam:PassRole",
@@ -30,8 +30,8 @@ inputs = {
               "xray:*",
               "sns:*"
             ],
-            "Resource": "*",
-            "Effect": "Allow"
+            "Resource" : "*",
+            "Effect" : "Allow"
           }
         ]
       })

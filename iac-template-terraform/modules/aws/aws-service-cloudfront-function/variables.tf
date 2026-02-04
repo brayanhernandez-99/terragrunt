@@ -11,7 +11,7 @@ variable "runtime_function" {
 variable "code_function" {
   description = "ARN de la distribución de CloudFront para restringir el acceso."
   type        = string
-  default = <<EOT
+  default     = <<EOT
 function handler(event) {
     var headers = event.response.headers;
     headers['strict-transport-security'] = { value: 'max-age=63072000; includeSubdomains; preload' };

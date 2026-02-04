@@ -7,9 +7,9 @@ terraform {
 }
 
 inputs = {
-  name_table_dynamo   = "master-export-file"
-  attribute_name      = "id"
-  attribute_type      = "S"
+  name_table_dynamo = "master-export-file"
+  attribute_name    = "id"
+  attribute_type    = "S"
   dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/master-export-file.json")

@@ -1,67 +1,61 @@
 # Crear definiciones de tareas dinámicas para Fargate
 resource "aws_ecs_task_definition" "ecs_task" {
-  family                                       = var.name_service
-  network_mode                                 = "awsvpc"
-  requires_compatibilities                     = ["FARGATE"]
-  cpu                                          = var.ecs_task.cpu
-  memory                                       = var.ecs_task.memory
+  family                   = var.name_service
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
+  cpu                      = var.ecs_task.cpu
+  memory                   = var.ecs_task.memory
 
-  container_definitions                        = jsonencode([
+  container_definitions = jsonencode([
     {
-      name                                     = var.name_service
-      image                                    = var.ecs_task.container_image
-      essential                                = true
-      environment                              = [
-        for env_var in var.ecs_task.environment: {
-          name                                 = env_var.name
-          value                                = env_var.value
+      name      = var.name_service
+      image     = var.ecs_task.image
+      essential = true
+      environment = [
+        for env_var in var.ecs_task.environment : {
+          name  = env_var.name
+          value = env_var.value
         }
       ]
-      # healthCheck                            = {
-      #     command                            = ["CMD-SHELL","curl -f http://localhost/health || exit 1"]
-      #     interval                           = 60
-      #     timeout                            = 5
-      #     retries                            = 3
-      # }
-      logConfiguration                         = {
-        logDriver                              = "awslogs"
-        options                                = {
-          awslogs-group                        = aws_cloudwatch_log_group.log_group.name
-          awslogs-region                       = var.region
-          awslogs-stream-prefix                = "aws-ecs"
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = aws_cloudwatch_log_group.log_group.name
+          awslogs-region        = var.region
+          awslogs-stream-prefix = "aws-ecs"
         }
       }
     }
   ])
 
-  execution_role_arn                           = var.ecs_task_execution_role_arn
-  task_role_arn                                = var.ecs_task_role_arn
-  lifecycle {
-    ignore_changes = [container_definitions]
-  }
+  execution_role_arn = var.ecs_task_execution_role_arn
+  task_role_arn      = var.ecs_task_role_arn
+  # lifecycle {
+  #   ignore_changes = [container_definitions]
+  # }
 }
 
 # Crear servicios ECS para Fargate
 resource "aws_ecs_service" "ecs_service" {
-  name                                         = var.name_service
-  cluster                                      = var.ecs_cluster_id
-  task_definition                              = aws_ecs_task_definition.ecs_task.arn
-  launch_type                                  = "FARGATE"
-  desired_count                                = 1
+  name            = var.name_service
+  cluster         = var.ecs_cluster_id
+  task_definition = aws_ecs_task_definition.ecs_task.arn
+  launch_type     = "FARGATE"
+  desired_count   = 1
 
   network_configuration {
     subnets         = var.subnet_ids
     security_groups = [var.security_group_id]
   }
-  lifecycle {
-    ignore_changes = [task_definition]
-  }
+  # lifecycle {
+  #   ignore_changes = [task_definition]
+  # }
 }
 
 # Crear grupo de logs en CloudWatch
 resource "aws_cloudwatch_log_group" "log_group" {
-  name                                         = "/aws-ecs/${var.name_service}"
-  retention_in_days                            = "30"
+  name              = "/aws-ecs/${var.name_service}"
+  retention_in_days = "30"
 }
 
 resource "aws_appautoscaling_target" "ecs_service_scaling_target" {

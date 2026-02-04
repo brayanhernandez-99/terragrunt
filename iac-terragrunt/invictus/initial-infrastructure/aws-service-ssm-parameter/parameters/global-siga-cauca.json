@@ -72,5 +72,7 @@
   {"productInitials":"RMR","replicate":true,"type":"collected"},
   {"productInitials":"R21","replicate":true,"type":"collected"},
   {"productInitials":"RPP","replicate":true,"type":"collected"},
-  {"productInitials":"TEO","replicate":true,"type":"collected"}
+  {"productInitials":"TEO","replicate":true,"type":"collected"},
+  {"productInitials":"CXR","replicate":true,"type":"collected"},
+  {"productInitials":"LTB","replicate":true,"type":"LotteriePayments"}
 ]

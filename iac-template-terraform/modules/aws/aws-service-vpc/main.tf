@@ -98,15 +98,20 @@ resource "aws_route_table" "public" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
-  # route {
-  #   cidr_block = "0.0.0.0/0"
-  #   nat_gateway_id = aws_nat_gateway.gw.id
-  # }
-
   route {
     cidr_block = var.cidr_block_gw_local_private
     gateway_id = "local"
   }
+
+  route {
+    cidr_block         = "10.150.0.0/23"
+    transit_gateway_id = var.transit_gateway_id
+  }
+
+  # route {
+  #   cidr_block = "0.0.0.0/0"
+  #   nat_gateway_id = aws_nat_gateway.gw.id
+  # }
 
   # route {
   #   cidr_block = var.cidr_block_gw_vgw_private
@@ -277,6 +282,20 @@ resource "aws_security_group" "db" {
     to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr_block]
+  }
+  ingress {
+    description = "Publisher ingress"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["10.150.0.220/32"]
+  }
+  ingress {
+    description = "Publisher ingress"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = ["10.150.1.20/32"]
   }
   tags = {
     Name = "db-security-group"

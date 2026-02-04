@@ -10,7 +10,7 @@ output "cloudfront_domain_name" {
 
 output "cloudfront_oac_id" {
   description = "ID de Control de Acceso de Origen (OAC)"
-  value = aws_cloudfront_origin_access_control.oac.id
+  value       = aws_cloudfront_origin_access_control.oac.id
 }
 
 output "cloudfront_arn" {

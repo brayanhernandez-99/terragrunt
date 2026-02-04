@@ -1,9 +1,10 @@
 resource "aws_sqs_queue" "aws_queue" {
-  name                      = var.queue_name
+  name                       = var.queue_name
   visibility_timeout_seconds = var.visibility_timeout_seconds
   message_retention_seconds  = var.message_retention_seconds
   delay_seconds              = var.delay_seconds
   receive_wait_time_seconds  = var.receive_wait_time_seconds
+  max_message_size           = var.max_message_size # Tamaño máximo de mensaje en bytes (256 KB)
 
   # Configuración para colas FIFO (opcional)
   fifo_queue                  = var.fifo_queue

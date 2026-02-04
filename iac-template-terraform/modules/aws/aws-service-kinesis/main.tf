@@ -5,7 +5,7 @@ resource "aws_kinesis_stream" "kinesis_stream" {
 }
 
 resource "aws_kinesis_stream_consumer" "kinesis_consumer" {
-  stream_arn    = aws_kinesis_stream.kinesis_stream.arn
-  name          = "${var.stream_name}-consumer"
+  stream_arn = aws_kinesis_stream.kinesis_stream.arn
+  name       = "${var.stream_name}-consumer"
   depends_on = [aws_kinesis_stream.kinesis_stream]
 }

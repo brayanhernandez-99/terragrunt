@@ -7,15 +7,15 @@ terraform {
 }
 
 dependency "apigateway_metabase" {
-  config_path                    = "../../initial-infrastructure/aws-service-apigateway-metabase"
-  mock_outputs                   = {
-    api_id                       = "mock_api_id"
+  config_path = "../aws-service-apigateway-metabase"
+  mock_outputs = {
+    api_id = "mock_api_id"
   }
 }
 
 inputs = {
-  Domain_name                    = "#{aws_custom_domain_metabase}#"
-  arn_certificate                = "#{aws_arn_certificate}#"
-  api_id                         = dependency.apigateway_metabase.outputs.api_id
-  stage_name                     = "prod"
+  Domain_name     = "#{aws_custom_domain_metabase}#"
+  arn_certificate = "#{aws_arn_certificate}#"
+  api_id          = dependency.apigateway_metabase.outputs.api_id
+  stage_name      = "prod"
 }

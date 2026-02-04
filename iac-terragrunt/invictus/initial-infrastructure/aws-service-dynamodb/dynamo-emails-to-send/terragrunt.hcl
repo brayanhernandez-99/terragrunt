@@ -7,9 +7,9 @@ terraform {
 }
 
 inputs = {
-  name_table_dynamo   = "emails-to-send"
-  attribute_name      = "typeEmail"
-  attribute_type      = "S"
+  name_table_dynamo = "emails-to-send"
+  attribute_name    = "typeEmail"
+  attribute_type    = "S"
   dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/emails-to-send.json")

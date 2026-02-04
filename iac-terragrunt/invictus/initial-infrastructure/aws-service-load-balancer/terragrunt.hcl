@@ -7,13 +7,14 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path           = "../../initial-infrastructure/aws-service-vpc"
-  mock_outputs          = {
-    private_subnet_ids  = ["mock_private_subnet_ids"]
+  config_path = "../aws-service-vpc"
+  mock_outputs = {
+    private_subnet_ids = ["mock_private_subnet_ids"]
   }
 }
 
 inputs = {
-  nlb_name              = "invictus-nlb"
-  subnet_ids            = dependency.vpc.outputs.private_subnet_ids
+  nlb_name     = "invictus-nlb"
+  nlb_internal = true
+  subnet_ids   = dependency.vpc.outputs.private_subnet_ids
 }

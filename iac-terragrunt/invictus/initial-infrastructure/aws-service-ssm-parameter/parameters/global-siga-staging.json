@@ -23,7 +23,6 @@
   { "productInitials": "PND", "replicate": true, "type": "package" },
   { "productInitials": "CCX", "replicate": true, "type": "package" },
   { "productInitials": "CMI", "replicate": true, "type": "millonario" },
-  { "productInitials": "BN4", "replicate": true, "type": "chance" },
   { "productInitials": "DG3", "replicate": true, "type": "chance" },
   { "productInitials": "DG4", "replicate": true, "type": "chance" },
   { "productInitials": "PCX", "replicate": true, "type": "package" },
@@ -58,5 +57,5 @@
   { "productInitials": "MET", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "RNU", "replicate": true, "type": "collected" },
   { "productInitials": "CIN", "replicate": true, "type": "collected" },
-  { "productInitials": "CHC", "replicate": true, "type": "chance" }
+  { "productInitials": "KEN", "replicate": true, "type": "keno" }
 ]

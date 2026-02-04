@@ -1,17 +1,17 @@
 include "root" {
-  path         = find_in_parent_folders("root.hcl")
+  path = find_in_parent_folders("root.hcl")
 }
 
 terraform {
-  source       = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-dynamodb"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-dynamodb"
 }
 
-inputs         = {
+inputs = {
   name_table_dynamo     = "roles-administration"
   attribute_name        = "id"
   attribute_type        = "S"
   dynamodb_insert_items = true
-  dynamodb_items_json   = [
+  dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/#{parameter_roles-administration}#")
     ) : jsonencode(item)

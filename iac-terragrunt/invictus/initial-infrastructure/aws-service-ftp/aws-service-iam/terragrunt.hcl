@@ -1,14 +1,14 @@
 include "root" {
-  path    = find_in_parent_folders("root.hcl")
+  path = find_in_parent_folders("root.hcl")
 }
 
 terraform {
-  source  = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-iam-ftp"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-iam-ftp"
 }
 
 dependency "s3" {
-  config_path     = "../aws-service-s3"
-  mock_outputs    = {
+  config_path = "../aws-service-s3"
+  mock_outputs = {
     s3_bucket_arn = "mock_s3_bucket_arn"
   }
 }

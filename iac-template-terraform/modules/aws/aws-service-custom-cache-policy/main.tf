@@ -1,9 +1,9 @@
 resource "aws_cloudfront_cache_policy" "custom_cache_policy" {
-  name          = var.name
-  comment       = var.comment
-  default_ttl   = var.default_ttl
-  min_ttl       = var.min_ttl
-  max_ttl       = var.max_ttl
+  name        = var.name
+  comment     = var.comment
+  default_ttl = var.default_ttl
+  min_ttl     = var.min_ttl
+  max_ttl     = var.max_ttl
 
   parameters_in_cache_key_and_forwarded_to_origin {
     enable_accept_encoding_brotli = true

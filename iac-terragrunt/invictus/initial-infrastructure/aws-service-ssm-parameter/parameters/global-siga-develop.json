@@ -4,7 +4,6 @@
   { "productInitials": "BCH", "replicate": true, "type": "chance" },
   { "productInitials": "CHU", "replicate": true, "type": "chance" },
   { "productInitials": "INC", "replicate": true, "type": "incentive" },
-  { "productInitials": "B4C", "replicate": true, "type": "chance" },
   { "productInitials": "B3C", "replicate": true, "type": "chance" },
   { "productInitials": "INM", "replicate": true, "type": "incentive" },
   { "productInitials": "CHE", "replicate": true, "type": "incentive" },
@@ -66,8 +65,5 @@
   { "productInitials": "MCA", "replicate": true, "type": "collected" },
   { "productInitials": "MQP", "replicate": true, "type": "genericPayment" },
   { "productInitials": "RNU", "replicate": true, "type": "collected" },
-  { "productInitials": "RFA", "replicate": true, "type": "raffle" },
-  { "productInitials": "A22", "replicate": true, "type": "genericPayment" },
-  { "productInitials": "STE", "replicate": true, "type": "collected" },
-  { "productInitials": "RRC", "replicate": true, "type": "collected" }
+  { "productInitials": "CHC", "replicate": true, "type": "chance" }
 ]

@@ -4,20 +4,20 @@ resource "aws_kms_key" "cmk" {
   enable_key_rotation     = false
 
   policy = jsonencode({
-    Version   = "2012-10-17"
+    Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "EnableRootAccess"
-        Effect    = "Allow"
+        Sid    = "EnableRootAccess"
+        Effect = "Allow"
         Principal = {
           AWS = "arn:aws:iam::${var.aws_account_id}:root"
         }
-        Action    = "kms:*"
-        Resource  = "*"
+        Action   = "kms:*"
+        Resource = "*"
       }
     ]
   })
-} 
+}
 
 resource "aws_kms_alias" "cmk_alias" {
   name          = var.name_ckm

@@ -7,13 +7,13 @@ terraform {
 }
 
 dependency "kms" {
-  config_path    = "../../initial-infrastructure/aws-service-kinesis-ckm"
-  mock_outputs   = {
-    kms_key_arn  = "mock_kms_key_arn"
+  config_path = "../aws-service-kinesis-ckm"
+  mock_outputs = {
+    kms_key_arn = "mock_kms_key_arn"
   }
 }
 
 inputs = {
-  bucket_name    = "flutter-apk-${get_aws_account_id()}"
-  kms_key_arn    = dependency.kms.outputs.kms_key_arn
+  bucket_name = "flutter-apk-${get_aws_account_id()}"
+  kms_key_arn = dependency.kms.outputs.kms_key_arn
 }

@@ -1,12 +1,12 @@
 # Variables para el nombre del servicio ECS
 variable "name_sg" {
   description = "Nombre SG"
-  type = string
+  type        = string
 }
 
 variable "description" {
-  type        = string
-  default     = "Security group managed by Terraform"
+  type    = string
+  default = "Security group managed by Terraform"
 }
 
 variable "vpc_id" {

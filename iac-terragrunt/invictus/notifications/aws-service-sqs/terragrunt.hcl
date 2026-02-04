@@ -10,7 +10,7 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sqs"
 }
 
-inputs                        = {
+inputs = {
   queue_name                  = "${title(local.service)}"
   visibility_timeout_seconds  = 30
   message_retention_seconds   = 345600

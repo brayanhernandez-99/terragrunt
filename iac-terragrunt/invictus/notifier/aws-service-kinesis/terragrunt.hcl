@@ -10,7 +10,7 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-kinesis"
 }
 
-inputs             = {
+inputs = {
   stream_name      = "${title(local.service)}"
   shard_count      = 1
   retention_period = 48

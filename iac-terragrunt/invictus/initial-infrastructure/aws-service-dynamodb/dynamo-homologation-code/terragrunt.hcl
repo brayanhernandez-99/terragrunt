@@ -6,10 +6,10 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-dynamodb"
 }
 
-inputs         = {
-  name_table_dynamo   = "homologation-code"
-  attribute_name      = "id"
-  attribute_type      = "S"
+inputs = {
+  name_table_dynamo = "homologation-code"
+  attribute_name    = "id"
+  attribute_type    = "S"
   dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/homologation-code.json")

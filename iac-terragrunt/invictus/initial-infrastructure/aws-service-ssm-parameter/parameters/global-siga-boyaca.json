@@ -23,8 +23,8 @@
   { "productInitials": "DTV", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "WOM", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "ETB", "replicate": true, "type": "cell-recharge" },
-  { "productInitials": "CMI", "replicate": true, "type": "Millonario" },
+  { "productInitials": "CMI", "replicate": true, "type": "millonario" },
   { "productInitials": "BN4", "replicate": true, "type": "ChanceLotteries" },
-  { "productInitials": "BLT", "replicate": true, "type": "Baloto" },
-  { "productInitials": "MLT", "replicate": true, "type": "Baloto" }
+  { "productInitials": "BLT", "replicate": true, "type": "wager" },
+  { "productInitials": "MLT", "replicate": true, "type": "wager" }
 ]

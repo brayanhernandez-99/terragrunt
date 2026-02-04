@@ -11,7 +11,7 @@ inputs = {
   attribute_name        = "name_query"
   attribute_type        = "S"
   dynamodb_insert_items = true
-  dynamodb_items_json   = [
+  dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/global-queries.json")
     ) : jsonencode(item)

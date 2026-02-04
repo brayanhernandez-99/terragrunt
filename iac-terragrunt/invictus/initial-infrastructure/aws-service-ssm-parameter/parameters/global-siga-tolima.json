@@ -6,6 +6,7 @@
   { "productInitials": "PBP", "replicate": true, "type": "withdraw" },
   { "productInitials": "BLT", "replicate": true, "type": "wager" },
   { "productInitials": "MLT", "replicate": true, "type": "wager" },
+  { "productInitials": "CLT", "replicate": true, "type": "wager" },
   { "productInitials": "SAS", "replicate": true, "type": "astro" },
   { "productInitials": "MOV", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "MOX", "replicate": true, "type": "package" },

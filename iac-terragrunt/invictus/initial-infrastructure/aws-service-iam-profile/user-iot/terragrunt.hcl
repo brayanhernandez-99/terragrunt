@@ -7,6 +7,6 @@ terraform {
 }
 
 inputs = {
-  name          = "iot-connect"
-  policy_arns   = "arn:aws:iam::aws:policy/AWSIoTDataAccess"
+  name        = "iot-connect"
+  policy_arns = "arn:aws:iam::aws:policy/AWSIoTDataAccess"
 }

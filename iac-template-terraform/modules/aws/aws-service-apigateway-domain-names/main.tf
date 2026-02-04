@@ -8,7 +8,7 @@ resource "aws_api_gateway_domain_name" "custom_domain" {
 }
 
 resource "aws_api_gateway_base_path_mapping" "mapping" {
-  api_id      = var.api_id  
-  stage_name  = var.stage_name 
+  api_id      = var.api_id
+  stage_name  = var.stage_name
   domain_name = aws_api_gateway_domain_name.custom_domain.domain_name
 }

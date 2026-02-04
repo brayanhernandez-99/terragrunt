@@ -7,6 +7,6 @@ terraform {
 }
 
 inputs = {
-  aws_account_id  = "${get_aws_account_id()}"
-  name_ckm        = "alias/km-secrets"
+  aws_account_id = "${get_aws_account_id()}"
+  name_ckm       = "alias/km-secrets"
 }

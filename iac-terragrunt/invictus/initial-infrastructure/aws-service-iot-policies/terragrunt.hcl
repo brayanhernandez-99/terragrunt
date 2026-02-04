@@ -7,7 +7,7 @@ terraform {
 }
 
 inputs = {
-  name_policy_syn       = "policy-sync"
-  name_policy_notifier  = "policy-notifier"
-  aws_account_id        = "${get_aws_account_id()}"
+  name_policy_syn      = "policy-sync"
+  name_policy_notifier = "policy-notifier"
+  aws_account_id       = "${get_aws_account_id()}"
 }

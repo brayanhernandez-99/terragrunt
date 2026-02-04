@@ -6,7 +6,7 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-dynamodb"
 }
 
-inputs         = {
+inputs = {
   name_table_dynamo     = "hierarchy-parameters"
   attribute_name        = "parameterKey"
   attribute_type        = "S"
@@ -14,7 +14,7 @@ inputs         = {
   use_sort_key          = true
   sort_key_name         = "objectKey"
   sort_key_type         = "S"
-  dynamodb_items_json   = [
+  dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/hierarchy-parameters.json")
     ) : jsonencode(item)

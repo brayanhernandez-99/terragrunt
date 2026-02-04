@@ -11,12 +11,13 @@ terraform {
 }
 
 inputs = {
-  queue_name                    = "invictus"
-  visibility_timeout_seconds    = 30
-  message_retention_seconds     = 345600
-  delay_seconds                 = 0
-  receive_wait_time_seconds     = 0
-  fifo_queue                    = false
-  content_based_deduplication   = false
-  kms_master_key_id             = "#{aws_kms_master_key_id}#" #varia segun el ambiente (SQS/Encryption/CMK alias)
+  queue_name                  = "invictus"
+  visibility_timeout_seconds  = 30
+  message_retention_seconds   = 345600
+  max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
+  delay_seconds               = 0
+  receive_wait_time_seconds   = 0
+  fifo_queue                  = false
+  content_based_deduplication = false
+  kms_master_key_id           = "#{aws_kms_master_key_id}#" #varia segun el ambiente (SQS/Encryption/CMK alias)
 }

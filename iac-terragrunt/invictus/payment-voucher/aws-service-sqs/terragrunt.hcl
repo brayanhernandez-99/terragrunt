@@ -11,16 +11,17 @@ terraform {
 }
 
 dependency "sqs_dlq" {
-  config_path                 = "../aws-service-sqs-dlq"
-  mock_outputs                = {
-    queue_arn                 = "mock_queue_arn"
+  config_path = "../aws-service-sqs-dlq"
+  mock_outputs = {
+    queue_arn = "mock_queue_arn"
   }
 }
 
-inputs                        = {
+inputs = {
   queue_name                  = "PaymentVoucher"
   visibility_timeout_seconds  = 30
   message_retention_seconds   = 345600
+  max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
   delay_seconds               = 0
   receive_wait_time_seconds   = 0
   fifo_queue                  = false

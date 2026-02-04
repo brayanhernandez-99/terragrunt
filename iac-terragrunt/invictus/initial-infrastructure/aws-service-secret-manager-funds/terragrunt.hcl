@@ -7,10 +7,10 @@ terraform {
 }
 
 inputs = {
-  secret_name           = "fundssecret"
-  secret_description    = "Secreto de fondos"
-  secret_string_value   = {
-    hashingSecret       = "#{secret_fundssecret_hashingSecret}#"
-    salt                = "#{secret_fundssecret_salt}#"
+  secret_name        = "fundssecret"
+  secret_description = "Secreto de fondos"
+  secret_string_value = {
+    hashingSecret = "#{secret_fundssecret_hashingSecret}#"
+    salt          = "#{secret_fundssecret_salt}#"
   }
 }

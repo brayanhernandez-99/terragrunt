@@ -14,7 +14,7 @@ inputs = {
   use_sort_key          = true
   sort_key_name         = "sessionId"
   sort_key_type         = "S"
-  dynamodb_items_json   = [
+  dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/sessions-by-user.json")
     ) : jsonencode(item)

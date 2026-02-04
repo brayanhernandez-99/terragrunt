@@ -5,5 +5,5 @@ variable "name" {
 
 variable "policy_arns" {
   description = "policy a agrega al user"
-  type = string
+  type        = string
 }

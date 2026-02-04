@@ -16,74 +16,74 @@ inputs = {
   transit_gateway_id          = "tgw-0f6549bf29da41b08"
 
   # Subnets públicas
-  public_subnets              = {                    
-    "subnet1a"                = {
-      cidr_block              = "#{aws_public_subnet1a}#"          
-      az                      = "us-east-1a"
+  public_subnets = {
+    "subnet1a" = {
+      cidr_block = "#{aws_public_subnet1a}#"
+      az         = "us-east-1a"
     }
-    "subnet1b"                = {
-      cidr_block              = "#{aws_public_subnet1b}#"        
-      az                      = "us-east-1b"
+    "subnet1b" = {
+      cidr_block = "#{aws_public_subnet1b}#"
+      az         = "us-east-1b"
     }
   }
 
   # Subnets privadas
-  private_subnets             = {
-    "subnet1a"                = {
-      cidr_block              = "#{aws_private_subnet1a}#"          
-      az                      = "us-east-1a"
+  private_subnets = {
+    "subnet1a" = {
+      cidr_block = "#{aws_private_subnet1a}#"
+      az         = "us-east-1a"
     }
-    "subnet1b"                = {
-      cidr_block              = "#{aws_private_subnet1b}#"          
-      az                      = "us-east-1b"
+    "subnet1b" = {
+      cidr_block = "#{aws_private_subnet1b}#"
+      az         = "us-east-1b"
     }
-    "subnet1c"                = {
-      cidr_block              = "#{aws_private_subnet1c}#"          
-      az                      = "us-east-1c"
+    "subnet1c" = {
+      cidr_block = "#{aws_private_subnet1c}#"
+      az         = "us-east-1c"
     }
   }
 
   # Reglas NACLs para subnets públicas
-  public_nacl_rules           = {
-    "allow_all_inbound"       = {
-      rule_number             = 100
-      egress                  = false
-      protocol                = "-1"
-      cidr_block              = "0.0.0.0/0"
-      rule_action             = "allow"
-      from_port               = 0
-      to_port                 = 0
+  public_nacl_rules = {
+    "allow_all_inbound" = {
+      rule_number = 100
+      egress      = false
+      protocol    = "-1"
+      cidr_block  = "0.0.0.0/0"
+      rule_action = "allow"
+      from_port   = 0
+      to_port     = 0
     },
-    "deny_all_inbound"        = {
-      rule_number             = 100
-      egress                  = true
-      protocol                = "-1"
-      cidr_block              = "0.0.0.0/0"
-      rule_action             = "allow"
-      from_port               = 0
-      to_port                 = 0
+    "deny_all_inbound" = {
+      rule_number = 100
+      egress      = true
+      protocol    = "-1"
+      cidr_block  = "0.0.0.0/0"
+      rule_action = "allow"
+      from_port   = 0
+      to_port     = 0
     }
   }
 
   # Reglas NACLs para subnets privadas
-  private_nacl_rules          = {
-    "allow_all_inbound"       = {
-      rule_number             = 100
-      egress                  = false
-      protocol                = "-1"
-      cidr_block              = "0.0.0.0/0"
-      rule_action             = "allow"
-      from_port               = 0
-      to_port                 = 0
+  private_nacl_rules = {
+    "allow_all_inbound" = {
+      rule_number = 100
+      egress      = false
+      protocol    = "-1"
+      cidr_block  = "0.0.0.0/0"
+      rule_action = "allow"
+      from_port   = 0
+      to_port     = 0
     },
-    "allow_all_outbound"      = {
-      rule_number             = 100
-      egress                  = true
-      protocol                = "-1"
-      cidr_block              = "0.0.0.0/0"
-      rule_action             = "allow"
-      from_port               = 0
-      to_port                 = 0
+    "allow_all_outbound" = {
+      rule_number = 100
+      egress      = true
+      protocol    = "-1"
+      cidr_block  = "0.0.0.0/0"
+      rule_action = "allow"
+      from_port   = 0
+      to_port     = 0
     },
   }
 }

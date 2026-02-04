@@ -7,5 +7,3 @@ output "nlb_dns_name" {
   description = "DNS Name del Network Load Balancer"
   value       = aws_lb.nlb.dns_name
 }
-
-

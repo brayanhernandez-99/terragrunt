@@ -7,16 +7,16 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path    = "../../../initial-infrastructure/aws-service-vpc"
-  mock_outputs   = {
-    vpc_id       = "mock_vpc_id"
+  config_path = "../../aws-service-vpc"
+  mock_outputs = {
+    vpc_id = "mock_vpc_id"
   }
 }
 
 inputs = {
-  name_sg       = "endpoints-invictus-sg"
-  description   = "Security group for endpoints"
-  vpc_id        = dependency.vpc.outputs.vpc_id
+  name_sg     = "endpoints-invictus-sg"
+  description = "Security group for endpoints"
+  vpc_id      = dependency.vpc.outputs.vpc_id
 
   ingress = [
     {

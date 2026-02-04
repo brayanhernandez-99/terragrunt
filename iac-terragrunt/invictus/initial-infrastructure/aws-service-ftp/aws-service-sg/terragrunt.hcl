@@ -7,16 +7,16 @@ terraform {
 }
 
 dependency "vpc" {
-  config_path  = "../../../initial-infrastructure/aws-service-vpc"
+  config_path = "../../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
     vpc_id = "mock_vpc_id"
   }
 }
 
 inputs = {
-  name_sg         = "ftp-invictus-sg"
-  vpc_id          = dependency.vpc.outputs.vpc_id
-  description     = "Security group for FTP service"
+  name_sg     = "ftp-invictus-sg"
+  vpc_id      = dependency.vpc.outputs.vpc_id
+  description = "Security group for FTP service"
 
   ingress = [
     {

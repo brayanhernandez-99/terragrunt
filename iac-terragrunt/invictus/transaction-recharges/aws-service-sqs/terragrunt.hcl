@@ -1,19 +1,20 @@
 include "root" {
-  path                        = find_in_parent_folders("root.hcl")
+  path = find_in_parent_folders("root.hcl")
 }
 
 locals {
-  service                     = "${basename(dirname(get_terragrunt_dir()))}"
+  service = "${basename(dirname(get_terragrunt_dir()))}"
 }
 
 terraform {
-  source                      = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sqs"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sqs"
 }
 
-inputs                        = {
+inputs = {
   queue_name                  = "TransactionRecharges"
   visibility_timeout_seconds  = 30
   message_retention_seconds   = 345600
+  max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
   delay_seconds               = 0
   receive_wait_time_seconds   = 0
   fifo_queue                  = false

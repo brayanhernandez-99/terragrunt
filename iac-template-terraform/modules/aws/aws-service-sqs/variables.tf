@@ -38,3 +38,7 @@ variable "kms_master_key_id" {
   type        = string
 }
 
+variable "max_message_size" {
+  description = "Tamaño máximo de mensaje en bytes"
+  type        = number
+}

@@ -1,4 +1,9 @@
-output "valkey_endpoint" {
-  description = "Endpoint del Valkey Cache"
-  value       = "${aws_elasticache_serverless_cache.valkey.endpoint[0].address}:${aws_elasticache_serverless_cache.valkey.endpoint[0].port}"
+output "valkey_address" {
+  description = "Address del Valkey Cache"
+  value       = one(aws_elasticache_serverless_cache.valkey.endpoint).address
+}
+
+output "valkey_port" {
+  description = "Port del Valkey Cache"
+  value       = one(aws_elasticache_serverless_cache.valkey.endpoint).port
 }

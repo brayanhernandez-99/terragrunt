@@ -9,7 +9,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "sse" {
   rule {
     apply_server_side_encryption_by_default {
       sse_algorithm     = "aws:kms"
-      kms_master_key_id = var.kms_key_arn   # El ID o ARN de tu clave KMS
+      kms_master_key_id = var.kms_key_arn # El ID o ARN de tu clave KMS
     }
 
     bucket_key_enabled = true
@@ -24,7 +24,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
   dynamic "rule" {
     for_each = var.lifecycle_rules
     content {
-      id     = rule.value.id
+      id = rule.value.id
 
       filter {
         and {

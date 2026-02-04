@@ -41,14 +41,20 @@ variable "query_string" {
   default     = false
 }
 
+variable "compress" {
+  description = "Habilita la compresión automática de respuestas en CloudFront"
+  type        = bool
+  default     = false
+}
+
 variable "cookies_forward" {
   description = "Determina cómo se deben reenviar las cookies al origen"
-  type        = string   # Opciones: "none", "all", "whitelist"
+  type        = string # Opciones: "none", "all", "whitelist"
 }
 
 variable "viewer_protocol_policy" {
   description = "Define cómo CloudFront maneja los protocolos de las solicitudes de los usuarios (HTTP/HTTPS)"
-  type        = string   # Opciones: "redirect-to-https", "allow-all", "https-only"
+  type        = string # Opciones: "redirect-to-https", "allow-all", "https-only"
 }
 
 variable "price_class" {
@@ -83,7 +89,7 @@ variable "geo_restriction_type" {
 variable "geo_restriction_countries" {
   description = "Lista de códigos de país (ISO 3166-1 alpha-2) para whitelist o blacklist en restricciones geográficas"
   type        = list(string)
-  default     = []  # Lista vacía por defecto, solo usada si restriction_type no es 'none'
+  default     = [] # Lista vacía por defecto, solo usada si restriction_type no es 'none'
 }
 
 variable "function_associations" {
@@ -99,14 +105,14 @@ variable "function_associations" {
 
 variable "oac_signing_behavior" {
   description = "Define el comportamiento de firma para el Control de Acceso de Origen (OAC). Valores posibles: 'always' (siempre firma las solicitudes), 'never' (nunca firma las solicitudes), o 'no-override' (usa la configuración del origen)."
-  type    = string
-  default = "always"
+  type        = string
+  default     = "always"
 }
 
 variable "oac_signing_protocol" {
   description = "Especifica el protocolo de firma utilizado por el Control de Acceso de Origen (OAC). Para un bucket S3, el valor debe ser 'sigv4' (Signature Version 4), que es el protocolo estándar para solicitudes seguras."
-  type    = string
-  default = "sigv4"
+  type        = string
+  default     = "sigv4"
 }
 
 variable "alternate_domain_names" {

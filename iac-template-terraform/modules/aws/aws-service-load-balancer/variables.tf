@@ -8,5 +8,7 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-
-
+variable "nlb_internal" {
+  description = "Indica si el NLB es interno o externo"
+  type        = bool
+}

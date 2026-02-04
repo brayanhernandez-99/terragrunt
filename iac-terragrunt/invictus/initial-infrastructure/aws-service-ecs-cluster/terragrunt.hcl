@@ -7,5 +7,5 @@ terraform {
 }
 
 inputs = {
-  cluster_name  = "invictus"
+  cluster_name = "invictus"
 }

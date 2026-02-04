@@ -7,34 +7,35 @@ terraform {
 }
 
 inputs = {
-  iam_role_name     = "ecs-task-execution-role"
-  iam_policies_map  = {
-    policy1         = {
-      name          = "ecs-task-policy"
-      policy_json   = jsonencode({
-        "Version": "2012-10-17",
-        "Statement": [
+  iam_role_name = "ecs-task-execution-role"
+  iam_policies_map = {
+    policy1 = {
+      name = "ecs-task-policy"
+      policy_json = jsonencode({
+        "Version" : "2012-10-17",
+        "Statement" : [
           {
-            "Action": [
+            "Action" : [
               "ecr:BatchCheckLayerAvailability",
               "ecr:BatchGetImage",
               "ecr:GetDownloadUrlForLayer"
             ],
-            "Resource": "arn:aws:ecr:us-east-1:861262569826:repository/*",
-            "Effect"  : "Allow"
+            "Resource" : "arn:aws:ecr:us-east-1:861262569826:repository/*",
+            "Effect" : "Allow"
           },
           {
-            "Action"  : "ecr:GetAuthorizationToken",
-            "Resource": "*",
-            "Effect"  : "Allow"
+            "Action" : "ecr:GetAuthorizationToken",
+            "Resource" : "*",
+            "Effect" : "Allow"
           },
           {
-            "Action"  : [
+            "Action" : [
               "logs:CreateLogStream",
+              "logs:CreateLogGroup",
               "logs:PutLogEvents"
             ],
-            "Resource": "*",
-            "Effect": "Allow"
+            "Resource" : "*",
+            "Effect" : "Allow"
           },
           {
             Action = [

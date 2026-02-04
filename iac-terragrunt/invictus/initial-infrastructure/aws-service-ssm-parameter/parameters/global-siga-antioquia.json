@@ -66,5 +66,6 @@
   { "productInitials": "MQP", "replicate": true, "type": "genericPayment" },
   { "productInitials": "RNU", "replicate": true, "type": "collected" },
   { "productInitials": "PBF", "replicate": true, "type": "genericPayment" },
-  { "productInitials": "STE", "replicate": true, "type": "collected" }
+  { "productInitials": "STE", "replicate": true, "type": "collected" },
+  { "productInitials": "CIN", "replicate": true, "type": "collected" }
 ]

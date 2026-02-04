@@ -15,7 +15,7 @@ pr:
 resources:
   repositories:
     - repository: templates
-      name: DevOps-templates/pipelines-templates
+      name: DevOps-templates-UX/pipelines-templates
       type: git
       ref: feature/infrastructure-as-code
 

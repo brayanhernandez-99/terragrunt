@@ -15,5 +15,5 @@ variable "cloudfront_distribution_arn" {
 
 variable "s3_bucket_name" {
   description = "Nombre del backet"
-  type = string
+  type        = string
 }

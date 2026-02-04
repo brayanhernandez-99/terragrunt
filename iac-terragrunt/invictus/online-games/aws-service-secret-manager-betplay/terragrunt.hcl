@@ -10,12 +10,12 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-secret-manager"
 }
 
-inputs                  = {
-  secret_name           = "betplaysecret"
-  secret_description    = "datos de sesión con cem para microservicio de online-games"
-  secret_string_value   = {
-    idUser              = "#{secret_betplaysecret_idUser}#"
-    password            = "#{secret_betplaysecret_password}#"
-    idCollaborator      = "#{secret_betplaysecret_idCollaborator}#"
+inputs = {
+  secret_name        = "betplaysecret"
+  secret_description = "datos de sesión con cem para microservicio de online-games"
+  secret_string_value = {
+    idUser         = "#{secret_betplaysecret_idUser}#"
+    password       = "#{secret_betplaysecret_password}#"
+    idCollaborator = "#{secret_betplaysecret_idCollaborator}#"
   }
 }

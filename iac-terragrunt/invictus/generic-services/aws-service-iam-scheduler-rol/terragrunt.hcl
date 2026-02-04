@@ -15,19 +15,19 @@ inputs = {
   iam_role_name = "${local.service}-eventbridge-scheduler-role"
   iam_policies_map = {
     policy1 = {
-      name        = "${local.service}-eventbridge-scheduler-policy"
+      name = "${local.service}-eventbridge-scheduler-policy"
       policy_json = jsonencode({
-        "Version": "2012-10-17",
-        "Statement": [
+        "Version" : "2012-10-17",
+        "Statement" : [
           {
-            "Action": [
+            "Action" : [
               "kinesis:*",
               "kms:*",
               "scheduler:*",
               "iam:*"
             ],
-            "Resource": "*",
-            "Effect": "Allow"
+            "Resource" : "*",
+            "Effect" : "Allow"
           }
         ]
       })

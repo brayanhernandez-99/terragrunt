@@ -11,16 +11,17 @@ terraform {
 }
 
 dependency "sqs_dlq" {
-  config_path                 = "../aws-service-sqs-dlq"
-  mock_outputs                = {
-    queue_arn                 = "mock_queue_arn"
+  config_path = "../aws-service-sqs-dlq"
+  mock_outputs = {
+    queue_arn = "mock_queue_arn"
   }
 }
 
-inputs                        = {
+inputs = {
   queue_name                  = "${title(local.service)}"
-  visibility_timeout_seconds  = 30
+  visibility_timeout_seconds  = 1800 #30 minutos
   message_retention_seconds   = 345600
+  max_message_size            = 262144 # Tamaño máximo de mensaje en bytes (256 KB)
   delay_seconds               = 0
   receive_wait_time_seconds   = 0
   fifo_queue                  = false

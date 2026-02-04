@@ -15,9 +15,9 @@ resource "aws_iam_role" "iam_role" {
 }
 
 resource "aws_iam_policy" "iam_policy" {
-  for_each   = var.iam_policies_map
-  name       = "${each.value.name}-ms-policy-${random_id.random_suffix.hex}"
-  policy     = each.value.policy_json
+  for_each = var.iam_policies_map
+  name     = "${each.value.name}-ms-policy-${random_id.random_suffix.hex}"
+  policy   = each.value.policy_json
 }
 
 resource "aws_iam_role_policy_attachment" "iam_role_policy_attachment" {

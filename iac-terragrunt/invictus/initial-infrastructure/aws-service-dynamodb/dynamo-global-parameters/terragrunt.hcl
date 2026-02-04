@@ -7,12 +7,12 @@ terraform {
 }
 
 inputs = {
-  name_table_dynamo   = "global-parameters"
-  attribute_name      = "id"
-  attribute_type      = "S"
-  use_sort_key        = true
-  sort_key_name       = "application"
-  sort_key_type       = "S"
+  name_table_dynamo = "global-parameters"
+  attribute_name    = "id"
+  attribute_type    = "S"
+  use_sort_key      = true
+  sort_key_name     = "application"
+  sort_key_type     = "S"
   dynamodb_items_json = [
     for item in jsondecode(
       file("${get_terragrunt_dir()}/parameters/global-parameters.json")

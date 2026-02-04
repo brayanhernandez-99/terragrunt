@@ -7,24 +7,24 @@ locals {
 }
 
 terraform {
-  source  = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-secret-manager"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-secret-manager"
 }
 
 dependency "rds" {
-  config_path           = "../../initial-infrastructure/aws-service-rds"
-  mock_outputs          = {
-    username            = "mock-username"
-    password            = "mock-password"
-    endpoint            = "mock-endpoint"
-    port                = "mock-port"
-    cluster_identifier  = "mock-cluster-identifier"
+  config_path = "../../initial-infrastructure/aws-service-rds"
+  mock_outputs = {
+    username           = "mock-username"
+    password           = "mock-password"
+    endpoint           = "mock-endpoint"
+    port               = "mock-port"
+    cluster_identifier = "mock-cluster-identifier"
   }
 }
 
-inputs                  = {
-  secret_name           = "${local.service}-relational-rds-secret"
-  secret_description    = "Secretos de la base de datos de ${local.service}"
-  secret_string_value   = {
+inputs = {
+  secret_name        = "${local.service}-relational-rds-secret"
+  secret_description = "Secretos de la base de datos de ${local.service}"
+  secret_string_value = {
     username            = "${dependency.rds.outputs.username}"
     password            = "${dependency.rds.outputs.password}"
     engine              = "mysql"
