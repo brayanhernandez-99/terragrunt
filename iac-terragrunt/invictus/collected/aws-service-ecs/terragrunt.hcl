@@ -54,7 +54,7 @@ dependency "task_role" {
 }
 
 inputs = {
-  region       = "us-east-1"
+  region                = "us-east-1"
   name_service          = "${local.service}"
   cloudmap_namespace_id = dependency.cloudmap.outputs.cloudmap_namespace_id
 
@@ -65,7 +65,6 @@ inputs = {
     portMappings = [
       {
         containerPort = 8080
-        hostPort      = 8080
       }
     ]
     environment = [

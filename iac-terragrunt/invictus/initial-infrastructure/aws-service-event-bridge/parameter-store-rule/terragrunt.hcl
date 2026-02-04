@@ -18,7 +18,7 @@ dependency "iam_role" {
 }
 
 inputs = {
-  rule_name      = "ParameterStore-rule"
+  rule_name      = "synchronize-parameters"
   description    = "Rule para enviar eventos a Parameter Store"
   iam_role_arn   = dependency.iam_role.outputs.iam_role_arn
   aws_account_id = "${get_aws_account_id()}"

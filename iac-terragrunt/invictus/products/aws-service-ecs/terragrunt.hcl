@@ -65,7 +65,6 @@ inputs = {
     portMappings = [
       {
         containerPort = 8080
-        hostPort      = 8080
       }
     ]
     environment = [

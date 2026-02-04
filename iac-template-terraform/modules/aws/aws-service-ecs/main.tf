@@ -30,7 +30,6 @@ resource "aws_ecs_task_definition" "ecs_task" {
       portMappings = [
         for mapping in var.ecs_task.portMappings : {
           containerPort = mapping.containerPort
-          hostPort      = mapping.hostPort
         }
       ]
       environment = [
@@ -79,6 +78,10 @@ resource "aws_ecs_service" "ecs_service" {
   launch_type                   = "FARGATE"
   desired_count                 = 1
   availability_zone_rebalancing = "ENABLED"
+
+  service_registries {
+    registry_arn = aws_service_discovery_service.cloudmap_service.arn
+  }
 
   load_balancer {
     target_group_arn = aws_lb_target_group.nlb_target_group.arn

@@ -19,7 +19,7 @@ variable "ecs_task" {
 
     portMappings = list(object({
       containerPort = number
-      hostPort      = number
+      hostPort      = optional(number)
     }))
 
     environment = list(object({
