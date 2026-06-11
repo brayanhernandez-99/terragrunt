@@ -1,20 +1,64 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Infrastructure as Code — Invictus
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Monorepo de infraestructura multi-cuenta AWS gestionado con **Terraform + Terragrunt**. Contiene **42 módulos reutilizables** y **523+ stacks desplegables** para 48 microservicios/infraestructura compartida.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+CI/CD via Azure DevOps con pipeline externo (`DevOps-templates-UX/pipelines-templates`).
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+---
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Estructura del repositorio
+
+```
+iac-template-terraform/modules/aws/   ← 42 módulos Terraform (source of truth)
+iac-terragrunt/invictus/              ← 48 stacks Terragrunt
+  root.hcl                            ← generate provider.tf + backend.tf
+  initial-infrastructure/             ← VPC, RDS, ECS cluster, DynamoDB, S3, etc.
+  apps/                               ← CloudFront, S3 buckets, cache policies
+  {microservicios}/                   ← ECS, SSM, SQS, S3, IAM, Secrets, EventBridge...
+pipeline/main-pipeline.yml            ← Pipeline Azure DevOps entrypoint
+```
+
+## Ramas y entornos
+
+| Rama | Entorno |
+|------|---------|
+| `develop` | dev |
+| `staging` | staging |
+| `master` | production |
+
+Solo estas 3 ramas disparan pipeline.
+
+## Requisitos
+
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) >= 1.5
+- [Terragrunt](https://terragrunt.gruntwork.io/docs/getting-started/install/) >= 0.55
+- Acceso a la cuenta AWS correspondiente
+
+## Uso básico
+
+```bash
+# Inicializar un módulo
+terragrunt init
+
+# Planificar un módulo
+terragrunt plan
+
+# Planificar todos los módulos
+terragrunt run-all plan
+
+# Formatear código
+terraform fmt -recursive
+```
+
+## Importante
+
+- **Placeholders**: Los valores `#{variable}#` son resueltos por el pipeline CI/CD. No ejecutar terragrunt local sin sustituirlos.
+- **Dependencies**: Usan `mock_outputs` — planes sin estado previo usarán valores mock.
+- **Provider**: AWS provider `~> 6.8.0`.
+- **ECS**: Todos los servicios usan Fargate con modo red `awsvpc`.
+- **Logs**: CloudWatch logs retention 30 días.
+- **State**: S3 backend, cada módulo tiene su propio state file.
+
+## Pipeline
+
+El pipeline en `pipeline/main-pipeline.yml` delega a una plantilla externa en `DevOps-templates-UX/pipelines-templates` (branch `feature/infrastructure-as-code`). Esa plantilla se encarga de la sustitución de placeholders y la orquestación completa.

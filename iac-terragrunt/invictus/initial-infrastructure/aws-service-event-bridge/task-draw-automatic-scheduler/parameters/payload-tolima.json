@@ -1,0 +1,24 @@
+{
+  "model": {
+    "status": "ENABLED"
+  },
+  "id": "callback_b60eaf0e-b9d7-4009-a58f-38caac60e83c",
+  "topic": "administration-815dc61e-b00f-45e0-a6e5-3ca1e702c63f",
+  "timezoneOffset": 300,
+  "streamNotifier": "Notifier",
+  "ip": "190.71.228.82",
+  "user": {
+    "id": "815dc61e-b00f-45e0-a6e5-3ca1e702c63f",
+    "state": "UA",
+    "roles": "{\"app_administration\":[\"AXEyKXZbB\"],\"app_sellers\":[],\"app_collectors\":[]}",
+    "identificationType": "CC",
+    "identificationNumber": "89008224",
+    "name": "MARIO",
+    "family_name": "SANCHEZ RAMIREZ",
+    "phone_number": "+573173768182",
+    "email": "mario.sanchez@gruporeditos.com",
+    "hierarchy": "[{\"idHierarchyClass\":8,\"label\":\"empresa\",\"priority\":8,\"isVirtual\":0,\"idDb\":1,\"name\":\"Grupo Reditos\"},{\"idHierarchyClass\":5,\"label\":\"oficina\",\"priority\":5,\"code\":\"2900174\",\"isVirtual\":0,\"idDb\":1,\"name\":\"2900174-Belen Playas\"},{\"idHierarchyClass\":4,\"label\":\"barrio\",\"priority\":4,\"isVirtual\":0,\"idDb\":1,\"name\":\"Belen Playas\"},{\"idHierarchyClass\":3,\"label\":\"ciudad\",\"priority\":3,\"code\":5001,\"isVirtual\":0,\"idDb\":80,\"name\":\"Medellín\"},{\"idHierarchyClass\":2,\"label\":\"departamento\",\"priority\":2,\"isVirtual\":0,\"idDb\":3,\"name\":\"Antioquia\"},{\"idHierarchyClass\":1,\"label\":\"pais\",\"priority\":1,\"isVirtual\":0,\"idDb\":1,\"name\":\"Colombia\"}]",
+    "idsHierarchies": "[\"815dc61e-b00f-45e0-a6e5-3ca1e702c63f\",1,1,1,80,3,1]"
+  },
+  "event": "activatedDrawAutomaticTask"
+}

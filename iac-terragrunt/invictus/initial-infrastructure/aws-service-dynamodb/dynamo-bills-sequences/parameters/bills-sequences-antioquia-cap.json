@@ -1,0 +1,28 @@
+[
+  {
+    "idBillSequence": {
+      "S": "1"
+    },
+    "business": {
+      "S": "GANA"
+    },
+    "currentConsecutive": {
+      "N": "2128700"
+    },
+    "finalConsecutive": {
+      "N": "50000000"
+    },
+    "initialConsecutive": {
+      "N": "1"
+    },
+    "message": {
+      "S": "GRAN CONTRIBUYENTE AGENTE RETENEDOR DE IVA DOC OFICIAL 18764042849843 DE 16/01/2023 vigencia 18 meses Desde INV 1 hasta INV 50000000"
+    },
+    "prefixConsecutive": {
+      "S": "INV"
+    },
+    "status": {
+      "N": "1"
+    }
+  }
+]

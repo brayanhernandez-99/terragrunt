@@ -1,0 +1,86 @@
+[
+  {
+    "id": {
+      "S": "APP_SELLER_USER"
+    },
+    "createdAt": {
+      "N": "1736286141772"
+    },
+    "description": {
+      "S": "Rol vendedor"
+    },
+    "name": {
+      "S": "Vendedor"
+    },
+    "resources": {
+      "L": [
+        {
+          "S": "7EX4Tr_7U"
+        },
+        {
+          "S": "2NzvBoKLX"
+        },
+        {
+          "S": "gaHIrPPQK"
+        },
+        {
+          "S": "NYkp3342v"
+        },
+        {
+          "S": "u2kYEwLXZ"
+        },
+        {
+          "S": "vY-PvLzHN"
+        },
+        {
+          "S": "NVAx5MEeV"
+        },
+        {
+          "S": "CXk3a7S1Y"
+        },
+        {
+          "S": "VK4mSknfQ"
+        },
+        {
+          "S": "CQlJBK1ox"
+        },
+        {
+          "S": "SC_Yqonl-"
+        },
+        {
+          "S": "g9bJfWcJn"
+        },
+        {
+          "S": "VqIwX5-2b"
+        },
+        {
+          "S": "rkZactuHE"
+        },
+        {
+          "S": "EOxFqTUq7"
+        },
+        {
+          "S": "p8xw0IQpZ"
+        },
+        {
+          "S": "suet9u3TQ"
+        },
+        {
+          "S": "4vXddnxzw"
+        },
+        {
+          "S": "KsWJFu6cW"
+        },
+        {
+          "S": "9WkS_bcQ6"
+        }
+      ]
+    },
+    "status": {
+      "N": "1"
+    },
+    "updatedAt": {
+      "N": "1736286141772"
+    }
+  }
+]

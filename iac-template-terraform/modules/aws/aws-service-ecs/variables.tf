@@ -1,0 +1,131 @@
+variable "cloudmap_namespace_id" {
+  description = "ID del namespace de Cloud Map"
+  type        = string
+}
+
+variable "name_service" {
+  description = "Nombre del servicio ECS"
+  type        = string
+}
+
+variable "ecs_task" {
+  description = "Lista de tareas ECS con sus parámetros."
+  type = object({
+    cpu    = string
+    memory = string
+    image  = string
+
+    portMappings = list(object({
+      containerPort = number
+      hostPort      = optional(number)
+    }))
+
+    environment = list(object({
+      name  = string
+      value = string
+    }))
+
+    secrets = optional(list(object({
+      name      = string
+      valueFrom = string
+    })), [])
+
+    health_check = object({
+      command     = list(string)
+      interval    = number
+      timeout     = number
+      retries     = number
+      startPeriod = number
+    })
+  })
+}
+
+variable "ecs_task_execution_role_arn" {
+  description = "ARN del rol de ejecución para la tarea ECS, utilizado para permisos relacionados con la ejecución (por ejemplo, extraer imágenes desde ECR, registrar logs en CloudWatch)."
+  type        = string
+}
+
+variable "ecs_task_role_arn" {
+  description = "ARN del rol asociado a la tarea ECS, utilizado para definir los permisos que las aplicaciones dentro del contenedor pueden necesitar (por ejemplo, acceso a S3, DynamoDB)."
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "Lista de IDs de las subnets donde se ejecutarán los servicios ECS"
+  type        = list(string)
+}
+
+variable "security_group_id" {
+  description = "ID del grupo de seguridad a utilizar para los servicios ECS"
+  type        = string
+}
+
+variable "region" {
+  description = "Región de AWS"
+  type        = string
+}
+
+variable "enable_nlb" {
+  description = "Indica si el servicio debe exponerse mediante NLB"
+  type        = bool
+}
+
+variable "nlb_arn" {
+  description = "ARN del Loand Balancer"
+  type        = string
+  default     = null
+}
+
+variable "listener_port" {
+  description = "Puerto del listener"
+  type        = number
+  default     = null
+}
+
+variable "target_group_config" {
+  description = "Configuración del Target Group."
+  type = object({
+    name                  = string
+    port                  = number
+    vpc_id                = string
+    health_check_port     = number
+    health_check_interval = number
+    health_check_timeout  = number
+    healthy_threshold     = number
+    unhealthy_threshold   = number
+  })
+  default = null
+}
+
+variable "ecs_cluster_id" {
+  description = "ID del cluster ECS"
+  type        = string
+}
+
+variable "ecs_cluster_name" {
+  description = "name del cluster ECS"
+  type        = string
+}
+
+variable "ecs_service_autoscaling" {
+  description = "Configuración de auto scaling para ECS"
+  type = object({
+    min_capacity        = number
+    max_capacity        = number
+    cpu_target_value    = optional(number)
+    memory_target_value = optional(number)
+  })
+  default = null
+}
+
+variable "ecs_service_scheduled_actions" {
+  description = "Acciones programadas opcionales para ECS autoscaling"
+  type = map(object({
+    schedule     = string
+    min_capacity = number
+    max_capacity = number
+    start_time   = optional(string)
+    timezone     = optional(string)
+  }))
+  default = {}
+}

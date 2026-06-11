@@ -1,0 +1,61 @@
+include "root" {
+  path = find_in_parent_folders("root.hcl")
+}
+
+terraform {
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sg"
+}
+
+dependency "vpc" {
+  config_path = "../../aws-service-vpc"
+  mock_outputs = {
+    vpc_id = "mock_vpc_id"
+  }
+}
+
+inputs = {
+  name_sg     = "rds-invictus-sg"
+  vpc_id      = dependency.vpc.outputs.vpc_id
+  description = "Allow egress and ingress traffic for RDS"
+
+  ingress = [
+    {
+      description = "MySQL/Aurora ingress traffic"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = ["#{aws_vpc_cidr_block}#"]
+    },
+    {
+      description = "Publisher ingress"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = ["10.150.0.220/32"]
+    },
+    {
+      description = "Publisher ingress"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = ["10.150.1.20/32"]
+    },
+    {
+      description = "Zabbix Proxy AWS"
+      from_port   = 3306
+      to_port     = 3306
+      protocol    = "tcp"
+      cidr_blocks = ["10.150.0.226/32"]
+    }
+  ]
+
+  egress = [
+    {
+      description = "Allow all outbound traffic"
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+}

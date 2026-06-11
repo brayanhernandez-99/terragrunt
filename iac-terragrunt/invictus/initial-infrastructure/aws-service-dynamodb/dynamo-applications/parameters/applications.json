@@ -1,0 +1,78 @@
+[
+  {
+    "id": {
+      "S": "cetabrVap2"
+    },
+    "attributesUser": {
+      "BOOL": false
+    },
+    "clientId": {
+      "S": "/GLOBAL/SELLERS_USER_POOL_CLIENT_ID"
+    },
+    "createdAt": {
+      "N": "1621201674149"
+    },
+    "description": {
+      "S": "Vendedores"
+    },
+    "endHierarchy": {
+      "N": "1"
+    },
+    "name": {
+      "S": "Vendedores"
+    },
+    "poolId": {
+      "S": "/GLOBAL/SELLERS_USER_POOL_ID"
+    },
+    "startHierarchy": {
+      "N": "7"
+    },
+    "suffix": {
+      "S": "sellers"
+    },
+    "typeUser": {
+      "S": "seller"
+    },
+    "updatedAt": {
+      "N": "1621201674149"
+    }
+  },
+  {
+    "id": {
+      "S": "cetabrVap"
+    },
+    "attributesUser": {
+      "BOOL": true
+    },
+    "clientId": {
+      "S": "/GLOBAL/ADMIN_USER_POOL_CLIENT_ID"
+    },
+    "createdAt": {
+      "N": "1621201674149"
+    },
+    "description": {
+      "S": "Administración"
+    },
+    "endHierarchy": {
+      "N": "1"
+    },
+    "name": {
+      "S": "Administracion"
+    },
+    "poolId": {
+      "S": "/GLOBAL/ADMIN_USER_POOL_ID"
+    },
+    "startHierarchy": {
+      "N": "5"
+    },
+    "suffix": {
+      "S": "administration"
+    },
+    "typeUser": {
+      "S": "admin"
+    },
+    "updatedAt": {
+      "N": "1621201674149"
+    }
+  }
+]
