@@ -14,14 +14,14 @@ dependency "iam_role" {
 }
 
 dependency "load_balancer" {
-  config_path = "../aws-service-load-balancer"
+  config_path = "../../aws-service-load-balancer"
   mock_outputs = {
     nlb_dns_name = "mock_nlb_dns_name"
   }
 }
 
 dependency "vpc_link" {
-  config_path = "../aws-service-vpc-link"
+  config_path = "../../aws-service-vpc-link"
   mock_outputs = {
     vpc_link_id = "mock_vpc_link_id"
   }
