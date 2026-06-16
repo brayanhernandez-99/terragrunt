@@ -8,8 +8,8 @@ terraform {
 
 inputs = {
   bucket_name                            = "recharges-documents-${get_aws_account_id()}"
-  enable_object_ownership_controls       = true
   enable_put_object_encryption_policy_ip = true
+  enable_object_ownership_controls       = true
   object_ownership_type                  = "ObjectWriter"
   allowed_ips = [
     "34.236.228.61",
