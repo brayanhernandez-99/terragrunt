@@ -7,8 +7,7 @@ terraform {
 }
 
 inputs = {
-  bucket_name                         = "remittances-${get_aws_account_id()}"
-  enable_object_ownership_controls    = true
-  enable_put_object_encryption_policy = false
-  object_ownership_type               = "BucketOwnerEnforced"
+  bucket_name                      = "remittances-${get_aws_account_id()}"
+  enable_object_ownership_controls = true
+  object_ownership_type            = "BucketOwnerEnforced"
 }
