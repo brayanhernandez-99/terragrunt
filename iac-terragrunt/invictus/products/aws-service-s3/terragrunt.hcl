@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-s3-product"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-s3"
 }
 
 inputs = {
