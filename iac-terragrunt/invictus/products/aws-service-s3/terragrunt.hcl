@@ -7,5 +7,7 @@ terraform {
 }
 
 inputs = {
-  bucket_name = "products-${get_aws_account_id()}"
+  bucket_name                      = "products-${get_aws_account_id()}"
+  enable_object_ownership_controls = true
+  object_ownership_type            = "ObjectWriter"
 }
