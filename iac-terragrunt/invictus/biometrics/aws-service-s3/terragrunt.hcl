@@ -7,9 +7,9 @@ terraform {
 }
 
 inputs = {
-  bucket_name                         = "biometrics-documents-${get_aws_account_id()}"
-  enable_object_ownership_controls    = true
-  object_ownership_type               = "BucketOwnerEnforced"
+  bucket_name                      = "biometrics-documents-${get_aws_account_id()}"
+  enable_object_ownership_controls = true
+  object_ownership_type            = "BucketOwnerEnforced"
   # enable_cors = true
   # cors_rules = [
   #   {

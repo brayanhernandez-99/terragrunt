@@ -7,9 +7,9 @@ terraform {
 }
 
 inputs = {
-  bucket_name                         = "sellers-documents-${get_aws_account_id()}"
-  enable_object_ownership_controls    = true
-  object_ownership_type               = "ObjectWriter"
-  enable_public_access_block          = true
-  val_public_access_block             = true # Deja el s3 privado
+  bucket_name                      = "sellers-documents-${get_aws_account_id()}"
+  enable_object_ownership_controls = true
+  object_ownership_type            = "ObjectWriter"
+  enable_public_access_block       = true
+  val_public_access_block          = true # Deja el s3 privado
 }
