@@ -72,6 +72,7 @@ inputs = {
     "remittances-relational-rds-secret",
     "security-relational-rds-secret",
     "sellers-relational-rds-secret",
+    "shopping-cart-relational-rds-secret",
     "wiretransfer-relational-rds-secret"
   ]
 }
