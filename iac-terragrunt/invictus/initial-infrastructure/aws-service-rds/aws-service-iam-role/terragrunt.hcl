@@ -41,13 +41,6 @@ dependency "secret_conciliation" {
   }
 }
 
-dependency "secret_credits" {
-  config_path = "../../../credits/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "mock-secret-arn"
-  }
-}
-
 dependency "secret_dynamic_storage" {
   config_path = "../../../dynamic-storage/aws-service-secret-manager"
   mock_outputs = {
@@ -62,13 +55,6 @@ dependency "secret_external_wager" {
   }
 }
 
-dependency "secret_hierarchies" {
-  config_path = "../../../hierarchies/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "mock-secret-arn"
-  }
-}
-
 dependency "secret_generic_services" {
   config_path = "../../../generic-services/aws-service-secret-manager"
   mock_outputs = {
@@ -76,15 +62,15 @@ dependency "secret_generic_services" {
   }
 }
 
-dependency "secret_legacy" {
-  config_path = "../../../legacy/aws-service-secret-manager"
+dependency "secret_hierarchies" {
+  config_path = "../../../hierarchies/aws-service-secret-manager"
   mock_outputs = {
     secret_arn = "mock-secret-arn"
   }
 }
 
-dependency "secret_lotteries_games_admin" {
-  config_path = "../../../lotteries-games-admin/aws-service-secret-manager"
+dependency "secret_lotteries" {
+  config_path = "../../../lotteries/aws-service-secret-manager"
   mock_outputs = {
     secret_arn = "mock-secret-arn"
   }
@@ -97,8 +83,8 @@ dependency "secret_lotteries_games" {
   }
 }
 
-dependency "secret_lotteries" {
-  config_path = "../../../lotteries/aws-service-secret-manager"
+dependency "secret_lotteries_games_admin" {
+  config_path = "../../../lotteries-games-admin/aws-service-secret-manager"
   mock_outputs = {
     secret_arn = "mock-secret-arn"
   }
@@ -181,13 +167,6 @@ dependency "secret_raffles" {
   }
 }
 
-dependency "secret_raspa" {
-  config_path = "../../../raspa/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "mock-secret-arn"
-  }
-}
-
 dependency "secret_recharges" {
   config_path = "../../../recharges/aws-service-secret-manager"
   mock_outputs = {
@@ -254,15 +233,13 @@ inputs = {
           dependency.secret_biometrics.outputs.secret_arn,
           dependency.secret_collected.outputs.secret_arn,
           dependency.secret_conciliation.outputs.secret_arn,
-          dependency.secret_credits.outputs.secret_arn,
           dependency.secret_dynamic_storage.outputs.secret_arn,
           dependency.secret_external_wager.outputs.secret_arn,
-          dependency.secret_hierarchies.outputs.secret_arn,
           dependency.secret_generic_services.outputs.secret_arn,
-          dependency.secret_legacy.outputs.secret_arn,
-          dependency.secret_lotteries_games_admin.outputs.secret_arn,
-          dependency.secret_lotteries_games.outputs.secret_arn,
+          dependency.secret_hierarchies.outputs.secret_arn,
           dependency.secret_lotteries.outputs.secret_arn,
+          dependency.secret_lotteries_games.outputs.secret_arn,
+          dependency.secret_lotteries_games_admin.outputs.secret_arn,
           dependency.secret_metabase.outputs.secret_arn,
           dependency.secret_millonario.outputs.secret_arn,
           dependency.secret_money_control.outputs.secret_arn,
@@ -274,7 +251,6 @@ inputs = {
           dependency.secret_products.outputs.secret_arn,
           dependency.secret_promotional.outputs.secret_arn,
           dependency.secret_raffles.outputs.secret_arn,
-          dependency.secret_raspa.outputs.secret_arn,
           dependency.secret_recharges.outputs.secret_arn,
           dependency.secret_remittances.outputs.secret_arn,
           dependency.secret_security.outputs.secret_arn,
