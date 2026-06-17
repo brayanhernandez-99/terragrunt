@@ -21,7 +21,7 @@ dependency "rds" {
 }
 
 dependency "role" {
-  config_path = "../aws-service-iam-role"
+  config_path = "../aws-service-iam-role-proxy"
   mock_outputs = {
     role_arn = "mock-role-arn"
   }
