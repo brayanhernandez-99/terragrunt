@@ -21,10 +21,10 @@ dependency "rds" {
   }
 }
 
-dependency "random_password" {
-  config_path = "../../lotteries-games/aws-service-random-password"
+dependency "rds_proxy" {
+  config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
   mock_outputs = {
-    password = "mock-password"
+    proxy_endpoint = "mock-proxy-endpoint"
   }
 }
 
@@ -35,7 +35,7 @@ inputs = {
     username            = replace(replace(local.service, "-admin", ""), "-", "")
     password            = ""
     engine              = "mysql"
-    host                = dependency.rds.outputs.endpoint
+    host                = dependency.rds_proxy.outputs.proxy_endpoint
     port                = dependency.rds.outputs.port
     dbClusterIdentifier = dependency.rds.outputs.cluster_identifier
     dbname              = replace(replace(local.service, "-admin", ""), "-", "")

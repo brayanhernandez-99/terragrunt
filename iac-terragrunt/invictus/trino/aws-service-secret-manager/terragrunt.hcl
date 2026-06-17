@@ -18,13 +18,6 @@ dependency "rds" {
   }
 }
 
-dependency "random_password" {
-  config_path = "../aws-service-random-password"
-  mock_outputs = {
-    password = "mock-password"
-  }
-}
-
 inputs = {
   secret_name        = "${local.service}-relational-rds-secret"
   secret_description = "Secretos de conexión utilizados por Trino"
@@ -32,6 +25,6 @@ inputs = {
     user            = "#{secret_trino-secret_user}#"
     password        = "#{secret_trino-secret_password}#"
     clusterUser     = local.service
-    clusterPassword = dependency.random_password.outputs.password
+    clusterPassword = ""
   }
 }
