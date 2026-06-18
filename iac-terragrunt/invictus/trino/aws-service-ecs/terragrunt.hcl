@@ -86,14 +86,6 @@ inputs = {
     ]
     environment = [
       {
-        name  = "CLUSTER_ENDPOINT"
-        value = "${dependency.rds.outputs.endpoint}"
-      },
-      {
-        name  = "CLUSTER_PORT"
-        value = "${dependency.rds.outputs.port}"
-      },
-      {
         name  = "ENVIRONMENT"
         value = "#{aws_environment}#"
       },
@@ -122,6 +114,14 @@ inputs = {
       {
         name      = "CLUSTER_PASSWORD"
         valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterPassword::"
+      },
+      {
+        name  = "CLUSTER_ENDPOINT"
+        valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterEndpoint::"
+      },
+      {
+        name  = "CLUSTER_PORT"
+        valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterPort::"
       }
     ]
     health_check = {
