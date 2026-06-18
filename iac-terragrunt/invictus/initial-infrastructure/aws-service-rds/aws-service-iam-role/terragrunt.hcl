@@ -202,6 +202,13 @@ dependency "secret_shopping_cart" {
   }
 }
 
+dependency "secret_trino" {
+  config_path = "../../../trino/aws-service-secret-manager"
+  mock_outputs = {
+    secret_arn = "mock-secret-arn"
+  }
+}
+
 dependency "secret_wiretransfer" {
   config_path = "../../../wiretransfer/aws-service-secret-manager"
   mock_outputs = {
@@ -263,6 +270,7 @@ inputs = {
           dependency.secret_security.outputs.secret_arn,
           dependency.secret_sellers.outputs.secret_arn,
           dependency.secret_shopping_cart.outputs.secret_arn,
+          dependency.secret_trino.outputs.secret_arn,
           dependency.secret_wiretransfer.outputs.secret_arn
         ]
       }
