@@ -18,10 +18,10 @@ dependency "rds" {
   }
 }
 
-dependency "random_password" {
-  config_path = "../aws-service-random-password"
+dependency "rds_proxy" {
+  config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
   mock_outputs = {
-    password = "mock-password"
+    proxy_read_only_endpoint = "mock-proxy-endpoint"
   }
 }
 
@@ -32,6 +32,8 @@ inputs = {
     user            = "#{secret_trino-secret_user}#"
     password        = "#{secret_trino-secret_password}#"
     clusterUser     = local.service
-    clusterPassword = dependency.random_password.outputs.password
+    clusterPassword = ""
+    clusterEndpoint = dependency.rds_proxy.outputs.proxy_read_only_endpoint
+    clusterPort     = dependency.rds.outputs.port
   }
 }

@@ -21,7 +21,7 @@ dependency "rds" {
 }
 
 dependency "role" {
-  config_path = "../aws-service-iam-role"
+  config_path = "../../aws-service-iam-role/rds-proxy-role"
   mock_outputs = {
     role_arn = "mock-role-arn"
   }
@@ -50,15 +50,13 @@ inputs = {
     "biometrics-relational-rds-secret",
     "collected-relational-rds-secret",
     "conciliation-relational-rds-secret",
-    "credits-relational-rds-secret",
     "dynamic-storage-relational-rds-secret",
     "external-wager-relational-rds-secret",
     "hierarchies-relational-rds-secret",
     "generic-services-relational-rds-secret",
-    "legacy-relational-rds-secret",
-    "lotteries-games-admin-relational-rds-secret",
-    "lotteries-games-relational-rds-secret",
     "lotteries-relational-rds-secret",
+    "lotteries-games-relational-rds-secret",
+    "lotteries-games-admin-relational-rds-secret",
     "metabase-relational-rds-secret",
     "millonario-relational-rds-secret",
     "money-control-relational-rds-secret",
@@ -70,11 +68,11 @@ inputs = {
     "products-relational-rds-secret",
     "promotional-relational-rds-secret",
     "raffles-relational-rds-secret",
-    "raspa-relational-rds-secret",
     "recharges-relational-rds-secret",
     "remittances-relational-rds-secret",
     "security-relational-rds-secret",
     "sellers-relational-rds-secret",
+    "shopping-cart-relational-rds-secret",
     "wiretransfer-relational-rds-secret"
   ]
 }
