@@ -18,6 +18,13 @@ dependency "rds" {
   }
 }
 
+dependency "rds_proxy" {
+  config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
+  mock_outputs = {
+    proxy_read_only_endpoint = "mock-proxy-endpoint"
+  }
+}
+
 inputs = {
   secret_name        = "${local.service}-relational-rds-secret"
   secret_description = "Secretos de conexión utilizados por Trino"
@@ -26,5 +33,7 @@ inputs = {
     password        = "#{secret_trino-secret_password}#"
     clusterUser     = local.service
     clusterPassword = ""
+    clusterEndpoint = dependency.rds_proxy.outputs.proxy_read_only_endpoint
+    clusterPort     = dependency.rds.outputs.port
   }
 }
