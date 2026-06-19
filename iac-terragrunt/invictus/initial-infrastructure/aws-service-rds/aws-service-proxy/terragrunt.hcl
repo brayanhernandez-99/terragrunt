@@ -9,7 +9,7 @@ terraform {
 dependency "vpc" {
   config_path = "../../aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids = ["subnet-mock-1", "subnet-mock-2"]
+    private_subnet_ids = ["subnet-1234567890abcdef0"]
   }
 }
 
@@ -23,14 +23,14 @@ dependency "rds" {
 dependency "role" {
   config_path = "../../aws-service-iam-role/rds-proxy-role"
   mock_outputs = {
-    role_arn = "mock-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/mock-role"
   }
 }
 
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
-    security_group_id = "sg-mock"
+    security_group_id = "sg-1234567890abcdef0"
   }
 }
 
