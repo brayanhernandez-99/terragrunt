@@ -27,20 +27,6 @@ inputs = {
       cidr_blocks = ["#{aws_vpc_cidr_block}#"]
     },
     {
-      description = "Publisher ingress"
-      from_port   = 3306
-      to_port     = 3306
-      protocol    = "tcp"
-      cidr_blocks = ["10.150.0.220/32"]
-    },
-    {
-      description = "Publisher ingress"
-      from_port   = 3306
-      to_port     = 3306
-      protocol    = "tcp"
-      cidr_blocks = ["10.150.1.20/32"]
-    },
-    {
       description = "Zabbix Proxy AWS"
       from_port   = 3306
       to_port     = 3306
