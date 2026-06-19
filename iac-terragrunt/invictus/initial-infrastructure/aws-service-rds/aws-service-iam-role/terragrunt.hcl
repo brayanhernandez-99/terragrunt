@@ -41,6 +41,13 @@ dependency "secret_conciliation" {
   }
 }
 
+dependency "secret_credits" {
+  config_path = "../../../credits/aws-service-secret-manager"
+  mock_outputs = {
+    secret_arn = "mock-secret-arn"
+  }
+}
+
 dependency "secret_dynamic_storage" {
   config_path = "../../../dynamic-storage/aws-service-secret-manager"
   mock_outputs = {
@@ -167,6 +174,13 @@ dependency "secret_raffles" {
   }
 }
 
+dependency "secret_raspa" {
+  config_path = "../../../raspa/aws-service-secret-manager"
+  mock_outputs = {
+    secret_arn = "mock-secret-arn"
+  }
+}
+
 dependency "secret_recharges" {
   config_path = "../../../recharges/aws-service-secret-manager"
   mock_outputs = {
@@ -195,12 +209,12 @@ dependency "secret_sellers" {
   }
 }
 
-dependency "secret_shopping_cart" {
-  config_path = "../../../shopping-cart/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "mock-secret-arn"
-  }
-}
+# dependency "secret_shopping_cart" {
+#   config_path = "../../../shopping-cart/aws-service-secret-manager"
+#   mock_outputs = {
+#     secret_arn = "mock-secret-arn"
+#   }
+# }
 
 dependency "secret_trino" {
   config_path = "../../../trino/aws-service-secret-manager"
@@ -247,6 +261,7 @@ inputs = {
           dependency.secret_biometrics.outputs.secret_arn,
           dependency.secret_collected.outputs.secret_arn,
           dependency.secret_conciliation.outputs.secret_arn,
+          dependency.secret_credits.outputs.secret_arn,
           dependency.secret_dynamic_storage.outputs.secret_arn,
           dependency.secret_external_wager.outputs.secret_arn,
           dependency.secret_generic_services.outputs.secret_arn,
@@ -265,11 +280,12 @@ inputs = {
           dependency.secret_products.outputs.secret_arn,
           dependency.secret_promotional.outputs.secret_arn,
           dependency.secret_raffles.outputs.secret_arn,
+          dependency.secret_raspa.outputs.secret_arn,
           dependency.secret_recharges.outputs.secret_arn,
           dependency.secret_remittances.outputs.secret_arn,
           dependency.secret_security.outputs.secret_arn,
           dependency.secret_sellers.outputs.secret_arn,
-          dependency.secret_shopping_cart.outputs.secret_arn,
+          # dependency.secret_shopping_cart.outputs.secret_arn,
           dependency.secret_trino.outputs.secret_arn,
           dependency.secret_wiretransfer.outputs.secret_arn
         ]
