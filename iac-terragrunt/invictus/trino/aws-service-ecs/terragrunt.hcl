@@ -116,11 +116,11 @@ inputs = {
         valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterPassword::"
       },
       {
-        name  = "CLUSTER_ENDPOINT"
+        name      = "CLUSTER_ENDPOINT"
         valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterEndpoint::"
       },
       {
-        name  = "CLUSTER_PORT"
+        name      = "CLUSTER_PORT"
         valueFrom = "${dependency.secret_manager.outputs.secret_arn}:clusterPort::"
       }
     ]
