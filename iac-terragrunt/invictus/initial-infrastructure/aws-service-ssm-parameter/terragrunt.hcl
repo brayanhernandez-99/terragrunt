@@ -9,21 +9,21 @@ terraform {
 dependency "cognito" {
   config_path = "../aws-service-cognito"
   mock_outputs = {
-    user_pool_id = "mock_user_pool_id"
+    user_pool_id = "us-east-1_mockPoolId"
   }
 }
 
 dependency "s3_iotcore" {
   config_path = "../aws-service-s3-iotcore"
   mock_outputs = {
-    s3_bucket_domain_name = "mock_bucket_domain_name"
+    s3_bucket_domain_name = "mock-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "s3_repo_config" {
   config_path = "../aws-service-s3-repository-configuration"
   mock_outputs = {
-    s3_bucket_domain_name = "mock_bucket_domain_name"
+    s3_bucket_domain_name = "mock-bucket.s3.amazonaws.com"
   }
 }
 
@@ -51,21 +51,21 @@ dependency "secret_manager_aes" {
 dependency "dynamo_ckm" {
   config_path = "../aws-service-dynamo-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
   }
 }
 
 dependency "rds_ckm" {
   config_path = "../aws-service-rds/aws-service-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
   }
 }
 
 dependency "secrets_ckm" {
   config_path = "../aws-service-secrets-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
   }
 }
 

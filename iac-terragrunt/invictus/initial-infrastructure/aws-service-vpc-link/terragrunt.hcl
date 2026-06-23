@@ -9,8 +9,8 @@ terraform {
 dependency "load_balancer" {
   config_path = "../aws-service-load-balancer"
   mock_outputs = {
-    nlb_arn      = "mock_nlb_arn"
-    nlb_dns_name = "mock_nlb_dns_name"
+    nlb_arn      = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/mock-nlb"
+    nlb_dns_name = "mock-nlb-123456.elb.us-east-1.amazonaws.com"
   }
 }
 

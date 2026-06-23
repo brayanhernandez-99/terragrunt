@@ -9,8 +9,8 @@ terraform {
 dependency "iam" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/user-iot"
   mock_outputs = {
-    access_key_id     = "mock_access_key_id"
-    secret_access_key = "mock_secret_access_key"
+    access_key_id     = "AKIAIOSFODNN7EXAMPLE"
+    secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
   }
 }
 

@@ -14,21 +14,21 @@ terraform {
 dependency "ecs" {
   config_path = "../aws-service-ecs"
   mock_outputs = {
-    listener_port = 0000
+    listener_port = 8080
   }
 }
 
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "mock-namespace.local"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../../initial-infrastructure/aws-service-load-balancer"
   mock_outputs = {
-    nlb_dns_name = "mock-nlb-dns-name"
+    nlb_dns_name = "mock-nlb-123456.elb.us-east-1.amazonaws.com"
   }
 }
 

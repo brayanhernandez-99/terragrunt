@@ -9,22 +9,22 @@ terraform {
 dependency "s3" {
   config_path = "../../aws-service-s3/s3-cashier"
   mock_outputs = {
-    s3_bucket_id          = "mock_s3_bucket_id"
-    s3_bucket_domain_name = "mock_s3_bucket_domain_name"
+    s3_bucket_id          = "mock-bucket-id"
+    s3_bucket_domain_name = "mock-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "cache_policy" {
   config_path = "../../aws-service-custom-cache-policy"
   mock_outputs = {
-    custom_cache_policy_id = "mock_cache_policy_id"
+    custom_cache_policy_id = "cache-policy-mock"
   }
 }
 
 dependency "cloudfront-function" {
   config_path = "../../aws-service-cloudfront-function/cloudfront-function-header"
   mock_outputs = {
-    function_arn = "mock_function_arn"
+    function_arn = "arn:aws:cloudfront::123456789012:function/mock"
   }
 }
 

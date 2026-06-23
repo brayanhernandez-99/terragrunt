@@ -13,7 +13,7 @@ terraform {
 dependency "sqs" {
   config_path = "../../../notifier/aws-service-sqs"
   mock_outputs = {
-    queue_arn = "mock_queue_arn"
+    queue_arn = "arn:aws:sqs:us-east-1:123456789012:mock-queue"
   }
 }
 

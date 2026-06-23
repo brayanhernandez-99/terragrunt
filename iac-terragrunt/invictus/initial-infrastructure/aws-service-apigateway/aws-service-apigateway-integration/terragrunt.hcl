@@ -9,21 +9,21 @@ terraform {
 dependency "iam_role" {
   config_path = "../aws-service-apigateway-iam-rol"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-iam-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/mock-role"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../../aws-service-load-balancer"
   mock_outputs = {
-    nlb_dns_name = "mock_nlb_dns_name"
+    nlb_dns_name = "mock-nlb-123456.elb.us-east-1.amazonaws.com"
   }
 }
 
 dependency "vpc_link" {
   config_path = "../../aws-service-vpc-link"
   mock_outputs = {
-    vpc_link_id = "mock_vpc_link_id"
+    vpc_link_id = "vpclink-0a1b2c3d4e5f67890"
   }
 }
 

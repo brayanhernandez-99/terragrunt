@@ -13,7 +13,7 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "mock-namespace.local"
   }
 }
 
@@ -34,7 +34,7 @@ dependency "secret_manager_funds" {
 dependency "eventbridge_scheduler" {
   config_path = "../aws-service-iam-scheduler-rol"
   mock_outputs = {
-    iam_role_name = "mock-iam-role-name"
+    iam_role_name = "mock-iam-role"
   }
 }
 

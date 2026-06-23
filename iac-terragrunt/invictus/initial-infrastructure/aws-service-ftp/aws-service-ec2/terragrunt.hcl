@@ -9,21 +9,21 @@ terraform {
 dependency "vpc" {
   config_path = "../../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids = ["mock_private_subnet_ids"]
+    private_subnet_ids = ["subnet-0a1b2c3d4e5f67890", "subnet-0a1b2c3d4e5f67891"]
   }
 }
 
 dependency "sg" {
   config_path = "../../../initial-infrastructure/aws-service-ftp/aws-service-sg"
   mock_outputs = {
-    security_group_id = "mock_security_group_id"
+    security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "iam" {
   config_path = "../../../initial-infrastructure/aws-service-ftp/aws-service-iam"
   mock_outputs = {
-    instance_profile_name = "mock_instance_profile_name"
+    instance_profile_name = "mock-instance-profile"
   }
 }
 

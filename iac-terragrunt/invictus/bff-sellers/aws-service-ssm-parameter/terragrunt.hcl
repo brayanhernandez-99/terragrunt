@@ -13,21 +13,21 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "mock-namespace.local"
   }
 }
 
 dependency "cognito" {
   config_path = "../../initial-infrastructure/aws-service-cognito"
   mock_outputs = {
-    user_pool_id = "mock_user_pool_id"
+    user_pool_id = "us-east-1_mockPoolId"
   }
 }
 
 dependency "secret" {
   config_path = "../aws-service-secret-manager-secret-jwt"
   mock_outputs = {
-    secret_name = "mock_bff-secret"
+    secret_name = "mock-secret-name"
   }
 }
 

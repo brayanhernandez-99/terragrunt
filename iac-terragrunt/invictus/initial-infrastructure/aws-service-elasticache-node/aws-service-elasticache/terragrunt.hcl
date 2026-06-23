@@ -13,21 +13,21 @@ terraform {
 dependency "vpc" {
   config_path = "../../aws-service-vpc"
   mock_outputs = {
-    public_subnet_ids = ["mock_public_subnet_ids"]
+    public_subnet_ids = ["subnet-0a1b2c3d4e5f67892", "subnet-0a1b2c3d4e5f67893"]
   }
 }
 
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
-    security_group_id = "mock_security_group_id"
+    security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../aws-service-load-balancer"
   mock_outputs = {
-    nlb_arn = "arn:aws:elasticloadbalancing:#{aws_region}#:123456789012:loadbalancer/net/mock-nlb-arn"
+    nlb_arn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/mock-nlb-arn"
   }
 }
 

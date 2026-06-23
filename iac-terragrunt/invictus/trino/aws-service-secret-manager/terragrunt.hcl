@@ -13,7 +13,7 @@ terraform {
 dependency "rds" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-rds"
   mock_outputs = {
-    username = "mock-username"
+    username = "dbadmin"
     password = "mock-password"
   }
 }
@@ -21,7 +21,7 @@ dependency "rds" {
 dependency "rds_proxy" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
   mock_outputs = {
-    proxy_read_only_endpoint = "mock-proxy-endpoint"
+    proxy_read_only_endpoint = "mock-proxy.proxy-123456789012.us-east-1.rds.amazonaws.com"
   }
 }
 

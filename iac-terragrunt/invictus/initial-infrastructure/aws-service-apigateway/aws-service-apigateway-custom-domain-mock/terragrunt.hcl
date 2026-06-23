@@ -9,7 +9,7 @@ terraform {
 dependency "apigateway_mock" {
   config_path = "../aws-service-apigateway-mock"
   mock_outputs = {
-    api_id = "mock_api_id"
+    api_id = "a1b2c3d4e5"
   }
 }
 

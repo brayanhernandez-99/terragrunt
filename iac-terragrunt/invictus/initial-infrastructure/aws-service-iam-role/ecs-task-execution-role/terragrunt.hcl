@@ -32,7 +32,7 @@ inputs = {
           "ecr:BatchGetImage",
           "ecr:GetDownloadUrlForLayer"
         ]
-        Resource = "arn:aws:ecr:#{aws_region}#:861262569826:repository/*"
+        Resource = "arn:aws:ecr:us-east-1:861262569826:repository/*"
       },
       {
         Effect = "Allow"

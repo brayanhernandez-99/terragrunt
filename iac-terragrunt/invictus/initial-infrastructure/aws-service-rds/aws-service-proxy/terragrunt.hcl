@@ -16,7 +16,7 @@ dependency "vpc" {
 dependency "rds" {
   config_path = "../aws-service-rds"
   mock_outputs = {
-    cluster_identifier = "mock-cluster-identifier"
+    cluster_identifier = "mock-rds-cluster"
   }
 }
 
@@ -30,7 +30,7 @@ dependency "role" {
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
-    security_group_id = "sg-1234567890abcdef0"
+    security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 

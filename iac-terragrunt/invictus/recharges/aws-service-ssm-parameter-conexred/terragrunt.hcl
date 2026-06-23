@@ -20,28 +20,28 @@ dependency "secret_manager_conexred" {
 dependency "secret_manager_cashin" {
   config_path = "../aws-service-secret-manager-cashin"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:#{aws_region}#:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
   }
 }
 
 dependency "secret_manager_pay" {
   config_path = "../aws-service-secret-manager-pay"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:#{aws_region}#:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
   }
 }
 
 dependency "secret_manager_recaudos" {
   config_path = "../aws-service-secret-manager-recaudos"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:#{aws_region}#:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
   }
 }
 
 dependency "secret_manager_conexred_pines" {
   config_path = "../aws-service-secret-manager-conexred-pines"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:#{aws_region}#:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
   }
 }
 

@@ -13,7 +13,7 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "mock-namespace.local"
   }
 }
 
@@ -27,7 +27,7 @@ dependency "secret_manager" {
 dependency "s3" {
   config_path = "../aws-service-s3"
   mock_outputs = {
-    s3_bucket_name = "mock-s3-bucket-name"
+    s3_bucket_name = "mock-bucket-name"
   }
 }
 

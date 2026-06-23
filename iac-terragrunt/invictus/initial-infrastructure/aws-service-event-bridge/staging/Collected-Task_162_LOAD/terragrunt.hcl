@@ -13,7 +13,7 @@ terraform {
 dependency "kms" {
   config_path = "../../../aws-service-kinesis-cmk"
   mock_outputs = {
-    kms_key_arn = "mock_kms_key_arn"
+    kms_key_arn = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
   }
 }
 
