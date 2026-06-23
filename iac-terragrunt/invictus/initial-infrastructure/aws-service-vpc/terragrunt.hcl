@@ -13,7 +13,8 @@ inputs = {
   cidr_block_gw_vgw_public    = "172.17.0.0/16"
   cidr_block_gw_local_private = "#{aws_vpc_cidr_block}#"
   cidr_block_gw_vgw_private   = "172.17.0.0/16"
-  transit_gateway_id          = "tgw-0f6549bf29da41b08"
+  # transit_gateway_id          = "tgw-0f6549bf29da41b08"
+  transit_gateway_id          = "tgw-0b4d05691e831bc5a"
 
   # Subnets públicas
   public_subnets = {
