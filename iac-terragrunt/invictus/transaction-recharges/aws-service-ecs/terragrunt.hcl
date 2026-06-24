@@ -13,43 +13,43 @@ terraform {
 dependency "vpc" {
   config_path = "../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids    = ["mock_private_subnet_ids"]
-    ecs_security_group_id = "mock-sg-1234567890"
+    private_subnet_ids    = ["subnet-1234567890abcdef0"]
+    ecs_security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_id = "mock-cloudmap-namespace-id"
+    cloudmap_namespace_id = "ns-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "ecs_cluster" {
   config_path = "../../initial-infrastructure/aws-service-ecs-cluster"
   mock_outputs = {
-    ecs_cluster_id = "mock-ecs-cluster-id"
+    ecs_cluster_id = "arn:aws:ecs:us-east-1:123456789012:cluster/ecs-cluster"
   }
 }
 
 dependency "sqs" {
   config_path = "../../transaction-recharges/aws-service-sqs"
   mock_outputs = {
-    queue_name = "mock_queue_name"
+    queue_name = "queue-name"
   }
 }
 
 dependency "task_execution" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-execution-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-iam-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "task_role" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-iam-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 

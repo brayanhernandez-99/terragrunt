@@ -13,14 +13,14 @@ terraform {
 dependency "vpc" {
   config_path = "../../aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids = ["mock_private_subnet_ids"]
+    private_subnet_ids = ["subnet-0a1b2c3d4e5f67890", "subnet-0a1b2c3d4e5f67891"]
   }
 }
 
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
-    security_group_id = "mock_security_group_id"
+    security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 

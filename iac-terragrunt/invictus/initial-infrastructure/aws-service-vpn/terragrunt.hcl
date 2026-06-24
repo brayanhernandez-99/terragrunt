@@ -9,9 +9,9 @@ terraform {
 dependency "vpc" {
   config_path = "../aws-service-vpc"
   mock_outputs = {
-    vpc_id = ["mock_vpc_id"]
-    cgw_id = ["mock_cgw_id"]
-    vgw_id = ["mock_vgw_id"]
+    vpc_id = "vpc-0a1b2c3d4e5f67890"
+    cgw_id = "cgw-0a1b2c3d4e5f67890"
+    vgw_id = "vgw-0a1b2c3d4e5f67890"
   }
 }
 

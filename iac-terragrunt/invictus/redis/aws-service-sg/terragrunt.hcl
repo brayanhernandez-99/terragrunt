@@ -9,7 +9,7 @@ terraform {
 dependency "vpc" {
   config_path = "../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
-    vpc_id = "mock_vpc_id"
+    vpc_id = "vpc-0a1b2c3d4e5f67890"
   }
 }
 

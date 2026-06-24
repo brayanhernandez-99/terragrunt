@@ -49,9 +49,9 @@ inputs = {
       required = true
       mutable  = true
     },
-    # "updated_at"             = {
-    #   required               = true
-    #   mutable                = true
+    # "updated_at" = {
+    #   required = true
+    #   mutable  = true
     # },
     "updated_by" = {
       required = true
