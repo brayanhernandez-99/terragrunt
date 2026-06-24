@@ -13,14 +13,14 @@ terraform {
 dependency "elasticache" {
   config_path = "../aws-service-elasticache"
   mock_outputs = {
-    listener_port = "mock-listener-port"
+    listener_port = "6379"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../aws-service-load-balancer"
   mock_outputs = {
-    nlb_dns_name = "mock-nlb-dns-name"
+    nlb_dns_name = "nlb-123456.elb.us-east-1.amazonaws.com"
   }
 }
 

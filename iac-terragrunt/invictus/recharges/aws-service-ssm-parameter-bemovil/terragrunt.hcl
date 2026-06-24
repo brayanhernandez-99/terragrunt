@@ -13,7 +13,7 @@ terraform {
 dependency "secret_manager_bemovil" {
   config_path = "../aws-service-secret-manager-bemovil"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
@@ -22,7 +22,7 @@ inputs = {
     BEMOVIL_SECRET = {
       type        = "String"
       name        = "/GLOBAL/BEMOVIL_SECRET"
-      value       = "${dependency.secret_manager_bemovil.outputs.secret_name}"
+      value       = dependency.secret_manager_bemovil.outputs.secret_name
       description = "Secreto de conexión de bemovil"
     }
     BEMOVIL_READ_TIMEOUT = {

@@ -13,21 +13,21 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "cognito" {
   config_path = "../../initial-infrastructure/aws-service-cognito"
   mock_outputs = {
-    user_pool_id = "mock_user_pool_id"
+    user_pool_id = "us-east-1_poolId"
   }
 }
 
 dependency "secret" {
   config_path = "../aws-service-secret-manager-secret-jwt"
   mock_outputs = {
-    secret_name = "mock_bff-secret"
+    secret_name = "secret-name"
   }
 }
 
@@ -48,7 +48,7 @@ inputs = {
     BFF_SECRET = {
       type        = "String"
       name        = "/GLOBAL/BFF_SECRET"
-      value       = "${dependency.secret.outputs.secret_name}"
+      value       = dependency.secret.outputs.secret_name
       description = "Secreto para validavion JWT"
     }
     LOG_LEVEL = {

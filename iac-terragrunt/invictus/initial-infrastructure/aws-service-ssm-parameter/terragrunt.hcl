@@ -6,66 +6,73 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-ssm-parameter"
 }
 
-dependency "cognito" {
-  config_path = "../aws-service-cognito"
-  mock_outputs = {
-    user_pool_id = "mock_user_pool_id"
-  }
-}
+# dependency "cognito" {
+#   config_path = "../aws-service-cognito"
+#   mock_outputs = {
+#     user_pool_id = "us-east-1_poolId"
+#   }
+# }
 
 dependency "s3_iotcore" {
   config_path = "../aws-service-s3-iotcore"
   mock_outputs = {
-    s3_bucket_domain_name = "mock_bucket_domain_name"
+    s3_bucket_domain_name = "s3-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "s3_repo_config" {
   config_path = "../aws-service-s3-repository-configuration"
   mock_outputs = {
-    s3_bucket_domain_name = "mock_bucket_domain_name"
+    s3_bucket_domain_name = "s3-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "secret_manager_mipos" {
   config_path = "../aws-service-secret-manager-mipos"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_funds" {
   config_path = "../aws-service-secret-manager-funds"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_aes" {
   config_path = "../aws-service-secret-manager-aes"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
+  }
+}
+
+dependency "kinesis_ckm" {
+  config_path = "../aws-service-kinesis-cmk"
+  mock_outputs = {
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
 dependency "dynamo_ckm" {
   config_path = "../aws-service-dynamo-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
 dependency "rds_ckm" {
   config_path = "../aws-service-rds/aws-service-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
 dependency "secrets_ckm" {
   config_path = "../aws-service-secrets-cmk"
   mock_outputs = {
-    kms_key_id = "mock-kms-key-id"
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
@@ -77,30 +84,30 @@ inputs = {
       value       = "${get_aws_account_id()}"
       description = "Número de cuenta de AWS"
     }
-    SELLERS_USER_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_USER_POOL_ID"
-      value       = "${dependency.cognito.outputs.user_pool_id}"
-      description = "User Pool ID de Cognito"
-    }
-    ADMIN_USER_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/ADMIN_USER_POOL_ID"
-      value       = "${dependency.cognito.outputs.user_pool_id}"
-      description = "User Pool ID de Cognito"
-    }
-    SELLERS_USER_POOL_CLIENT_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_USER_POOL_CLIENT_ID"
-      value       = "#{parameter_sellers_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
-      description = "User Pool client ID de Cognito"
-    }
-    ADMIN_USER_POOL_CLIENT_ID = {
-      type        = "String"
-      name        = "/GLOBAL/ADMIN_USER_POOL_CLIENT_ID"
-      value       = "#{parameter_admin_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
-      description = "User Pool client ID de Cognito"
-    }
+    # SELLERS_USER_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_USER_POOL_ID"
+    #   value       = dependency.cognito.outputs.user_pool_id
+    #   description = "User Pool ID de Cognito"
+    # }
+    # ADMIN_USER_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/ADMIN_USER_POOL_ID"
+    #   value       = dependency.cognito.outputs.user_pool_id
+    #   description = "User Pool ID de Cognito"
+    # }
+    # SELLERS_USER_POOL_CLIENT_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_USER_POOL_CLIENT_ID"
+    #   value       = "#{parameter_sellers_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
+    #   description = "User Pool client ID de Cognito"
+    # }
+    # ADMIN_USER_POOL_CLIENT_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/ADMIN_USER_POOL_CLIENT_ID"
+    #   value       = "#{parameter_admin_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
+    #   description = "User Pool client ID de Cognito"
+    # }
     FILES_BUCKET_EXPIRATION = {
       type        = "String"
       name        = "/GLOBAL/FILES_BUCKET_EXPIRATION"
@@ -134,49 +141,49 @@ inputs = {
     MI_POS_SECRET = {
       type        = "String"
       name        = "/GLOBAL/MIPOS_SECRET"
-      value       = "${dependency.secret_manager_mipos.outputs.secret_name}"
+      value       = dependency.secret_manager_mipos.outputs.secret_name
       description = "Secreto de MI POS"
     }
     FUNDS_SECRET = {
       type        = "String"
       name        = "/GLOBAL/FUNDS_SECRET"
-      value       = "${dependency.secret_manager_funds.outputs.secret_name}"
+      value       = dependency.secret_manager_funds.outputs.secret_name
       description = "Secreto de Fondos"
     }
-    SELLERS_IDENTITY_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_IDENTITY_POOL_ID"
-      value       = "#{parameter_sellers_identity_pool_id}#" #varia segun el ambiente (Cognito/Identity pools/Identity pool ID)
-      description = "Secreto de Fondos"
-    }
+    # SELLERS_IDENTITY_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_IDENTITY_POOL_ID"
+    #   value       = "#{parameter_sellers_identity_pool_id}#" #varia segun el ambiente (Cognito/Identity pools/Identity pool ID)
+    #   description = "Secreto de Fondos"
+    # }
     KEY_AES = {
       type        = "String"
       name        = "/GLOBAL/KEYAES"
-      value       = "${dependency.secret_manager_aes.outputs.secret_name}"
+      value       = dependency.secret_manager_aes.outputs.secret_name
       description = "Secreto de Fondos"
     }
     KMS_KINESIS = {
       type        = "String"
       name        = "/GLOBAL/KMS_KINESIS"
-      value       = "#{parameter_kms_kinesis}#" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.kinesis_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para kinesis"
     }
     KMS_DYNAMO = {
       type        = "String"
       name        = "/GLOBAL/KMS_DYNAMO"
-      value       = "${dependency.dynamo_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.dynamo_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para dynamo"
     }
     KMS_RDS = {
       type        = "String"
       name        = "/GLOBAL/KMS_RDS"
-      value       = "${dependency.rds_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.rds_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para rds"
     }
     KMS_SECRETS = {
       type        = "String"
       name        = "/GLOBAL/KMS_SECRETS"
-      value       = "${dependency.secrets_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.secrets_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para secrets"
     }
     IP_SOCKET_CEM = {
@@ -224,7 +231,7 @@ inputs = {
     CONFIGURATION_BUCKET_NAME = {
       type        = "String"
       name        = "/GLOBAL/CONFIGURATION_BUCKET_NAME"
-      value       = "${dependency.s3_repo_config.outputs.s3_bucket_name}"
+      value       = dependency.s3_repo_config.outputs.s3_bucket_name
       description = "El bucket para la configuración de todos los dominios"
     }
     ENABLE_VIRTUAL_SEQUENCE = {

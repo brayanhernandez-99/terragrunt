@@ -13,51 +13,51 @@ terraform {
 dependency "vpc" {
   config_path = "../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids    = ["mock_private_subnet_ids"]
-    ecs_security_group_id = "mock-sg-1234567890"
+    private_subnet_ids    = ["subnet-1234567890abcdef0"]
+    ecs_security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_id = "mock-cloudmap-namespace-id"
+    cloudmap_namespace_id = "ns-0a1b2c3d4e5f67890"
   }
 }
 
 dependency "ecs_cluster" {
   config_path = "../../initial-infrastructure/aws-service-ecs-cluster"
   mock_outputs = {
-    ecs_cluster_id = "mock-ecs-cluster-id"
+    ecs_cluster_id = "arn:aws:ecs:us-east-1:123456789012:cluster/ecs-cluster"
   }
 }
 
 dependency "task_execution" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-execution-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-iam-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "task_role" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-iam-role-arn"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "rds" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-rds"
   mock_outputs = {
-    endpoint = "mock-endpoint"
-    port     = "mock-port"
+    endpoint = "cluster.cluster-123456789012.us-east-1.rds.amazonaws.com"
+    port     = "3306"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:#{aws_region}#:123456789012:secret:mock"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 
