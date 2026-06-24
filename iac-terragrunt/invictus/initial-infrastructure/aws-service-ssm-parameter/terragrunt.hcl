@@ -48,6 +48,13 @@ dependency "secret_manager_aes" {
   }
 }
 
+dependency "kinesis_ckm" {
+  config_path = "../aws-service-kinesis-cmk"
+  mock_outputs = {
+    kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
+  }
+}
+
 dependency "dynamo_ckm" {
   config_path = "../aws-service-dynamo-cmk"
   mock_outputs = {
@@ -134,13 +141,13 @@ inputs = {
     MI_POS_SECRET = {
       type        = "String"
       name        = "/GLOBAL/MIPOS_SECRET"
-      value       = "${dependency.secret_manager_mipos.outputs.secret_name}"
+      value       = dependency.secret_manager_mipos.outputs.secret_name
       description = "Secreto de MI POS"
     }
     FUNDS_SECRET = {
       type        = "String"
       name        = "/GLOBAL/FUNDS_SECRET"
-      value       = "${dependency.secret_manager_funds.outputs.secret_name}"
+      value       = dependency.secret_manager_funds.outputs.secret_name
       description = "Secreto de Fondos"
     }
     # SELLERS_IDENTITY_POOL_ID = {
@@ -152,31 +159,31 @@ inputs = {
     KEY_AES = {
       type        = "String"
       name        = "/GLOBAL/KEYAES"
-      value       = "${dependency.secret_manager_aes.outputs.secret_name}"
+      value       = dependency.secret_manager_aes.outputs.secret_name
       description = "Secreto de Fondos"
     }
     KMS_KINESIS = {
       type        = "String"
       name        = "/GLOBAL/KMS_KINESIS"
-      value       = "#{parameter_kms_kinesis}#" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.kinesis_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para kinesis"
     }
     KMS_DYNAMO = {
       type        = "String"
       name        = "/GLOBAL/KMS_DYNAMO"
-      value       = "${dependency.dynamo_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.dynamo_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para dynamo"
     }
     KMS_RDS = {
       type        = "String"
       name        = "/GLOBAL/KMS_RDS"
-      value       = "${dependency.rds_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.rds_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para rds"
     }
     KMS_SECRETS = {
       type        = "String"
       name        = "/GLOBAL/KMS_SECRETS"
-      value       = "${dependency.secrets_ckm.outputs.kms_key_id}" #varia segun el ambiente (KMS/Customer managed keys/Key ID)
+      value       = dependency.secrets_ckm.outputs.kms_key_id
       description = "Id de la llave de encripción para secrets"
     }
     IP_SOCKET_CEM = {
