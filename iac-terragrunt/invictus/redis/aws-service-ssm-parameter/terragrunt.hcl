@@ -13,8 +13,8 @@ terraform {
 dependency "elasticache" {
   config_path = "../aws-service-elasticache"
   mock_outputs = {
-    valkey_address = "mock-valkey-address"
-    valkey_port    = "mock-valkey-port"
+    valkey_address = "cluster.serverless.use1.cache.amazonaws.com"
+    valkey_port    = "6379"
   }
 }
 

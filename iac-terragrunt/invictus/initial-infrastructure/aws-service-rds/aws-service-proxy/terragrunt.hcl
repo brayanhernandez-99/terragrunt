@@ -16,21 +16,21 @@ dependency "vpc" {
 dependency "rds" {
   config_path = "../aws-service-rds"
   mock_outputs = {
-    cluster_identifier = "mock-cluster-identifier"
+    cluster_identifier = "rds-cluster"
   }
 }
 
 dependency "role" {
   config_path = "../../aws-service-iam-role/rds-proxy-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
-    security_group_id = "sg-1234567890abcdef0"
+    security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
 

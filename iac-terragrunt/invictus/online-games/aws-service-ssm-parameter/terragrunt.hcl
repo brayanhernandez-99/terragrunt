@@ -13,21 +13,21 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_betplay" {
   config_path = "../aws-service-secret-manager-betplay"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
@@ -48,13 +48,13 @@ inputs = {
     DB_SECRET = {
       type        = "String"
       name        = "/${upper(replace(local.service, "-", "_"))}/DB_SECRET"
-      value       = "${dependency.secret_manager.outputs.secret_name}"
+      value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     }
     BETPLAY_SECRET_ONLINE_GAMES = {
       type        = "String"
       name        = "/GLOBAL/BETPLAY_SECRET"
-      value       = "${dependency.secret_manager_betplay.outputs.secret_name}"
+      value       = dependency.secret_manager_betplay.outputs.secret_name
       description = "Parámetro para el secreto de betplay"
     }
     KINESIS_POLL_DELAY = {

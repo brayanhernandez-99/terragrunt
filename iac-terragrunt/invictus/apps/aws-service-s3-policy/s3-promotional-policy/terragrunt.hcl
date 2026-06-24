@@ -9,16 +9,16 @@ terraform {
 dependency "s3" {
   config_path = "../../aws-service-s3/s3-promotional"
   mock_outputs = {
-    s3_bucket_id   = "mock_s3_bucket_id"
-    s3_bucket_name = "mock_s3_bucket_name"
-    s3_bucket_arn  = "mock_s3_bucket_arn"
+    s3_bucket_id   = "s3-bucket-id"
+    s3_bucket_name = "s3-bucket-name"
+    s3_bucket_arn  = "arn:aws:s3:::s3-bucket"
   }
 }
 
 dependency "cloudfront" {
   config_path = "../../aws-service-cloudfront/cloudfront-promotional"
   mock_outputs = {
-    cloudfront_arn = "mock_cloudfront_arn"
+    cloudfront_arn = "arn:aws:cloudfront::123456789012:distribution/distribution"
   }
 }
 

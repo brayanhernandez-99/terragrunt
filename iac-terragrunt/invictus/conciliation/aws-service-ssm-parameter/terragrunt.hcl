@@ -13,21 +13,21 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-cloudmap-namespace-name"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "eventbridge_scheduler" {
   config_path = "../aws-service-iam-scheduler-rol"
   mock_outputs = {
-    iam_role_name = "mock-iam-role-name"
+    iam_role_name = "iam-role"
   }
 }
 
@@ -48,7 +48,7 @@ inputs = {
     DB_SECRET = {
       type        = "String"
       name        = "/${upper(local.service)}/DB_SECRET"
-      value       = "${dependency.secret_manager.outputs.secret_name}"
+      value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     }
     CONCILIATION_FILE_MODALITIES = {
@@ -60,7 +60,7 @@ inputs = {
     SCHEDULE_ROL = {
       type        = "String"
       name        = "/${upper(local.service)}/SCHEDULE_ROL"
-      value       = "${dependency.eventbridge_scheduler.outputs.iam_role_name}"
+      value       = dependency.eventbridge_scheduler.outputs.iam_role_name
       description = "Parámetro de schedule rol"
     }
     EXPIRATION_FILE = {

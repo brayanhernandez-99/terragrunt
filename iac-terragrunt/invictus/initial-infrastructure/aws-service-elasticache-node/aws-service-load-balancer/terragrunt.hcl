@@ -9,7 +9,7 @@ terraform {
 dependency "vpc" {
   config_path = "../../aws-service-vpc"
   mock_outputs = {
-    public_subnet_ids = ["mock_public_subnet_ids"]
+    public_subnet_ids = ["subnet-0a1b2c3d4e5f67892", "subnet-0a1b2c3d4e5f67893"]
   }
 }
 

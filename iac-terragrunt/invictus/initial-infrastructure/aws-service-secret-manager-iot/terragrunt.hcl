@@ -9,14 +9,14 @@ terraform {
 dependency "iam" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/user-iot"
   mock_outputs = {
-    access_key_id     = "mock_access_key_id"
-    secret_access_key = "mock_secret_access_key"
+    access_key_id     = "AKIAIOSFODNN7EXAMPLE"
+    secret_access_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
   }
 }
 
 inputs = {
   secret_name        = "iot-connect-secret"
-  secret_description = "Ak SK cuenta IOT"
+  secret_description = "Credenciales IAM del usuario para AWS IoT"
   secret_string_value = {
     accessKey       = dependency.iam.outputs.access_key_id
     secretAccessKey = dependency.iam.outputs.secret_access_key
