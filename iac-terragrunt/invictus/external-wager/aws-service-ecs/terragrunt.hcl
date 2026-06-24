@@ -13,7 +13,7 @@ terraform {
 dependency "vpc" {
   config_path = "../../initial-infrastructure/aws-service-vpc"
   mock_outputs = {
-    private_subnet_ids = ["subnet-1234567890abcdef0"]
+    private_subnet_ids    = ["subnet-1234567890abcdef0"]
     ecs_security_group_id = "sg-0a1b2c3d4e5f67890"
   }
 }
