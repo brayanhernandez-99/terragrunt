@@ -6,12 +6,12 @@ terraform {
   source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-ssm-parameter"
 }
 
-dependency "cognito" {
-  config_path = "../aws-service-cognito"
-  mock_outputs = {
-    user_pool_id = "us-east-1_mockPoolId"
-  }
-}
+# dependency "cognito" {
+#   config_path = "../aws-service-cognito"
+#   mock_outputs = {
+#     user_pool_id = "us-east-1_mockPoolId"
+#   }
+# }
 
 dependency "s3_iotcore" {
   config_path = "../aws-service-s3-iotcore"
@@ -77,30 +77,30 @@ inputs = {
       value       = "${get_aws_account_id()}"
       description = "Número de cuenta de AWS"
     }
-    SELLERS_USER_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_USER_POOL_ID"
-      value       = "${dependency.cognito.outputs.user_pool_id}"
-      description = "User Pool ID de Cognito"
-    }
-    ADMIN_USER_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/ADMIN_USER_POOL_ID"
-      value       = "${dependency.cognito.outputs.user_pool_id}"
-      description = "User Pool ID de Cognito"
-    }
-    SELLERS_USER_POOL_CLIENT_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_USER_POOL_CLIENT_ID"
-      value       = "#{parameter_sellers_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
-      description = "User Pool client ID de Cognito"
-    }
-    ADMIN_USER_POOL_CLIENT_ID = {
-      type        = "String"
-      name        = "/GLOBAL/ADMIN_USER_POOL_CLIENT_ID"
-      value       = "#{parameter_admin_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
-      description = "User Pool client ID de Cognito"
-    }
+    # SELLERS_USER_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_USER_POOL_ID"
+    #   value       = "${dependency.cognito.outputs.user_pool_id}"
+    #   description = "User Pool ID de Cognito"
+    # }
+    # ADMIN_USER_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/ADMIN_USER_POOL_ID"
+    #   value       = "${dependency.cognito.outputs.user_pool_id}"
+    #   description = "User Pool ID de Cognito"
+    # }
+    # SELLERS_USER_POOL_CLIENT_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_USER_POOL_CLIENT_ID"
+    #   value       = "#{parameter_sellers_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
+    #   description = "User Pool client ID de Cognito"
+    # }
+    # ADMIN_USER_POOL_CLIENT_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/ADMIN_USER_POOL_CLIENT_ID"
+    #   value       = "#{parameter_admin_user_pool_client_id}#" #varia segun el ambiente (Cognito/Identity pools/User access/Identity providers/Client ID)
+    #   description = "User Pool client ID de Cognito"
+    # }
     FILES_BUCKET_EXPIRATION = {
       type        = "String"
       name        = "/GLOBAL/FILES_BUCKET_EXPIRATION"
@@ -143,12 +143,12 @@ inputs = {
       value       = "${dependency.secret_manager_funds.outputs.secret_name}"
       description = "Secreto de Fondos"
     }
-    SELLERS_IDENTITY_POOL_ID = {
-      type        = "String"
-      name        = "/GLOBAL/SELLERS_IDENTITY_POOL_ID"
-      value       = "#{parameter_sellers_identity_pool_id}#" #varia segun el ambiente (Cognito/Identity pools/Identity pool ID)
-      description = "Secreto de Fondos"
-    }
+    # SELLERS_IDENTITY_POOL_ID = {
+    #   type        = "String"
+    #   name        = "/GLOBAL/SELLERS_IDENTITY_POOL_ID"
+    #   value       = "#{parameter_sellers_identity_pool_id}#" #varia segun el ambiente (Cognito/Identity pools/Identity pool ID)
+    #   description = "Secreto de Fondos"
+    # }
     KEY_AES = {
       type        = "String"
       name        = "/GLOBAL/KEYAES"
