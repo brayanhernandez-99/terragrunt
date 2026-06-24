@@ -16,7 +16,7 @@ dependency "iam" {
 
 inputs = {
   secret_name        = "iot-connect-secret"
-  secret_description = "Ak SK cuenta IOT"
+  secret_description = "Credenciales IAM del usuario para AWS IoT"
   secret_string_value = {
     accessKey       = dependency.iam.outputs.access_key_id
     secretAccessKey = dependency.iam.outputs.secret_access_key
