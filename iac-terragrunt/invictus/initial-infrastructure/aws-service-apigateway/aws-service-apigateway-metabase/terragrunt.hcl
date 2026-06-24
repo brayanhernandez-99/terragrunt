@@ -9,14 +9,14 @@ terraform {
 dependency "iam_role" {
   config_path = "../aws-service-apigateway-iam-rol"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../../aws-service-load-balancer"
   mock_outputs = {
-    nlb_dns_name = "mock-nlb-123456.elb.us-east-1.amazonaws.com"
+    nlb_dns_name = "nlb-123456.elb.us-east-1.amazonaws.com"
   }
 }
 

@@ -13,14 +13,14 @@ terraform {
 dependency "kms" {
   config_path = "../../aws-service-kinesis-cmk"
   mock_outputs = {
-    kms_key_arn = "arn:aws:kms:us-east-1:123456789012:key/mock-key"
+    kms_key_arn = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
 dependency "iam_role" {
   config_path = "../event-bridge-iam-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 

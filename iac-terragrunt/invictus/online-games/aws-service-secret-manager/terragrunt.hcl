@@ -13,18 +13,18 @@ terraform {
 dependency "rds" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-rds"
   mock_outputs = {
-    username           = "dbadmin"
-    password           = "mock-password"
-    endpoint           = "mock-cluster.cluster-123456789012.us-east-1.rds.amazonaws.com"
+    username           = "user"
+    password           = "password"
+    endpoint           = "cluster.cluster-123456789012.us-east-1.rds.amazonaws.com"
     port               = "3306"
-    cluster_identifier = "mock-rds-cluster"
+    cluster_identifier = "rds-cluster"
   }
 }
 
 dependency "rds_proxy" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
   mock_outputs = {
-    proxy_endpoint = "mock-proxy.proxy-123456789012.us-east-1.rds.amazonaws.com"
+    proxy_endpoint = "proxy.proxy-123456789012.us-east-1.rds.amazonaws.com"
   }
 }
 

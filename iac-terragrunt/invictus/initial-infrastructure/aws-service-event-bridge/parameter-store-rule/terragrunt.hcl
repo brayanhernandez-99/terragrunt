@@ -13,14 +13,14 @@ terraform {
 dependency "sqs" {
   config_path = "../../../notifier/aws-service-sqs"
   mock_outputs = {
-    queue_arn = "arn:aws:sqs:us-east-1:123456789012:mock-queue"
+    queue_arn = "arn:aws:sqs:us-east-1:123456789012:queue"
   }
 }
 
 dependency "iam_role" {
   config_path = "../event-bridge-iam-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 

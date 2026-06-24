@@ -13,28 +13,28 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-namespace.local"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_funds" {
   config_path = "../../initial-infrastructure/aws-service-secret-manager-funds"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "eventbridge_scheduler" {
   config_path = "../aws-service-iam-scheduler-rol"
   mock_outputs = {
-    iam_role_name = "mock-iam-role"
+    iam_role_name = "iam-role"
   }
 }
 
@@ -55,7 +55,7 @@ inputs = {
     DB_SECRET = {
       type        = "String"
       name        = "/${upper(local.service)}/DB_SECRET"
-      value       = "${dependency.secret_manager.outputs.secret_name}"
+      value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     },
     SELLER_RETENTION_PERCENTAGE = {
@@ -73,7 +73,7 @@ inputs = {
     FUNDS_SECRET = {
       type        = "String"
       name        = "/${upper(local.service)}/FUNDS_SECRET"
-      value       = "${dependency.secret_manager_funds.outputs.secret_name}"
+      value       = dependency.secret_manager_funds.outputs.secret_name
       description = "Nombre del secreto donde se encuentran las semillas para el calculo del hash para validar los saldos de los vendedores"
     }
     SELLER_TAX_PERCENTAGE = {
@@ -85,7 +85,7 @@ inputs = {
     SCHEDULE_ROL = {
       type        = "String"
       name        = "/${upper(local.service)}/SCHEDULE_ROL"
-      value       = "${dependency.eventbridge_scheduler.outputs.iam_role_name}"
+      value       = dependency.eventbridge_scheduler.outputs.iam_role_name
       description = "Nombre del schedule rol del ${local.service}"
     }
     KINESIS_POLL_DELAY = {

@@ -13,14 +13,14 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-namespace.local"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "cognito" {
   config_path = "../../initial-infrastructure/aws-service-cognito"
   mock_outputs = {
-    user_pool_id = "us-east-1_mockPoolId"
+    user_pool_id = "us-east-1_poolId"
   }
 }
 

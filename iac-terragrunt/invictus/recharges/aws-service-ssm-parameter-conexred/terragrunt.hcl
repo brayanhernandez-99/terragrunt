@@ -13,35 +13,35 @@ terraform {
 dependency "secret_manager_conexred" {
   config_path = "../aws-service-secret-manager-conexred"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_cashin" {
   config_path = "../aws-service-secret-manager-cashin"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 
 dependency "secret_manager_pay" {
   config_path = "../aws-service-secret-manager-pay"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 
 dependency "secret_manager_recaudos" {
   config_path = "../aws-service-secret-manager-recaudos"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 
 dependency "secret_manager_conexred_pines" {
   config_path = "../aws-service-secret-manager-conexred-pines"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock-secret"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 
@@ -50,7 +50,7 @@ inputs = {
     CONEXRED_SECRET = {
       type        = "String"
       name        = "/GLOBAL/CONEXRED_SECRET"
-      value       = "${dependency.secret_manager_conexred.outputs.secret_name}"
+      value       = dependency.secret_manager_conexred.outputs.secret_name
       description = "Secreto de conexión de conexred"
     }
     CONEXRED_CASHIN_SECRET = {

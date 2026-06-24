@@ -28,46 +28,46 @@ dependency "cloudmap" {
 dependency "ecs_cluster" {
   config_path = "../../initial-infrastructure/aws-service-ecs-cluster"
   mock_outputs = {
-    ecs_cluster_id = "arn:aws:ecs:us-east-1:123456789012:cluster/mock-cluster"
+    ecs_cluster_id = "arn:aws:ecs:us-east-1:123456789012:cluster/ecs-cluster"
   }
 }
 
 dependency "load_balancer" {
   config_path = "../../initial-infrastructure/aws-service-load-balancer"
   mock_outputs = {
-    nlb_arn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/mock-nlb-arn"
+    nlb_arn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/nlb-arn"
   }
 }
 
 dependency "task_execution" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-execution-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "task_role" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "rds" {
   config_path = "../../initial-infrastructure/aws-service-rds/aws-service-rds"
   mock_outputs = {
-    username           = "dbadmin"
-    password           = "mock-password"
-    endpoint           = "mock-cluster.cluster-123456789012.us-east-1.rds.amazonaws.com"
+    username           = "user"
+    password           = "password"
+    endpoint           = "cluster.cluster-123456789012.us-east-1.rds.amazonaws.com"
     port               = "3306"
-    cluster_identifier = "mock-rds-cluster"
+    cluster_identifier = "rds-cluster"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:mock"
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
   }
 }
 

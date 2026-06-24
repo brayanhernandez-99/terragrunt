@@ -28,29 +28,29 @@ dependency "cloudmap" {
 dependency "ecs_cluster" {
   config_path = "../../initial-infrastructure/aws-service-ecs-cluster"
   mock_outputs = {
-    ecs_cluster_id   = "arn:aws:ecs:us-east-1:123456789012:cluster/mock-cluster"
-    ecs_cluster_name = "mock-cluster"
+    ecs_cluster_id   = "arn:aws:ecs:us-east-1:123456789012:cluster/ecs-cluster"
+    ecs_cluster_name = "ecs-cluster"
   }
 }
 
 dependency "sqs" {
   config_path = "../../transaction-astro/aws-service-sqs"
   mock_outputs = {
-    queue_name = "mock-queue-name"
+    queue_name = "queue-name"
   }
 }
 
 dependency "task_execution" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-execution-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
 dependency "task_role" {
   config_path = "../../initial-infrastructure/aws-service-iam-role/ecs-task-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 

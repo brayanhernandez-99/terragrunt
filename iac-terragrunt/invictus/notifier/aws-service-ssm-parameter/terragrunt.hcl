@@ -13,7 +13,7 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-namespace.local"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 

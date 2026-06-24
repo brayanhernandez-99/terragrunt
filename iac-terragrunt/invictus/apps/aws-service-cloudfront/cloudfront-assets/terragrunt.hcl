@@ -9,8 +9,8 @@ terraform {
 dependency "s3" {
   config_path = "../../../initial-infrastructure/aws-service-s3-repository-configuration"
   mock_outputs = {
-    s3_bucket_id          = "mock-bucket-id"
-    s3_bucket_domain_name = "mock-bucket.s3.amazonaws.com"
+    s3_bucket_id          = "s3-bucket-id"
+    s3_bucket_domain_name = "s3-bucket.s3.amazonaws.com"
   }
 }
 

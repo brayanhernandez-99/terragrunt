@@ -27,7 +27,7 @@ dependency "sg" {
 dependency "load_balancer" {
   config_path = "../aws-service-load-balancer"
   mock_outputs = {
-    nlb_arn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/mock-nlb-arn"
+    nlb_arn = "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/net/nlb-arn"
   }
 }
 

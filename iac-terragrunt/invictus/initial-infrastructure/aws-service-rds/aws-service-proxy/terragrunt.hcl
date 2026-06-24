@@ -16,14 +16,14 @@ dependency "vpc" {
 dependency "rds" {
   config_path = "../aws-service-rds"
   mock_outputs = {
-    cluster_identifier = "mock-rds-cluster"
+    cluster_identifier = "rds-cluster"
   }
 }
 
 dependency "role" {
   config_path = "../../aws-service-iam-role/rds-proxy-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/mock-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 

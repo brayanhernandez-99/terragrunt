@@ -13,21 +13,21 @@ terraform {
 dependency "cloudmap" {
   config_path = "../../initial-infrastructure/aws-service-cloudmap"
   mock_outputs = {
-    cloudmap_namespace_name = "mock-namespace.local"
+    cloudmap_namespace_name = "namespace.local"
   }
 }
 
 dependency "secret_manager" {
   config_path = "../aws-service-secret-manager"
   mock_outputs = {
-    secret_name = "mock-secret-name"
+    secret_name = "secret-name"
   }
 }
 
 dependency "s3" {
   config_path = "../aws-service-s3"
   mock_outputs = {
-    s3_bucket_name = "mock-bucket-name"
+    s3_bucket_name = "s3-bucket-name"
   }
 }
 
@@ -48,13 +48,13 @@ inputs = {
     DB_SECRET = {
       type        = "String"
       name        = "/${upper(local.service)}/DB_SECRET"
-      value       = "${dependency.secret_manager.outputs.secret_name}"
+      value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     }
     BUCKET_NAME = {
       type        = "String"
       name        = "/${upper(local.service)}/BUCKET_NAME"
-      value       = "${dependency.s3.outputs.s3_bucket_name}"
+      value       = dependency.s3.outputs.s3_bucket_name
       description = "Bucket name de ${local.service}"
     }
     LIMIT_NUMBER_ITEMS = {
