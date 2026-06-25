@@ -31,10 +31,10 @@ dependency "secret_manager_funds" {
   }
 }
 
-dependency "eventbridge_scheduler" {
-  config_path = "../aws-service-iam-scheduler-rol"
+dependency "iam_role" {
+  config_path = "../../initial-infrastructure/aws-service-event-bridge/event-bridge-iam-role"
   mock_outputs = {
-    iam_role_name = "iam-role"
+    role_arn = "arn:aws:iam::123456789012:role/role"
   }
 }
 
@@ -85,8 +85,8 @@ inputs = {
     SCHEDULE_ROL = {
       type        = "String"
       name        = "/${upper(local.service)}/SCHEDULE_ROL"
-      value       = dependency.eventbridge_scheduler.outputs.iam_role_name
-      description = "Nombre del schedule rol del ${local.service}"
+      value       = dependency.iam_role.outputs.role_arn
+      description = "Nombre del schedule rol de ${local.service}"
     }
     KINESIS_POLL_DELAY = {
       type        = "String"
