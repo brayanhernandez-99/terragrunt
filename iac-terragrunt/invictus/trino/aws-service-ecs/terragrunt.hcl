@@ -78,7 +78,7 @@ inputs = {
   ecs_task = {
     cpu    = "2048"
     memory = "4096"
-    image  = "861262569826.dkr.ecr.#{aws_region}#.amazonaws.com/microservice-${local.service}-#{aws_container_image}#:latest"
+    image  = "861262569826.dkr.ecr.us-east-1.amazonaws.com/microservice-${local.service}-#{aws_container_image}#:latest"
     portMappings = [
       {
         containerPort = 8443
