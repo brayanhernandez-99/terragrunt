@@ -24,10 +24,10 @@ dependency "secret_manager" {
   }
 }
 
-dependency "eventbridge_scheduler" {
-  config_path = "../aws-service-iam-scheduler-rol"
+dependency "iam_role" {
+  config_path = "../../initial-infrastructure/aws-service-event-bridge/event-bridge-iam-role"
   mock_outputs = {
-    iam_role_name = "iam-role"
+    role_name = "iam-role"
   }
 }
 
@@ -60,8 +60,8 @@ inputs = {
     SCHEDULE_ROL = {
       type        = "String"
       name        = "/${upper(replace(local.service, "-", "_"))}/SCHEDULE_ROL"
-      value       = dependency.eventbridge_scheduler.outputs.iam_role_name
-      description = "Parámetro de schedule rol"
+      value       = dependency.iam_role.outputs.role_name
+      description = "Nombre del IAM Role"
     }
     BILLETON_MAX_REPEAT = {
       type        = "String"
