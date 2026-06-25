@@ -27,7 +27,7 @@ dependency "secret_manager" {
 dependency "iam_role" {
   config_path = "../../initial-infrastructure/aws-service-event-bridge/event-bridge-iam-role"
   mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/role"
+    role_name = "iam-role"
   }
 }
 
@@ -54,8 +54,8 @@ inputs = {
     SCHEDULE_ROL = {
       type        = "String"
       name        = "/${upper(replace(local.service, "-", "_"))}/SCHEDULE_ROL"
-      value       = dependency.iam_role.outputs.role_arn
-      description = "Nombre del schedule rol de ${local.service}"
+      value       = dependency.iam_role.outputs.role_name
+      description = "Nombre del IAM Role"
     }
     KINESIS_POLL_DELAY = {
       type        = "String"
