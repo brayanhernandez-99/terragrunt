@@ -37,15 +37,22 @@ inputs = {
         Resource = "arn:aws:sqs:#{aws_region}#:${get_aws_account_id()}:*"
       },
       {
-        Sid    = "UseKMSKey"
+        Sid    = "EventBridgeSchedulerPermissions"
         Effect = "Allow"
         Action = [
+          "scheduler:*",
+          "iam:PassRole",
+          "iam:GetRole",
+          "iam:CreateRole",
+          "iam:PutRolePolicy",
+          "iam:AttachRolePolicy",
+          "iam:UpdateAssumeRolePolicy",
           "kms:Encrypt",
           "kms:Decrypt",
           "kms:GenerateDataKey",
           "kms:DescribeKey"
         ]
-        Resource = "arn:aws:kms:#{aws_region}#:${get_aws_account_id()}:key/*"
+        Resource = "*"
       }
     ]
   }
