@@ -3,37 +3,27 @@ output "db_subnet_group_name" {
   description = "Nombre del grupo de subnets de la base de datos"
 }
 
-output "aurora_cluster_id" {
+output "cluster_id" {
   description = "The id of the aurora instance"
   value       = aws_rds_cluster.rds.id
 }
 
-output "aurora_cluster_resource_id" {
+output "cluster_resource_id" {
   description = "The full unique identifier of the aurora instance"
   value       = aws_rds_cluster.rds.cluster_resource_id
 }
 
-output "aurora_cluster_endpoint" {
-  description = "The endpoint of aurora instance"
-  value       = aws_rds_cluster.rds.endpoint
-}
-
-output "aurora_reader_endpoint" {
+output "cluster_reader_endpoint" {
   description = "The endpoint of aurora instance"
   value       = aws_rds_cluster.rds.reader_endpoint
 }
 
-output "aurora_cluster_arn" {
+output "cluster_arn" {
   description = "The RDS Cluster Aurora cluster ARN"
   value       = aws_rds_cluster.rds.arn
 }
 
-output "aurora_cluster_port" {
-  description = "The RDS DB Cluster port"
-  value       = aws_rds_cluster.rds.port
-}
-
-output "aurora_cluster_instances" {
+output "cluster_instances" {
   description = "A list of all instances in the aurora cluster"
   value       = aws_rds_cluster.rds.cluster_members
 }
