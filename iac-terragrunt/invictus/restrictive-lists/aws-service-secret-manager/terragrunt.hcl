@@ -32,12 +32,12 @@ inputs = {
   secret_name        = "${local.service}-relational-rds-secret"
   secret_description = "Secretos de la base de datos de ${local.service}"
   secret_string_value = {
-    username            = local.service
+    username            = replace(local.service, "-", "")
     password            = ""
     engine              = "mysql"
     host                = dependency.rds_proxy.outputs.proxy_endpoint
     port                = dependency.rds.outputs.port
     dbClusterIdentifier = dependency.rds.outputs.cluster_identifier
-    dbname              = local.service
+    dbname              = replace(local.service, "-", "")
   }
 }
