@@ -40,6 +40,7 @@ inputs = {
           "ecr:BatchCheckLayerAvailability",
           "s3:GetObject",
           "s3:PutObject",
+          "s3:PutObjectAcl",
           "s3:ListBucket",
           "s3:DeleteObject",
           "scheduler:CreateSchedule",
