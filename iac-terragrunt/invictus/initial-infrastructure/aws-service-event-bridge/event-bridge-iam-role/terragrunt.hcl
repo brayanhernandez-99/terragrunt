@@ -29,28 +29,14 @@ inputs = {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid    = "SendMessagesToSQS"
-        Effect = "Allow"
-        Action = [
-          "sqs:SendMessage"
-        ]
-        Resource = "arn:aws:sqs:#{aws_region}#:${get_aws_account_id()}:*"
-      },
-      {
         Sid    = "EventBridgeSchedulerPermissions"
         Effect = "Allow"
         Action = [
-          "scheduler:*",
-          "iam:PassRole",
-          "iam:GetRole",
-          "iam:CreateRole",
-          "iam:PutRolePolicy",
-          "iam:AttachRolePolicy",
-          "iam:UpdateAssumeRolePolicy",
+          "sqs:SendMessage",
           "kms:Encrypt",
           "kms:Decrypt",
-          "kms:GenerateDataKey",
-          "kms:DescribeKey"
+          "kms:DescribeKey",
+          "kms:GenerateDataKey"
         ]
         Resource = "*"
       }
