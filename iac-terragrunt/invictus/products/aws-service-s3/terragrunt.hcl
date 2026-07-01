@@ -9,7 +9,7 @@ terraform {
 inputs = {
   bucket_name                      = "products-${get_aws_account_id()}"
   enable_object_ownership_controls = true
-  object_ownership_type            = "BucketOwnerEnforced"
+  object_ownership_type            = "BucketOwnerPreferred"
   enable_public_access_block       = true
   val_public_access_block          = false # Deja el s3 publico
 }
