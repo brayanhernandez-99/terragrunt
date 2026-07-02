@@ -19,13 +19,6 @@ dependency "rds" {
   }
 }
 
-dependency "rds_proxy" {
-  config_path = "../../initial-infrastructure/aws-service-rds/aws-service-proxy"
-  mock_outputs = {
-    proxy_read_only_endpoint = "proxy.proxy-123456789012.us-east-1.rds.amazonaws.com"
-  }
-}
-
 inputs = {
   secret_name        = "${local.service}-relational-rds-secret"
   secret_description = "Secretos de conexión utilizados por Trino"
