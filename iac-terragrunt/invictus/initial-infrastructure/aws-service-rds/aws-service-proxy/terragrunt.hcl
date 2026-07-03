@@ -20,13 +20,6 @@ dependency "rds" {
   }
 }
 
-dependency "role" {
-  config_path = "../../aws-service-iam-role/rds-proxy-role"
-  mock_outputs = {
-    role_arn = "arn:aws:iam::123456789012:role/role"
-  }
-}
-
 dependency "sg" {
   config_path = "../aws-service-sg"
   mock_outputs = {
@@ -36,7 +29,7 @@ dependency "sg" {
 
 inputs = {
   name                         = "rds-proxy-invictus"
-  role_arn                     = dependency.role.outputs.role_arn
+  role_arn                     = "arn:aws:iam::${get_aws_account_id()}:role/rds-proxy-invictus-role"
   subnet_ids                   = dependency.vpc.outputs.private_subnet_ids
   security_group_ids           = [dependency.sg.outputs.security_group_id]
   db_cluster_identifier        = dependency.rds.outputs.cluster_identifier
