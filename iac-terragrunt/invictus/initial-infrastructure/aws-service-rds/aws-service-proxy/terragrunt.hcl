@@ -43,7 +43,7 @@ inputs = {
     "biometrics-relational-rds-secret",
     "collected-relational-rds-secret",
     "conciliation-relational-rds-secret",
-    "credits-relational-rds-secret",
+    # "credits-relational-rds-secret",
     "dynamic-storage-relational-rds-secret",
     "external-wager-relational-rds-secret",
     "hierarchies-relational-rds-secret",
