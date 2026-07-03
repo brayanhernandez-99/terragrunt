@@ -41,12 +41,12 @@ dependency "secret_conciliation" {
   }
 }
 
-dependency "secret_credits" {
-  config_path = "../../../credits/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
-  }
-}
+# dependency "secret_credits" {
+#   config_path = "../../../credits/aws-service-secret-manager"
+#   mock_outputs = {
+#     secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+#   }
+# }
 
 dependency "secret_dynamic_storage" {
   config_path = "../../../dynamic-storage/aws-service-secret-manager"
@@ -254,7 +254,7 @@ inputs = {
           dependency.secret_biometrics.outputs.secret_arn,
           dependency.secret_collected.outputs.secret_arn,
           dependency.secret_conciliation.outputs.secret_arn,
-          dependency.secret_credits.outputs.secret_arn,
+          # dependency.secret_credits.outputs.secret_arn,
           dependency.secret_dynamic_storage.outputs.secret_arn,
           dependency.secret_external_wager.outputs.secret_arn,
           dependency.secret_generic_services.outputs.secret_arn,
