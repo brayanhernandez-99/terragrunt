@@ -28,12 +28,12 @@ resource "aws_rds_cluster_parameter_group" "custom_cluster_pg" {
 
   parameter {
     name  = "interactive_timeout"
-    value = "30"
+    value = "1200"
   }
 
   parameter {
     name  = "wait_timeout"
-    value = "30"
+    value = "1200"
   }
 }
 
