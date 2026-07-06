@@ -1,30 +1,25 @@
 output "db_subnet_group_name" {
   value       = aws_db_subnet_group.subnet_group.name
-  description = "Nombre del grupo de subnets de la base de datos"
+  description = "Nombre del grupo de subredes de la base de datos"
 }
 
 output "cluster_id" {
-  description = "The id of the aurora instance"
+  description = "Identificador del cluster de la base de datos"
   value       = aws_rds_cluster.rds.id
 }
 
 output "cluster_resource_id" {
-  description = "The full unique identifier of the aurora instance"
+  description = "Identificador único del recurso del cluster de la base de datos"
   value       = aws_rds_cluster.rds.cluster_resource_id
 }
 
-output "cluster_reader_endpoint" {
-  description = "The endpoint of aurora instance"
-  value       = aws_rds_cluster.rds.reader_endpoint
-}
-
 output "cluster_arn" {
-  description = "The RDS Cluster Aurora cluster ARN"
+  description = "ARN del cluster de la base de datos"
   value       = aws_rds_cluster.rds.arn
 }
 
 output "cluster_instances" {
-  description = "A list of all instances in the aurora cluster"
+  description = "Lista de las instancias que pertenecen al cluster de la base de datos"
   value       = aws_rds_cluster.rds.cluster_members
 }
 
@@ -39,8 +34,13 @@ output "password" {
   sensitive   = true
 }
 
+output "reader_endpoint" {
+  description = "Endpoint de lectura de la base de datos"
+  value       = aws_rds_cluster.rds.reader_endpoint
+}
+
 output "endpoint" {
-  description = "Endpoint de la base de datos desplegada"
+  description = "Endpoint principal de la base de datos"
   value       = aws_rds_cluster.rds.endpoint
 }
 
@@ -50,6 +50,6 @@ output "port" {
 }
 
 output "cluster_identifier" {
-  description = "Identificador del cluster de la base de datos desplegada"
+  description = "Identificador del cluster de la base de datos"
   value       = aws_rds_cluster.rds.cluster_identifier
 }
