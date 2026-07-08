@@ -35,5 +35,11 @@ inputs = {
     mockMipos                                   = "#{secret_mipossecret_mockMipos}#"
     urlMockMipos                                = "#{secret_mipossecret_urlMockMipos}#"
     idProductRedCollectBancoAgrario             = 10003
+    idProveedor                                 = "#{secret_mipossecret_idProveedor}#"
+    tokenUser                                   = "#{secret_mipossecret_tokenUser}#"
+    tokenPassword                               = "#{secret_mipossecret_tokenPassword}#"
+    apiBaseUrl                                  = "#{secret_mipossecret_apiBaseUrl}#"
+    endpoint                                    = "webCheckout"
+    httpMethod                                  = "POST"
   }
 }
