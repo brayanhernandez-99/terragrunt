@@ -80,7 +80,7 @@ inputs = {
       },
       {
         name  = "MICROSERVICE"
-        value = "RESTRICTIVE-LISTS"
+        value = "RESTRICTIVE_LISTS"
       },
       {
         name  = "REGION"
