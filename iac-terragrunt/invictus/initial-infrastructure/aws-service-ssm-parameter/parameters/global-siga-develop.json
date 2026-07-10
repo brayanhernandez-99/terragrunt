@@ -73,5 +73,10 @@
   { "productInitials": "RIM", "replicate": true, "type": "raspa" },
   { "productInitials": "RIL", "replicate": true, "type": "raspa" },
   { "productInitials": "RAL", "replicate": true, "type": "collected" },
-  { "productInitials": "CHG", "replicate": true, "type": "chanceGoleador" }
+  { "productInitials": "CHG", "replicate": true, "type": "chanceGoleador" },
+  { "productInitials": "CGN", "replicate": true, "type": "chanceGoleador" },
+  { "productInitials": "RT2", "replicate": true, "type": "recharge" },
+  { "productInitials": "RNB", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "DCC", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "PCB", "replicate": true, "type": "package" }
 ]
