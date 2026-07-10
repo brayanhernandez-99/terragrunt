@@ -75,5 +75,8 @@
   { "productInitials": "RIL", "replicate": true, "type": "raspa" },
   { "productInitials": "CHG", "replicate": true, "type": "incentive" },
   { "productInitials": "TGO", "replicate": true, "type": "recharge" },
-  { "productInitials": "TDP", "replicate": true, "type": "package" }
+  { "productInitials": "TDP", "replicate": true, "type": "package" },
+  { "productInitials": "BN4", "replicate": true, "type": "chance" },
+  { "productInitials": "BN3", "replicate": true, "type": "chance" },
+  { "productInitials": "LCS", "replicate": true, "type": "LotteriePayments" }
 ]
