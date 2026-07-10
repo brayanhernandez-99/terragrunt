@@ -43,6 +43,20 @@ inputs = {
             "AWS:SourceArn" = dependency.cloudfront.outputs.cloudfront_arn
           }
         }
+      },
+      {
+        Sid       = "AllowPublicListReadWrite"
+        Effect    = "Allow"
+        Principal = "*"
+        Action = [
+          "s3:ListBucket",
+          "s3:GetObject",
+          "s3:PutObject"
+        ]
+        Resource = [
+          "arn:aws:s3:::${dependency.s3.outputs.s3_bucket_name}",
+          "arn:aws:s3:::${dependency.s3.outputs.s3_bucket_name}/*"
+        ]
       }
     ]
   }
