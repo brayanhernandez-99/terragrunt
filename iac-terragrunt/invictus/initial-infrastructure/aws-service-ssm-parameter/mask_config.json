@@ -100,7 +100,11 @@
       "model.key",
       "parameterValue",
       "model.parameterValue",
-      "data.model.parameterValue"
+      "data.model.parameterValue",
+      "model.data.operations[*].saleKey",
+      "model.data.model.saleKey",
+      "model.prints[*].operation.saleKey",
+      "model.data.model.operation.saleKey"
     ],
     "stringMaskOptions": {
       "maskAll": true,
