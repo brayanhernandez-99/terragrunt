@@ -78,5 +78,8 @@
   { "productInitials": "REX", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "UFX", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "VMX", "replicate": true, "type": "cell-recharge" },
-  { "productInitials": "DTX", "replicate": true, "type": "cell-recharge" }
+  { "productInitials": "DTX", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "CHC", "replicate": true, "type": "chance" },
+  { "productInitials": "BN4", "replicate": true, "type": "chance" },
+  { "productInitials": "BN3", "replicate": true, "type": "chance" }
 ]
