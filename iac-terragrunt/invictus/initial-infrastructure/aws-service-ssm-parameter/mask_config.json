@@ -101,6 +101,7 @@
       "parameterValue",
       "model.parameterValue",
       "data.model.parameterValue",
+      "model[*].parameterValue",
       "model.data.operations[*].saleKey",
       "model.data.model.saleKey",
       "model.prints[*].operation.saleKey",
