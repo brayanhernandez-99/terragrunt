@@ -40,7 +40,7 @@ inputs = {
   }
 
   input_paths = {
-    detail-name      = "$.detail.name"
+    detail-name = "$.detail.name"
   }
 
   input_template = jsonencode({
