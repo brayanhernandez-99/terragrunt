@@ -12,6 +12,6 @@ resource "aws_cloudwatch_event_target" "target" {
 
   input_transformer {
     input_paths    = var.input_paths
-    input_template = jsonencode(var.input_template)
+    input_template = var.input_template
   }
 }
