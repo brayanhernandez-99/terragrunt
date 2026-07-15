@@ -1,10 +1,10 @@
 variable "rule_name" {
-  description = "Nombre del scheduler"
+  description = "Nombre de la regla de EventBridge"
   type        = string
 }
 
 variable "description" {
-  description = "Descripción del rule"
+  description = "Descripción de la regla"
   type        = string
 }
 
@@ -14,8 +14,8 @@ variable "role_arn" {
 }
 
 variable "target_id" {
-  type        = string
   description = "ID del target"
+  type        = string
 }
 
 variable "target_arn" {
@@ -24,16 +24,16 @@ variable "target_arn" {
 }
 
 variable "event_pattern" {
+  description = "Patrón de eventos de EventBridge"
   type        = any
-  description = "Patrón de evento para el rule"
 }
 
 variable "input_paths" {
+  description = "Mapeo de variables para el Input Transformer"
   type        = map(string)
-  description = "Patrón de evento para el rule"
 }
 
 variable "input_template" {
-  type        = any
-  description = "Patrón de evento para el rule"
+  description = "Plantilla JSON del Input Transformer"
+  type        = string
 }
