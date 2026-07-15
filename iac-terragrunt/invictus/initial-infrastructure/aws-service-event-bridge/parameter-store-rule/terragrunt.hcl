@@ -40,14 +40,18 @@ inputs = {
   }
 
   input_paths = {
-    detail-name = "$.detail.name"
+    detail-name      = "$.detail.name"
+    detail-operation = "$.detail.operation"
+    detail-type      = "$.detail.type"
   }
 
   input_template = {
     topic = "sync-parameters"
     event = "appNotification"
     data = {
-      name = "<detail-name>"
+      name      = "<detail-name>"
+      operation = "<detail-operation>"
+      type      = "<detail-type>"
     }
   }
 }
