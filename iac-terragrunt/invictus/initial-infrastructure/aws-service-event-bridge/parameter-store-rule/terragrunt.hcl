@@ -51,5 +51,5 @@ inputs = {
       "name": "<detail-name>"
     }
   }
-EOF
+  EOF
 }
