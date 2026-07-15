@@ -43,11 +43,13 @@ inputs = {
     detail-name = "$.detail.name"
   }
 
-  input_template = jsonencode({
-    topic = "sync-parameters"
-    event = "appNotification"
-    data = {
-      name = "<detail-name>"
+  input_template = <<EOF
+  {
+    "topic": "sync-parameters",
+    "event": "appNotification",
+    "data": {
+      "name": "<detail-name>"
     }
-  })
+  }
+  EOF
 }
