@@ -168,28 +168,29 @@ resource "aws_appautoscaling_policy" "ecs_cpu_scaling_policy" {
       predefined_metric_type = "ECSServiceAverageCPUUtilization"
     }
     target_value       = var.ecs_service_autoscaling.cpu_target_value
-    scale_in_cooldown  = 60
-    scale_out_cooldown = 60
+    disable_scale_in   = var.ecs_service_autoscaling.disable_scale_in
+    scale_in_cooldown  = 300
+    scale_out_cooldown = 30
   }
 }
 
-resource "aws_appautoscaling_policy" "ecs_memory_scaling_policy" {
-  count              = try(var.ecs_service_autoscaling.memory_target_value, 0) != 0 ? 1 : 0
-  name               = "${var.name_service}-memory-scaling-policy"
-  policy_type        = "TargetTrackingScaling"
-  resource_id        = aws_appautoscaling_target.ecs_service_scaling_target.resource_id
-  scalable_dimension = aws_appautoscaling_target.ecs_service_scaling_target.scalable_dimension
-  service_namespace  = aws_appautoscaling_target.ecs_service_scaling_target.service_namespace
-
-  target_tracking_scaling_policy_configuration {
-    predefined_metric_specification {
-      predefined_metric_type = "ECSServiceAverageMemoryUtilization"
-    }
-    target_value       = var.ecs_service_autoscaling.memory_target_value
-    scale_in_cooldown  = 60
-    scale_out_cooldown = 60
-  }
-}
+# resource "aws_appautoscaling_policy" "ecs_memory_scaling_policy" {
+#   count              = try(var.ecs_service_autoscaling.memory_target_value, 0) != 0 ? 1 : 0
+#   name               = "${var.name_service}-memory-scaling-policy"
+#   policy_type        = "TargetTrackingScaling"
+#   resource_id        = aws_appautoscaling_target.ecs_service_scaling_target.resource_id
+#   scalable_dimension = aws_appautoscaling_target.ecs_service_scaling_target.scalable_dimension
+#   service_namespace  = aws_appautoscaling_target.ecs_service_scaling_target.service_namespace
+#
+#   target_tracking_scaling_policy_configuration {
+#     predefined_metric_specification {
+#       predefined_metric_type = "ECSServiceAverageMemoryUtilization"
+#     }
+#     target_value       = var.ecs_service_autoscaling.memory_target_value
+#     scale_in_cooldown  = 60
+#     scale_out_cooldown = 60
+#   }
+# }
 
 # resource "aws_appautoscaling_scheduled_action" "ecs_service_scheduled_action" {
 #   for_each = var.ecs_service_scheduled_actions

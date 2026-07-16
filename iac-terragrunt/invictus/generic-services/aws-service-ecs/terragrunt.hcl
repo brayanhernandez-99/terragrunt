@@ -99,4 +99,11 @@ inputs = {
       startPeriod = 80
     }
   }
+
+  ecs_service_autoscaling = {
+    min_capacity        = 1
+    max_capacity        = 40
+    cpu_target_value    = 50
+    memory_target_value = 50
+  }
 }
