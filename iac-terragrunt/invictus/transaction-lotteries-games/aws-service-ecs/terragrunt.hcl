@@ -107,6 +107,13 @@ inputs = {
     }
   }
 
+  ecs_service_autoscaling = {
+    min_capacity        = 1
+    max_capacity        = 40
+    cpu_target_value    = 50
+    memory_target_value = 50
+  }
+
   target_group_config = {
     name                  = "transaction-lg"
     port                  = 8080

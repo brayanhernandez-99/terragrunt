@@ -115,4 +115,12 @@ inputs = {
     healthy_threshold     = 5
     unhealthy_threshold   = 2
   }
+
+  ecs_service_autoscaling = {
+    min_capacity        = 1
+    max_capacity        = 40
+    cpu_target_value    = 50
+    memory_target_value = 50
+    disable_scale_in    = true
+  }
 }
