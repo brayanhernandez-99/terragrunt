@@ -70,9 +70,9 @@ resource "aws_ecs_task_definition" "ecs_task" {
   execution_role_arn = var.ecs_task_execution_role_arn
   task_role_arn      = var.ecs_task_role_arn
 
-  # lifecycle {
-  #   ignore_changes = [container_definitions]
-  # }
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
 }
 
 # Crear servicios ECS para Fargate
@@ -102,9 +102,9 @@ resource "aws_ecs_service" "ecs_service" {
     security_groups = [var.security_group_id]
   }
 
-  # lifecycle {
-  #   ignore_changes = [task_definition]
-  # }
+  lifecycle {
+    ignore_changes = [task_definition]
+  }
 }
 
 # Target Group para el ECS
