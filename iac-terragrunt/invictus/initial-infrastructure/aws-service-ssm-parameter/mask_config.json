@@ -1,10 +1,16 @@
 {
   "jsonMaskConfig2": {
-    "cardFields": [],
     "cardMaskOptions": {
       "maskWith": "*",
-      "unmaskedEndCharacters": 4,
-      "unmaskedStartCharacters": 2
+      "unmaskedStartCharacters": 2,
+      "unmaskedEndCharacters": 4
+    },
+    "cardFields": [],
+    "emailMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharactersBeforeAt": 2,
+      "unmaskedEndCharactersAfterAt": 2,
+      "maskAtTheRate": false
     },
     "emailFields": [
       "user.email",
@@ -13,20 +19,28 @@
       "data.model.client.emailClient",
       "operations[*].data.model.client.emailClient",
       "model.prints[*].model.client.emailClient",
-      "data.model.prints[*].model.client.emailClient"
+      "data.model.prints[*].model.client.emailClient",
+      "model.user.email",
+      "model.client.email"
     ],
-    "emailMaskOptions": {
-      "maskAtTheRate": false,
-      "maskWith": "*",
-      "unmaskedEndCharactersAfterAt": 2,
-      "unmaskedStartCharactersBeforeAt": 2
-    },
-    "passwordFields": ["password", "model.password", "model[*].password"],
     "passwordMaskOptions": {
       "maskWith": "*",
       "maxMaskedCharacters": 10,
-      "unmaskedEndCharacters": 0,
-      "unmaskedStartCharacters": 0
+      "unmaskedStartCharacters": 0,
+      "unmaskedEndCharacters": 0
+    },
+    "passwordFields": [
+      "password",
+      "model.password",
+      "model[*].password",
+      "model.prints[*][*].print",
+      "model.prints[*].print",
+      "model.prints[*].prints[*].print"
+    ],
+    "phoneMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 2,
+      "unmaskedEndCharacters": 1
     },
     "phoneFields": [
       "user.phone_number",
@@ -35,12 +49,16 @@
       "data.model.client.phoneNumberClient",
       "operations[*].data.model.client.phoneNumberClient",
       "model.prints[*].model.client.phoneNumberClient",
-      "data.model.prints[*].model.client.phoneNumberClient"
+      "data.model.prints[*].model.client.phoneNumberClient",
+      "model.user.phoneNumber",
+      "model.phoneNumber",
+      "model.client.phoneNumber"
     ],
-    "phoneMaskOptions": {
+    "stringMaskOptions": {
       "maskWith": "*",
-      "unmaskedEndCharacters": 1,
-      "unmaskedStartCharacters": 2
+      "maskOnlyFirstOccurance": false,
+      "maskAll": true,
+      "maskSpace": false
     },
     "stringFields": [
       "user.identificationNumber",
@@ -105,13 +123,41 @@
       "model.data.operations[*].saleKey",
       "model.data.model.saleKey",
       "model.prints[*].operation.saleKey",
-      "model.data.model.operation.saleKey"
+      "model.data.model.operation.saleKey",
+      "model.secretKeyAES",
+      "salekey",
+      "model.user.identificationTypeId",
+      "model.user.identificationNumber",
+      "model.data.model.numbers[*].asterisk",
+      "model.data.model.numbers[*].number",
+      "model.data.model.numbers[*].stringNumber",
+      "model.data.model.numbersString[*].stringNumber",
+      "model.data.operations[*].saleKey",
+      "model.data.user.identificationNumber",
+      "saleDetail[*].number",
+      "model.data.model.bet[*].num",
+      "model.data.model.bet[*].stringNumber",
+      "model.bet[*].num",
+      "model.bet[*].stringNumber",
+      "model.data.user.idsHierarchies[*]",
+      "user.idsHierarchies[*]",
+      "model.numbersToPlay[*].number",
+      "model.securityNumber",
+      "model.client.document",
+      "model.client.typeDocument",
+      "model.client.name",
+      "model.bets[*].number",
+      "model.data.model.betDetail[*].number",
+      "model.data.model.items[*].betDetail[*].number",
+      "model.data.model.items[*].numberSecurity",
+      "model.data.operations[*].superStarDetails[*].number",
+      "model.prints[*].operation.superStarDetails[*].number",
+      "model.prints[*].operation.numberSecurity"
     ],
-    "stringMaskOptions": {
-      "maskAll": true,
-      "maskOnlyFirstOccurance": false,
-      "maskSpace": false,
-      "maskWith": "*"
+    "uuidMaskOptions": {
+      "maskWith": "*",
+      "unmaskedStartCharacters": 4,
+      "unmaskedEndCharacters": 2
     },
     "uuidFields": [
       "user.id",
@@ -120,12 +166,23 @@
       "model.operation.uuid",
       "operations[*].uuid",
       "operations[*].data.model.operation.uuid",
-      "model.prints[*].model.operation.uuid"
-    ],
-    "uuidMaskOptions": {
+      "model.prints[*].model.operation.uuid",
+      "model.user.idpId",
+      "model.data.model.userId",
+      "model.data.operations[*].uuid",
+      "model.data.userId",
+      "model.data.user.id",
+      "model.userId",
+      "model.prints[*].operation.uuid"
+    ]
+  },
+  "stringMaskConfig": {
+    "stringFields": ["AES_ENCRYPT", "number"],
+    "stringMaskOptions": {
       "maskWith": "*",
-      "unmaskedEndCharacters": 2,
-      "unmaskedStartCharacters": 4
+      "unmaskedStartCharacters": 4,
+      "unmaskedEndCharacters": 2
     }
-  }
+  },
+  "maskEntireJsonFields": ["model.secretValue"]
 }
