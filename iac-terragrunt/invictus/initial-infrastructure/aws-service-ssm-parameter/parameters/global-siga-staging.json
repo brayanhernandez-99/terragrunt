@@ -79,5 +79,7 @@
   { "productInitials": "BN4", "replicate": true, "type": "chance" },
   { "productInitials": "BN3", "replicate": true, "type": "chance" },
   { "productInitials": "LCS", "replicate": true, "type": "LotteriePayments" },
-  { "productInitials": "BOY", "replicate": true, "type": "LotteriePayments" }
+  { "productInitials": "BOY", "replicate": true, "type": "LotteriePayments" },
+  { "productInitials": "DCC", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "RNB", "replicate": true, "type": "genericPayment" }
 ]

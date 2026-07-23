@@ -70,9 +70,9 @@ resource "aws_ecs_task_definition" "ecs_task" {
   execution_role_arn = var.ecs_task_execution_role_arn
   task_role_arn      = var.ecs_task_role_arn
 
-  # lifecycle {
-  #   ignore_changes = [container_definitions]
-  # }
+  lifecycle {
+    ignore_changes = [container_definitions]
+  }
 }
 
 # Crear servicios ECS para Fargate
@@ -102,9 +102,9 @@ resource "aws_ecs_service" "ecs_service" {
     security_groups = [var.security_group_id]
   }
 
-  # lifecycle {
-  #   ignore_changes = [task_definition]
-  # }
+  lifecycle {
+    ignore_changes = [task_definition]
+  }
 }
 
 # Target Group para el ECS
@@ -145,33 +145,34 @@ resource "aws_cloudwatch_log_group" "log_group" {
   retention_in_days = 30
 }
 
-# resource "aws_appautoscaling_target" "ecs_service_scaling_target" {
-#   max_capacity       = var.ecs_service_autoscaling.max_capacity
-#   min_capacity       = var.ecs_service_autoscaling.min_capacity
-#   resource_id        = "service/${var.ecs_cluster_name}/${var.name_service}"
-#   scalable_dimension = "ecs:service:DesiredCount"
-#   service_namespace  = "ecs"
+resource "aws_appautoscaling_target" "ecs_service_scaling_target" {
+  max_capacity       = var.ecs_service_autoscaling.max_capacity
+  min_capacity       = var.ecs_service_autoscaling.min_capacity
+  resource_id        = "service/${var.ecs_cluster_name}/${var.name_service}"
+  scalable_dimension = "ecs:service:DesiredCount"
+  service_namespace  = "ecs"
 
-#   depends_on = [aws_ecs_service.ecs_service]
-# }
+  depends_on = [aws_ecs_service.ecs_service]
+}
 
-# resource "aws_appautoscaling_policy" "ecs_cpu_scaling_policy" {
-#   count              = try(var.ecs_service_autoscaling.cpu_target_value, 0) != 0 ? 1 : 0
-#   name               = "${var.name_service}-cpu-scaling-policy"
-#   policy_type        = "TargetTrackingScaling"
-#   resource_id        = aws_appautoscaling_target.ecs_service_scaling_target.resource_id
-#   scalable_dimension = aws_appautoscaling_target.ecs_service_scaling_target.scalable_dimension
-#   service_namespace  = aws_appautoscaling_target.ecs_service_scaling_target.service_namespace
+resource "aws_appautoscaling_policy" "ecs_cpu_scaling_policy" {
+  count              = try(var.ecs_service_autoscaling.cpu_target_value, 0) != 0 ? 1 : 0
+  name               = "${var.name_service}-cpu-scaling-policy"
+  policy_type        = "TargetTrackingScaling"
+  resource_id        = aws_appautoscaling_target.ecs_service_scaling_target.resource_id
+  scalable_dimension = aws_appautoscaling_target.ecs_service_scaling_target.scalable_dimension
+  service_namespace  = aws_appautoscaling_target.ecs_service_scaling_target.service_namespace
 
-#   target_tracking_scaling_policy_configuration {
-#     predefined_metric_specification {
-#       predefined_metric_type = "ECSServiceAverageCPUUtilization"
-#     }
-#     target_value       = var.ecs_service_autoscaling.cpu_target_value
-#     scale_in_cooldown  = 60
-#     scale_out_cooldown = 60
-#   }
-# }
+  target_tracking_scaling_policy_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ECSServiceAverageCPUUtilization"
+    }
+    target_value       = var.ecs_service_autoscaling.cpu_target_value
+    disable_scale_in   = var.ecs_service_autoscaling.disable_scale_in
+    scale_in_cooldown  = 300
+    scale_out_cooldown = 30
+  }
+}
 
 # resource "aws_appautoscaling_policy" "ecs_memory_scaling_policy" {
 #   count              = try(var.ecs_service_autoscaling.memory_target_value, 0) != 0 ? 1 : 0
@@ -180,7 +181,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
 #   resource_id        = aws_appautoscaling_target.ecs_service_scaling_target.resource_id
 #   scalable_dimension = aws_appautoscaling_target.ecs_service_scaling_target.scalable_dimension
 #   service_namespace  = aws_appautoscaling_target.ecs_service_scaling_target.service_namespace
-
+#
 #   target_tracking_scaling_policy_configuration {
 #     predefined_metric_specification {
 #       predefined_metric_type = "ECSServiceAverageMemoryUtilization"

@@ -70,6 +70,7 @@
   { "productInitials": "CIN", "replicate": true, "type": "collected" },
   { "productInitials": "CHD", "replicate": true, "type": "incentive" },
   { "productInitials": "A18", "replicate": true, "type": "raffle" },
-  { "productInitials": "CHC", "replicate": true, "type": "chance" },
-  { "productInitials": "RIL", "replicate": true, "type": "raspa" }
+  { "productInitials": "ICN", "replicate": true, "type": "chance" },
+  { "productInitials": "PMN", "replicate": true, "type": "chance" },
+  { "productInitials": "CHC", "replicate": true, "type": "chance" }
 ]

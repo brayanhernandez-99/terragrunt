@@ -143,6 +143,13 @@ inputs = {
     }
   }
 
+  ecs_service_autoscaling = {
+    min_capacity        = 1
+    max_capacity        = 40
+    cpu_target_value    = 50
+    memory_target_value = 50
+  }
+
   listener_port = 3000
   nlb_arn       = dependency.load_balancer.outputs.nlb_arn
   target_group_config = {

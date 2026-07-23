@@ -114,6 +114,7 @@ variable "ecs_service_autoscaling" {
     max_capacity        = number
     cpu_target_value    = optional(number)
     memory_target_value = optional(number)
+    disable_scale_in    = optional(bool, false)
   })
   default = null
 }
