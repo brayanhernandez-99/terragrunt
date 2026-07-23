@@ -385,7 +385,7 @@
       "S": "products#get-products-by-subcategories"
     },
     "query": {
-      "S": "SELECT id_product AS idProduct, id_sub_category, id_provider, product_provider_code, name, description, icon, status, created_at, updated_at, product_initials, position, url, iva_tax, bills, bills_sequence, num_ticket\nFROM products.PRODUCTS\nwhere id_sub_category IN ($idSubCategories)"
+      "S": "SELECT id_product AS idProduct, id_sub_category, id_provider, product_provider_code, name, description, icon, status, created_at, updated_at, product_initials, position, url, iva_tax, bills, bills_sequence, num_ticket, product_scope\nFROM products.PRODUCTS\nwhere id_sub_category IN ($idSubCategories)\nAND status = 1"
     },
     "type": {
       "S": "database"
