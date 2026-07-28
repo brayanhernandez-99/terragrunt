@@ -1,5 +1,6 @@
 {
   "jsonMaskConfig2": {
+    "attributeNames": [],
     "cardMaskOptions": {
       "maskWith": "*",
       "unmaskedStartCharacters": 2,
@@ -21,7 +22,11 @@
       "model.prints[*].model.client.emailClient",
       "data.model.prints[*].model.client.emailClient",
       "model.user.email",
-      "model.client.email"
+      "model.client.email",
+      "model.client.emailClient2",
+      "model.data.model.client.emailClient",
+      "model.data.model.client.emailClient2",
+      "model.data.model.client.email"
     ],
     "passwordMaskOptions": {
       "maskWith": "*",
@@ -52,7 +57,11 @@
       "data.model.prints[*].model.client.phoneNumberClient",
       "model.user.phoneNumber",
       "model.phoneNumber",
-      "model.client.phoneNumber"
+      "model.client.phoneNumber",
+      "model.client.phoneNumberClient2",
+      "model.data.model.client.phoneNumberClient",
+      "model.data.model.client.phoneNumberClient2",
+      "model.data.model.client.phoneNumber"
     ],
     "stringMaskOptions": {
       "maskWith": "*",
@@ -152,7 +161,30 @@
       "model.data.model.items[*].numberSecurity",
       "model.data.operations[*].superStarDetails[*].number",
       "model.prints[*].operation.superStarDetails[*].number",
-      "model.prints[*].operation.numberSecurity"
+      "model.prints[*].operation.numberSecurity",
+      "model.client.identificationNumber2",
+      "operations[*].ticket.saleKey",
+      "model.operation.ticket.saleKey",
+      "model.data.model.client.identificationNumber",
+      "model.data.model.client.identificationNumber2",
+      "model.data.operations[*].ticket.saleKey",
+      "model.prints[*].operation.ticket.saleKey",
+      "model.data.operations[*].ticket.draw.serialTicket",
+      "model.prints[*].operation.ticket.draw.serialTicket",
+      "model.data.model.externalResponse.datos.draws[*].serialTicket",
+      "model.scratchSale.saleKey",
+      "model.scratchSale.details[*].componentCode",
+      "model.scratchs[*].componentCode",
+      "model.items[*].componentCode",
+      "model.data.model.scratchSale.details[*].componentCode",
+      "model.data.model.scratchs[*].componentCode",
+      "model.data.model.items[*].componentCode",
+      "model.data.model.scratchSale.saleKey",
+      "model.data.model.scratchSale.details[*].campaing",
+      "model.data.model.scratchs[*].campaing",
+      "model.scratchSale.details[*].campaing",
+      "model.scratchs[*].campaing",
+      "model.data.model.numbersToPlay[*].number"
     ],
     "uuidMaskOptions": {
       "maskWith": "*",
@@ -173,7 +205,8 @@
       "model.data.userId",
       "model.data.user.id",
       "model.userId",
-      "model.prints[*].operation.uuid"
+      "model.prints[*].operation.uuid",
+      "model.scratchSale.scratchSale.idSeller"
     ]
   },
   "stringMaskConfig": {
