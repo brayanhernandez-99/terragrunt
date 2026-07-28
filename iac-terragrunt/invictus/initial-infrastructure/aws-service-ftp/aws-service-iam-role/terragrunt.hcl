@@ -3,7 +3,7 @@ include "root" {
 }
 
 terraform {
-  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-iam-role"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-iam-ftp"
 }
 
 dependency "s3" {
@@ -14,51 +14,6 @@ dependency "s3" {
 }
 
 inputs = {
-  role_name = "ftp-ec2-s3-role"
-
-  assume_role_policy = {
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
-      }
-    ]
-  }
-
-  policy = {
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:PutObject",
-          "s3:GetObject",
-          "s3:DeleteObject",
-          "s3:ListBucket"
-        ]
-        Resource = [
-          dependency.s3.outputs.s3_bucket_arn,
-          "${dependency.s3.outputs.s3_bucket_arn}/*"
-        ]
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "ssm:UpdateInstanceInformation",
-          "ssm:DescribeInstanceProperties",
-          "ssm:DescribeInstanceInformation",
-          "ssm:GetCommandInvocation",
-          "ssm:ListCommands",
-          "ssm:ListCommandInvocations",
-          "ssmmessages:*",
-          "ec2messages:*"
-        ]
-        Resource = "*"
-      }
-    ]
-  }
+  iam_role_name = "ftp-ec2-s3-role"
+  s3_bucket_arn = dependency.s3.outputs.s3_bucket_arn
 }

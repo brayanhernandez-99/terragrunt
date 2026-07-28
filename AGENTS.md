@@ -63,7 +63,10 @@ Standard Terragrunt workflow — no custom scripts/Makefiles in-repo:
 
 | Remote | URL |
 |--------|-----|
-| `origin` | `git@ssh.dev.azure.com:v3/ux-technology/Invictus-Infrastructure/infrastructure-as-code-invictus` 
+| `origin` | `git@ssh.dev.azure.com:v3/ux-technology/Invictus-Infrastructure/infrastructure-as-code-invictus` (Azure DevOps) |
+| `github` | `git@github.com:brayanhernandez-99/terragrunt.git` (GitHub mirror) |
+
+Push a ambos: `git push origin <branch>; git push github <branch>`. Forzar rewrite: `--force`.
 
 ## What's NOT in this repo
 
