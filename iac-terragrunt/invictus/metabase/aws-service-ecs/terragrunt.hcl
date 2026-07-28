@@ -88,6 +88,8 @@ inputs = {
   ecs_task = {
     cpu    = "2048"
     memory = "4096"
+    image  = "${get_aws_account_id()}.dkr.ecr.#{aws_region}#.amazonaws.com/microservice-${local.service}-invictus:latest"
+
     image  = "public.ecr.aws/p0a9i7q5/metabase-starburst:latest"
     portMappings = [
       {
