@@ -21,7 +21,7 @@ dependency "sg" {
 }
 
 dependency "iam" {
-  config_path = "../../../initial-infrastructure/aws-service-ftp/aws-service-iam"
+  config_path = "../../../initial-infrastructure/aws-service-ftp/aws-service-iam-role"
   mock_outputs = {
     instance_profile_name = "instance-profile"
   }
