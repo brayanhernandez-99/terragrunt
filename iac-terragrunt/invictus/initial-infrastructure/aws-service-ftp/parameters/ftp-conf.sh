@@ -100,7 +100,6 @@ max_login_fails=5
 idle_session_timeout=600
 data_connection_timeout=120
 EOF
-    #vsftpd /etc/vsftpd.conf
 
 
 ## Configuración específica para el usuario principal "ftp"
@@ -151,6 +150,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable vsftpd-sync
 sudo systemctl start vsftpd-sync
     # systemctl status vsftpd-sync
+    # vsftpd /etc/vsftpd.conf
 
 
 ## Override del servicio vsftpd en systemd para usar configuración personalizada

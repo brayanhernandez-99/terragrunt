@@ -104,6 +104,18 @@ inputs = {
         value = "metabase"
       },
       {
+        "name" : "MB_DOWNLOAD_ROW_LIMIT",
+        "value" : "1000000"
+      },
+      {
+        "name" : "MB_AGGREGATED_QUERY_ROW_LIMIT",
+        "value" : "1000000"
+      },
+      {
+        "name" : "MB_UNAGGREGATED_QUERY_ROW_LIMIT",
+        "value" : "1000000"
+      },
+      {
         name  = "ENVIRONMENT"
         value = "#{aws_environment}#"
       },
