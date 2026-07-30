@@ -41,5 +41,6 @@ inputs = {
     apiBaseUrl                                  = "#{secret_mipossecret_apiBaseUrl}#"
     endpoint                                    = "webCheckout"
     httpMethod                                  = "POST"
+    externalBaseUrl                             = "#{secret_mipossecret_externalBaseUrl}#"
   }
 }
