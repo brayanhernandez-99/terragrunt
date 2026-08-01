@@ -33,16 +33,7 @@
       "1direct",
       "2direct",
       "3direct",
-      "4direct",
-      "incentive",
-      "placas",
-      "balls",
-      "order",
-      "optionsElementFilter",
-      "selectedItemElementDescription",
-      "selectedItemElementDescriptionImpre",
-      "sellersFindById",
-      "selections"
+      "4direct"
     ],
     "cardMaskOptions": {
       "maskWith": "*",
@@ -86,9 +77,7 @@
       "model.externalResponse.datos.boards[*].selections[*]",
       "model.data.user.idsHierarchies[*]",
       "user.idsHierarchies",
-      "model.numbers[*]",
-      "model.options.prev",
-      "model.options.next"
+      "model.numbers[*]"
     ],
     "uuidMaskOptions": {
       "maskWith": "*",
@@ -108,7 +97,7 @@
     ]
   },
   "stringMaskConfig": {
-    "stringFields": ["AES_ENCRYPT", "number", "incentive_value", "ID_USER"],
+    "stringFields": ["AES_ENCRYPT", "number"],
     "stringMaskOptions": {
       "maskWith": "*",
       "unmaskedStartCharacters": 4,
