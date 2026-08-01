@@ -47,21 +47,14 @@
       "unmaskedEndCharactersAfterAt": 2,
       "maskAtTheRate": false
     },
-    "emailFields": [
-      "email",
-      "emailClient",
-      "emailClient2"
-    ],
+    "emailFields": ["email", "emailClient", "emailClient2"],
     "passwordMaskOptions": {
       "maskWith": "*",
       "maxMaskedCharacters": 10,
       "unmaskedStartCharacters": 0,
       "unmaskedEndCharacters": 0
     },
-    "passwordFields": [
-      "password",
-      "print"
-    ],
+    "passwordFields": ["password", "print"],
     "phoneMaskOptions": {
       "maskWith": "*",
       "unmaskedStartCharacters": 2,
@@ -104,17 +97,12 @@
     ]
   },
   "stringMaskConfig": {
-    "stringFields": [
-      "AES_ENCRYPT",
-      "number"
-    ],
+    "stringFields": ["AES_ENCRYPT", "number"],
     "stringMaskOptions": {
       "maskWith": "*",
       "unmaskedStartCharacters": 4,
       "unmaskedEndCharacters": 2
     }
   },
-  "maskEntireJsonFields": [
-    "model.secretValue"
-  ]
+  "maskEntireJsonFields": ["model.secretValue"]
 }
