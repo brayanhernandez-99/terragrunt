@@ -35,6 +35,7 @@
   { "productInitials": "CDP", "replicate": true, "type": "collected" },
   { "productInitials": "CXR", "replicate": true, "type": "collected" },
   { "productInitials": "BN4", "replicate": true, "type": "chance" },
+  { "productInitials": "BN3", "replicate": true, "type": "chance" },
   { "productInitials": "MPO", "replicate": true, "type": "package" },
   { "productInitials": "MNJ", "replicate": true, "type": "package" },
   { "productInitials": "AWQ", "replicate": true, "type": "package" },
