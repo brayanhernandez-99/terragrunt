@@ -61,5 +61,16 @@
   { "productInitials": "IT3", "replicate": true, "type": "chance" },
   { "productInitials": "IT4", "replicate": true, "type": "chance" },
   { "productInitials": "IT5", "replicate": true, "type": "chance" },
-  { "productInitials": "CHC", "replicate": true, "type": "chance" }
+  { "productInitials": "CHC", "replicate": true, "type": "chance" },
+  { "productInitials": "ACL", "replicate": true, "type": "collected" },
+  { "productInitials": "RAV", "replicate": true, "type": "collected" },
+  { "productInitials": "TLN", "replicate": true, "type": "collected" },
+  { "productInitials": "STR", "replicate": true, "type": "collected" },
+  { "productInitials": "AAT", "replicate": true, "type": "collected" },
+  { "productInitials": "RCG", "replicate": true, "type": "collected" },
+  { "productInitials": "DLO", "replicate": true, "type": "collected" },
+  { "productInitials": "DAF", "replicate": true, "type": "collected" },
+  { "productInitials": "GUA", "replicate": true, "type": "collected" },
+  { "productInitials": "RSI", "replicate": true, "type": "collected" },
+  { "productInitials": "RFX", "replicate": true, "type": "collected" }
 ]

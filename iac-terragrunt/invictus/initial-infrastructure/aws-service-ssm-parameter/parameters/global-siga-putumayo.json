@@ -59,6 +59,7 @@
   { "productInitials": "CHO", "replicate": true, "type": "genericPayment" },
   { "productInitials": "RFC", "replicate": true, "type": "collected" },
   { "productInitials": "DCA", "replicate": true, "type": "collected" },
+  { "productInitials": "ACL", "replicate": true, "type": "collected" },
   { "productInitials": "DNU", "replicate": true, "type": "collected" },
   { "productInitials": "RFX", "replicate": true, "type": "collected" },
   { "productInitials": "RCS", "replicate": true, "type": "collected" },
