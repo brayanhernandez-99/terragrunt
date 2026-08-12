@@ -18,7 +18,7 @@ dependency "sqs_dlq" {
 }
 
 inputs = {
-  queue_name                  = "ConciliationSivical"
+  queue_name                  = "${title(local.service)}Sivical"
   visibility_timeout_seconds  = 30 #30 segundos
   message_retention_seconds   = 345600
   max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
