@@ -12,7 +12,7 @@ terraform {
 
 inputs = {
   queue_name                  = "${title(local.service)}"
-  visibility_timeout_seconds  = 30
+  visibility_timeout_seconds  = 30 #30 segundos
   message_retention_seconds   = 345600
   max_message_size            = 1048576
   delay_seconds               = 0

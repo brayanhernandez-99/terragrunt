@@ -3,22 +3,15 @@ include "root" {
 }
 
 locals {
-  service = "${basename(dirname(get_terragrunt_dir()))}"
+  service = basename(dirname(get_terragrunt_dir()))
 }
 
 terraform {
-  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sqs-dlq"
-}
-
-dependency "sqs_dlq" {
-  config_path = "../aws-service-sqs-dlq"
-  mock_outputs = {
-    queue_arn = "arn:aws:sqs:us-east-1:123456789012:queue"
-  }
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-sqs"
 }
 
 inputs = {
-  queue_name                  = "${title(local.service)}"
+  queue_name                  = "GenericServices-dlq"
   visibility_timeout_seconds  = 30 #30 segundos
   message_retention_seconds   = 345600
   max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
@@ -26,7 +19,5 @@ inputs = {
   receive_wait_time_seconds   = 0
   fifo_queue                  = false
   content_based_deduplication = false
-  dlq_arn                     = dependency.sqs_dlq.outputs.queue_arn
-  maxReceiveCount             = 5
   kms_master_key_id           = "#{aws_kms_master_key_id}#" #varia segun el ambiente (SQS/Encryption/CMK alias)
 }

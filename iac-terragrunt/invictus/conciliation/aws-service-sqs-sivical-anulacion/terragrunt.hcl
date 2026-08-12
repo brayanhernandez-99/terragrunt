@@ -11,8 +11,8 @@ terraform {
 }
 
 inputs = {
-  queue_name                  = "ConciliationSivicalAnulacionSinInsercion"
-  visibility_timeout_seconds  = 30
+  queue_name                  = "${title(local.service)}SivicalAnulacionSinInsercion"
+  visibility_timeout_seconds  = 30 #30 segundos
   message_retention_seconds   = 345600
   max_message_size            = 1048576 # Tamaño máximo de mensaje en bytes (1024 KB)
   delay_seconds               = 0
