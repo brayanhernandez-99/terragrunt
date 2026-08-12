@@ -14,10 +14,10 @@ variable "description" {
 }
 
 
-variable "is_enabled" {
-  description = "Indica si el EventBridge Scheduler debe estar habilitado. Si es null, no se gestiona el estado."
-  type        = bool
-  default     = null
+variable "state" {
+  description = "Indica si el EventBridge Scheduler debe estar habilitado."
+  type        = string
+  default     = "ENABLED"
 }
 
 variable "aws_account_id" {
