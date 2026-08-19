@@ -32,6 +32,7 @@ inputs = {
   iam_role_arn        = dependency.iam_role.outputs.role_arn
   kinesis_name        = "Collected"
   schedule_expression = "cron(*/0 1-1/1 * * ? *)"
+  state               = "DISABLED"
   payload = {
     model = {
       idConfiguration = 7
