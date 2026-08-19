@@ -14,6 +14,12 @@ variable "description" {
 }
 
 
+variable "state" {
+  description = "Indica si el EventBridge Scheduler debe estar habilitado."
+  type        = string
+  default     = "ENABLED"
+}
+
 variable "aws_account_id" {
   description = "AWS Account ID para la política KMS"
   type        = string
