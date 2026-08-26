@@ -141,8 +141,8 @@ resource "aws_lb_listener" "nlb_listener" {
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
-  name              = "/aws-ecs/${var.name_service}"
-  retention_in_days = 30
+  name = "/aws-ecs/${var.name_service}"
+  # retention_in_days = 30
 }
 
 resource "aws_appautoscaling_target" "ecs_service_scaling_target" {
