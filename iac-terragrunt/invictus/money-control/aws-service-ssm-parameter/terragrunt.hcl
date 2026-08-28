@@ -44,17 +44,5 @@ inputs = {
       value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     }
-    KINESIS_POLL_DELAY = {
-      type        = "String"
-      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_POLL_DELAY"
-      value       = "500"
-      description = "kinesis poll delay"
-    }
-    KINESIS_LIMIT = {
-      type        = "String"
-      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_LIMIT"
-      value       = "10000"
-      description = "Kinesis limit"
-    }
   }
 }
