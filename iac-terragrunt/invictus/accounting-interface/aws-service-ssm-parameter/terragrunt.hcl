@@ -24,6 +24,13 @@ dependency "secret_manager" {
   }
 }
 
+dependency "iam_role" {
+  config_path = "../../initial-infrastructure/aws-service-event-bridge/event-bridge-iam-role"
+  mock_outputs = {
+    role_name = "iam-role"
+  }
+}
+
 inputs = {
   ssm_parameters = {
     PRODUCER_BASE_URL = {
@@ -43,6 +50,24 @@ inputs = {
       name        = "/${upper(replace(local.service, "-", "_"))}/DB_SECRET"
       value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
+    }
+    SCHEDULE_ROL = {
+      type        = "String"
+      name        = "/${upper(replace(local.service, "-", "_"))}/SCHEDULE_ROL"
+      value       = dependency.iam_role.outputs.role_name
+      description = "Nombre del IAM Role"
+    }
+    KINESIS_POLL_DELAY = {
+      type        = "String"
+      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_POLL_DELAY"
+      value       = "500"
+      description = "kinesis poll delay"
+    }
+    KINESIS_LIMIT = {
+      type        = "String"
+      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_LIMIT"
+      value       = "10000"
+      description = "Kinesis limit"
     }
   }
 }
