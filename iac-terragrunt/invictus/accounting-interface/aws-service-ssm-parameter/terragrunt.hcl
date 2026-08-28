@@ -24,47 +24,48 @@ dependency "secret_manager" {
   }
 }
 
+dependency "iam_role" {
+  config_path = "../../initial-infrastructure/aws-service-event-bridge/event-bridge-iam-role"
+  mock_outputs = {
+    role_name = "iam-role"
+  }
+}
+
 inputs = {
   ssm_parameters = {
     PRODUCER_BASE_URL = {
       type        = "String"
-      name        = "/GLOBAL/PRODUCER_${upper(local.service)}_BASE_URL"
+      name        = "/GLOBAL/PRODUCER_${upper(replace(local.service, "-", "_"))}_BASE_URL"
       value       = "http://${local.service}.${dependency.cloudmap.outputs.cloudmap_namespace_name}:8080/"
       description = "Endpoint base del servicio expuesto a través de Cloudmap"
     }
     LOG_LEVEL = {
       type        = "String"
-      name        = "/${upper(local.service)}/LOGLEVEL"
+      name        = "/${upper(replace(local.service, "-", "_"))}/LOGLEVEL"
       value       = "#{parameter_log_level}#"
       description = "Nivel de log de ${local.service}"
     }
     DB_SECRET = {
       type        = "String"
-      name        = "/${upper(local.service)}/DB_SECRET"
+      name        = "/${upper(replace(local.service, "-", "_"))}/DB_SECRET"
       value       = dependency.secret_manager.outputs.secret_name
       description = "Secreto de la base de datos de ${local.service}"
     }
-    EXPIRATION_TIME = {
+    SCHEDULE_ROL = {
       type        = "String"
-      name        = "/${upper(local.service)}/EXPIRATION_TIME"
-      value       = "28800"
-      description = "Tiempo de expiración del token de sesión."
-    }
-    SECURITY_BUCKET_NAME = {
-      type        = "String"
-      name        = "/${upper(local.service)}/BUCKET_NAME"
-      value       = "security-images-${get_aws_account_id()}"
-      description = "name bucket security"
+      name        = "/${upper(replace(local.service, "-", "_"))}/SCHEDULE_ROL"
+      value       = dependency.iam_role.outputs.role_name
+      description = "Nombre del IAM Role"
     }
     KINESIS_POLL_DELAY = {
       type        = "String"
-      name        = "/${upper(local.service)}/KINESIS_POLL_DELAY"
+      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_POLL_DELAY"
       value       = "500"
       description = "kinesis poll delay"
     }
     KINESIS_LIMIT = {
       type        = "String"
-      name        = "/${upper(local.service)}/KINESIS_LIMIT"
+      name        = "/${upper(replace(local.service, "-", "_"))}/KINESIS_LIMIT"
       value       = "10000"
       description = "Kinesis limit"
     }
