@@ -230,6 +230,13 @@ dependency "secret_restrictive_lists" {
   }
 }
 
+dependency "secret_accounting_interface" {
+  config_path = "../../../accounting-interface/aws-service-secret-manager"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
+
 inputs = {
   role_name = "rds-proxy-invictus-role"
 
@@ -287,7 +294,8 @@ inputs = {
           dependency.secret_sellers.outputs.secret_arn,
           dependency.secret_shopping_cart.outputs.secret_arn,
           dependency.secret_wiretransfer.outputs.secret_arn,
-          dependency.secret_restrictive_lists.outputs.secret_arn
+          dependency.secret_restrictive_lists.outputs.secret_arn,
+          dependency.secret_accounting_interface.outputs.secret_arn
         ]
       }
     ]
