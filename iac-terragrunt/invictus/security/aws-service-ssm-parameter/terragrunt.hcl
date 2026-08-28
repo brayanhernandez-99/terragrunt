@@ -56,5 +56,17 @@ inputs = {
       value       = "security-images-${get_aws_account_id()}"
       description = "name bucket security"
     }
+    KINESIS_POLL_DELAY = {
+      type        = "String"
+      name        = "/${upper(local.service)}/KINESIS_POLL_DELAY"
+      value       = "500"
+      description = "kinesis poll delay"
+    }
+    KINESIS_LIMIT = {
+      type        = "String"
+      name        = "/${upper(local.service)}/KINESIS_LIMIT"
+      value       = "10000"
+      description = "Kinesis limit"
+    }
   }
 }
