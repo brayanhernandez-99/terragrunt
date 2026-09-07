@@ -30,7 +30,7 @@ function handler(event) {
       "style-src 'self' 'unsafe-inline'; " +
       "style-src-elem 'self' https://*.#{aws_domain_certificate}#; " +
       "font-src 'self' data:; " +
-      "img-src 'self' data: https://*.amazonaws.com; " +
+      "img-src 'self' data: https://*.#{aws_domain_certificate}#; " +
       "frame-src 'self' https://*.#{aws_domain_certificate}# https://uxtechnology.atlassian.net; " +
       "connect-src 'self' https://*.amazonaws.com https://*.#{aws_domain_certificate}#"
   };
