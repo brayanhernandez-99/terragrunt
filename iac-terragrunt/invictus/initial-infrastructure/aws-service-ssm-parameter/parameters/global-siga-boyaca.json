@@ -39,5 +39,6 @@
   { "productInitials": "BLT", "replicate": true, "type": "wager" },
   { "productInitials": "MLT", "replicate": true, "type": "wager" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
-  { "productInitials": "KEN", "replicate": true, "type": "keno" }
+  { "productInitials": "KEN", "replicate": true, "type": "keno" },
+  { "productInitials": "OTI", "replicate": true, "type": "collected" }
 ]
