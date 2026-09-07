@@ -78,5 +78,9 @@
   { "productInitials": "RT2", "replicate": true, "type": "recharge" },
   { "productInitials": "RNB", "replicate": true, "type": "genericPayment" },
   { "productInitials": "DCC", "replicate": true, "type": "genericPayment" },
-  { "productInitials": "PCB", "replicate": true, "type": "package" }
+  { "productInitials": "PCB", "replicate": true, "type": "package" },
+  { "productInitials": "LTM", "replicate": true, "type": "LotteriePayments" },
+  { "productInitials": "MED", "replicate": true, "type": "LotteriePayments" },
+  { "productInitials": "TGR", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "PVD", "replicate": true, "type": "collected" }
 ]
