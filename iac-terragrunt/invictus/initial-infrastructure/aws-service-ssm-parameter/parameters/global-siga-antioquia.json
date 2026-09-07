@@ -1,9 +1,12 @@
 [
   { "productInitials": "CHA", "replicate": true, "type": "chance" },
+  { "productInitials": "CHG", "replicate": true, "type": "chanceGoleador" },
   { "productInitials": "CHT", "replicate": true, "type": "chance" },
   { "productInitials": "BCH", "replicate": true, "type": "chance" },
   { "productInitials": "CHU", "replicate": true, "type": "chance" },
   { "productInitials": "INC", "replicate": true, "type": "incentive" },
+  { "productInitials": "ICN", "replicate": true, "type": "incentive" },
+  { "productInitials": "PMN", "replicate": true, "type": "incentive" },
   { "productInitials": "B3C", "replicate": true, "type": "chance" },
   { "productInitials": "INM", "replicate": true, "type": "incentive" },
   { "productInitials": "CHE", "replicate": true, "type": "incentive" },
@@ -36,6 +39,7 @@
   { "productInitials": "CDP", "replicate": true, "type": "collected" },
   { "productInitials": "CXR", "replicate": true, "type": "collected" },
   { "productInitials": "BN4", "replicate": true, "type": "chance" },
+  { "productInitials": "BN3", "replicate": true, "type": "chance" },
   { "productInitials": "MPO", "replicate": true, "type": "package" },
   { "productInitials": "MNJ", "replicate": true, "type": "package" },
   { "productInitials": "AWQ", "replicate": true, "type": "package" },
@@ -70,5 +74,6 @@
   { "productInitials": "STE", "replicate": true, "type": "collected" },
   { "productInitials": "CIN", "replicate": true, "type": "collected" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
-  { "productInitials": "KEN", "replicate": true, "type": "keno" }
+  { "productInitials": "KEN", "replicate": true, "type": "keno" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" }
 ]
