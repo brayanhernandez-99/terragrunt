@@ -11,5 +11,5 @@ inputs = {
   enable_object_ownership_controls = true
   object_ownership_type            = "BucketOwnerPreferred"
   enable_public_access_block       = true
-  val_public_access_block          = false # Deja el s3 publico
+  val_public_access_block          = true # Se deja el s3 privado
 }
