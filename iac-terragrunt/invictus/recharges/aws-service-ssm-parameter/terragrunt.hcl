@@ -31,6 +31,55 @@ dependency "secret_manager_flypass" {
   }
 }
 
+dependency "secret_manager_conexred" {
+  config_path = "../aws-service-secret-manager-conexred"
+  mock_outputs = {
+    secret_name = "secret-name"
+  }
+}
+
+dependency "secret_manager_cashin" {
+  config_path = "../aws-service-secret-manager-cashin"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
+
+dependency "secret_manager_pay" {
+  config_path = "../aws-service-secret-manager-pay"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
+
+dependency "secret_manager_recaudos" {
+  config_path = "../aws-service-secret-manager-recaudos"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
+
+dependency "secret_manager_conexred_pines" {
+  config_path = "../aws-service-secret-manager-conexred-pines"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
+
+dependency "secret_manager_bemovil" {
+  config_path = "../aws-service-secret-manager-bemovil"
+  mock_outputs = {
+    secret_name = "secret-name"
+  }
+}
+
+dependency "secret_manager_transferimos" {
+  config_path = "../aws-service-secret-manager-transferimos"
+  mock_outputs = {
+    secret_name = "secret-name"
+  }
+}
+
 inputs = {
   ssm_parameters = {
     PRODUCER_BASE_URL = {
@@ -68,6 +117,60 @@ inputs = {
       name        = "/${upper(local.service)}/FLYPASS_SECRET"
       value       = dependency.secret_manager_flypass.outputs.secret_name
       description = "Nombre del secreto de la informacion de autenticacion con Flypass"
+    }
+    CONEXRED_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_SECRET"
+      value       = dependency.secret_manager_conexred.outputs.secret_name
+      description = "Secreto de conexión de conexred"
+    }
+    CONEXRED_CASHIN_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_CASHIN_SECRET"
+      value       = split("secret:", dependency.secret_manager_cashin.outputs.secret_arn)[1]
+      description = "Nombre del secreto de cash-in"
+    }
+    CONEXRED_SECRET_PAY = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_SECRET_PAY"
+      value       = split("secret:", dependency.secret_manager_pay.outputs.secret_arn)[1]
+      description = "Nombre del secreto de recaudo"
+    }
+    CONEXRED_COLLECTED_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_COLLECTED_SECRET"
+      value       = split("secret:", dependency.secret_manager_recaudos.outputs.secret_arn)[1]
+      description = "Nombre del secreto de recaudo"
+    }
+    CONEXRED_PIN_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_PIN_SECRET"
+      value       = split("secret:", dependency.secret_manager_conexred_pines.outputs.secret_arn)[1]
+      description = "Nombre del secreto de pines"
+    }
+    CONEXRED_READ_TIMEOUT = {
+      type        = "String"
+      name        = "/GLOBAL/CONEXRED_READ_TIMEOUT"
+      value       = "30000"
+      description = "Timeout de conexión de conexred"
+    }
+    BEMOVIL_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/BEMOVIL_SECRET"
+      value       = dependency.secret_manager_bemovil.outputs.secret_name
+      description = "Secreto de conexión de bemovil"
+    }
+    BEMOVIL_READ_TIMEOUT = {
+      type        = "String"
+      name        = "/GLOBAL/BEMOVIL_READ_TIMEOUT"
+      value       = "30000"
+      description = "Timeout de conexión de bemovil"
+    }
+    TRANSFERIMOS_SECRET = {
+      type        = "String"
+      name        = "/GLOBAL/TRANSFERIMOS_SECRET"
+      value       = dependency.secret_manager_transferimos.outputs.secret_name
+      description = "Nombre del secreto del aliado Transferimos"
     }
     KINESIS_POLL_DELAY = {
       type        = "String"

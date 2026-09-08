@@ -3,6 +3,7 @@ resource "aws_scheduler_schedule" "kinesis_scheduler" {
   description                  = var.description
   schedule_expression          = var.schedule_expression
   schedule_expression_timezone = "America/Bogota"
+  state                        = var.state
   kms_key_arn                  = var.kms_key_arn
 
   flexible_time_window {
