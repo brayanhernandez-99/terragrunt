@@ -13,7 +13,6 @@ variable "description" {
   type        = string
 }
 
-
 variable "state" {
   description = "Indica si el EventBridge Scheduler debe estar habilitado."
   type        = string
