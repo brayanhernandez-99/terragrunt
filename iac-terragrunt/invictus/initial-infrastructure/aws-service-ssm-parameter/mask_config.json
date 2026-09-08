@@ -123,6 +123,7 @@
       "model.scratchSale.saleKey",
       "model.scratchSale.details[*].componentCode",
       "model.scratchs[*].componentCode",
+      "model.items[*].componentCode",
       "model.data.model.scratchSale.details[*].componentCode",
       "model.data.model.scratchs[*].componentCode",
       "model.data.model.items[*].componentCode",
