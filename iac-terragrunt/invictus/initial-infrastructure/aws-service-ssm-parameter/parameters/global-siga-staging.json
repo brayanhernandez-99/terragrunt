@@ -85,5 +85,6 @@
   { "productInitials": "PEB", "replicate": true, "type": "package" },
   { "productInitials": "AAT", "replicate": true, "type": "collected" },
   { "productInitials": "RAL", "replicate": true, "type": "collected" },
-  { "productInitials": "RNB", "replicate": true, "type": "genericPayment" }
+  { "productInitials": "RNB", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "RPV", "replicate": true, "type": "collected" }
 ]
