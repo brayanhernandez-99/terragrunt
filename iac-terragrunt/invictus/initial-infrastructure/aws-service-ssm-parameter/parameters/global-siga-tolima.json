@@ -72,5 +72,7 @@
   { "productInitials": "DAF", "replicate": true, "type": "collected" },
   { "productInitials": "GUA", "replicate": true, "type": "collected" },
   { "productInitials": "RSI", "replicate": true, "type": "collected" },
-  { "productInitials": "RFX", "replicate": true, "type": "collected" }
+  { "productInitials": "RFX", "replicate": true, "type": "collected" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

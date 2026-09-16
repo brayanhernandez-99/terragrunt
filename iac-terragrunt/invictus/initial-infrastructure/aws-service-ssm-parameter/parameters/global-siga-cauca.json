@@ -82,5 +82,18 @@
   { "productInitials": "LTB", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
   { "productInitials": "ECX", "replicate": true, "type": "package" },
-  { "productInitials": "RIL", "replicate": true, "type": "raspa" }
+  { "productInitials": "CBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "MBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "TBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "DBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "EBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "WBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "GBM", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "PMB", "replicate": true, "type": "package" },
+  { "productInitials": "PEB", "replicate": true, "type": "package" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAC", "replicate": true, "type": "collected" },
+  { "productInitials": "RER", "replicate": true, "type": "collected" },
+  { "productInitials": "EMT", "replicate": true, "type": "collected" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

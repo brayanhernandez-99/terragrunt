@@ -40,5 +40,7 @@
   { "productInitials": "MLT", "replicate": true, "type": "wager" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
   { "productInitials": "KEN", "replicate": true, "type": "keno" },
-  { "productInitials": "OTI", "replicate": true, "type": "collected" }
+  { "productInitials": "OTI", "replicate": true, "type": "collected" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

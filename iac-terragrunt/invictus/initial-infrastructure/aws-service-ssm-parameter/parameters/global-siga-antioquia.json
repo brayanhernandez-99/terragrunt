@@ -71,9 +71,13 @@
   { "productInitials": "MQP", "replicate": true, "type": "genericPayment" },
   { "productInitials": "RNU", "replicate": true, "type": "collected" },
   { "productInitials": "PBF", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "RNB", "replicate": true, "type": "genericPayment" },
   { "productInitials": "STE", "replicate": true, "type": "collected" },
+  { "productInitials": "TI", "replicate": true, "type": "recharge" },
+  { "productInitials": "PQT", "replicate": true, "type": "package" },
   { "productInitials": "CIN", "replicate": true, "type": "collected" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
   { "productInitials": "KEN", "replicate": true, "type": "keno" },
-  { "productInitials": "RIL", "replicate": true, "type": "raspa" }
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

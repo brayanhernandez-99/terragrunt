@@ -82,5 +82,7 @@
   { "productInitials": "LTM", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "MED", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "TGR", "replicate": true, "type": "cell-recharge" },
-  { "productInitials": "PVD", "replicate": true, "type": "collected" }
+  { "productInitials": "PVD", "replicate": true, "type": "collected" },
+  { "productInitials": "PCP", "replicate": true, "type": "genericPayment" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]
