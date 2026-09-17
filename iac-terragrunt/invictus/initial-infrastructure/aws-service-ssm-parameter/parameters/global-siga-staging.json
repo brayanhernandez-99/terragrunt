@@ -86,5 +86,9 @@
   { "productInitials": "AAT", "replicate": true, "type": "collected" },
   { "productInitials": "RAL", "replicate": true, "type": "collected" },
   { "productInitials": "RNB", "replicate": true, "type": "genericPayment" },
-  { "productInitials": "RPV", "replicate": true, "type": "collected" }
+  { "productInitials": "FCA", "replicate": true, "type": "collected" },
+  { "productInitials": "RPV", "replicate": true, "type": "collected" },
+  { "productInitials": "TRP", "replicate": true, "type": "package" },
+  { "productInitials": "TRN", "replicate": true, "type": "collected" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

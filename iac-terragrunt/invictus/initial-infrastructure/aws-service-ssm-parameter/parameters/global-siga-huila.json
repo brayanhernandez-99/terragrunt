@@ -2,8 +2,9 @@
   { "productInitials": "CHA", "replicate": true, "type": "chance" },
   { "productInitials": "CHT", "replicate": true, "type": "chance" },
   { "productInitials": "BCH", "replicate": true, "type": "chance" },
-  { "productInitials": "ITM", "replicate": true, "type": "chance" },
-  { "productInitials": "ITB", "replicate": true, "type": "chance" },
+  { "productInitials": "IT3", "replicate": true, "type": "chance" },
+  { "productInitials": "IT4", "replicate": true, "type": "chance" },
+  { "productInitials": "IT5", "replicate": true, "type": "chance" },
   { "productInitials": "CHU", "replicate": true, "type": "chance" },
   { "productInitials": "INC", "replicate": true, "type": "incentive" },
   { "productInitials": "B3C", "replicate": true, "type": "chance" },
@@ -80,5 +81,7 @@
   { "productInitials": "OLV", "replicate": true, "type": "collected" },
   { "productInitials": "KEN", "replicate": true, "type": "keno" },
   { "productInitials": "EMT", "replicate": true, "type": "collected" },
-  { "productInitials": "ECC", "replicate": true, "type": "collected" }
+  { "productInitials": "ECC", "replicate": true, "type": "collected" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

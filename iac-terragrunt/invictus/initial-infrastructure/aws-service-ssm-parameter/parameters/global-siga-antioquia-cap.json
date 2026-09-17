@@ -18,7 +18,7 @@
   { "productInitials": "PQM", "replicate": true, "type": "package" },
   { "productInitials": "MOV", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "COM", "replicate": true, "type": "cell-recharge" },
-  { "productInitials": "REC", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "MCA", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "AVA", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "DTV", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "VCX", "replicate": true, "type": "cell-recharge" },
@@ -89,5 +89,6 @@
   { "productInitials": "MAN", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "MET", "replicate": true, "type": "LotteriePayments" },
   { "productInitials": "QUI", "replicate": true, "type": "LotteriePayments" },
-  { "productInitials": "RIS", "replicate": true, "type": "LotteriePayments" }
+  { "productInitials": "RIS", "replicate": true, "type": "LotteriePayments" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

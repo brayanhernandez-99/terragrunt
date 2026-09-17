@@ -72,5 +72,7 @@
   { "productInitials": "VIR", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "MOX", "replicate": true, "type": "package" },
   { "productInitials": "CLT", "replicate": true, "type": "wager" },
-  { "productInitials": "KEN", "replicate": true, "type": "keno" }
+  { "productInitials": "KEN", "replicate": true, "type": "keno" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

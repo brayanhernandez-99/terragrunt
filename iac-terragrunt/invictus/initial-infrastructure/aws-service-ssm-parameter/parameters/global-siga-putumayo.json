@@ -82,5 +82,7 @@
   { "productInitials": "DTX", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "CHC", "replicate": true, "type": "chance" },
   { "productInitials": "BN4", "replicate": true, "type": "chance" },
-  { "productInitials": "BN3", "replicate": true, "type": "chance" }
+  { "productInitials": "BN3", "replicate": true, "type": "chance" },
+  { "productInitials": "RIL", "replicate": true, "type": "raspa" },
+  { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]
