@@ -22,8 +22,7 @@ inputs = {
   comment                = "Distribución de CloudFront"
   acm_certificate_arn    = "#{aws_arn_certificate}#"
   aws_cloudfront_tags = {
-    Name    = "download",
-    Project = "cloudfront-download"
+    Name = "download"
   }
   viewer_protocol_policy = "redirect-to-https"
   cookies_forward        = "none"

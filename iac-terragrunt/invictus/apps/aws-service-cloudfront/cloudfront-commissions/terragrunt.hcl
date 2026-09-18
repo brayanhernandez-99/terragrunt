@@ -37,8 +37,7 @@ inputs = {
   comment                = "Distribución de CloudFront"
   acm_certificate_arn    = "#{aws_arn_certificate}#"
   aws_cloudfront_tags = {
-    Name    = "commissions",
-    Project = "cloudfront-commissions"
+    Name = "commissions"
   }
   viewer_protocol_policy = "redirect-to-https"
   default_root_object    = "index.html"
