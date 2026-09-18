@@ -23,8 +23,7 @@ inputs = {
   comment                = "Distribución de CloudFront"
   acm_certificate_arn    = "#{aws_arn_certificate}#"
   aws_cloudfront_tags = {
-    Name    = "assets",
-    Project = "cloudfront-assets"
+    Name = "assets"
   }
   viewer_protocol_policy = "redirect-to-https"
   cookies_forward        = "none"

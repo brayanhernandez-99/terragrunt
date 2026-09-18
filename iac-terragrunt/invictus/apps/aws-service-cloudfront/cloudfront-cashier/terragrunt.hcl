@@ -37,8 +37,7 @@ inputs = {
   comment                = "Distribución de CloudFront"
   acm_certificate_arn    = "#{aws_arn_certificate}#"
   aws_cloudfront_tags = {
-    Name    = "cashier",
-    Project = "cloudfront-cashier"
+    Name = "cashier"
   }
   viewer_protocol_policy = "redirect-to-https"
   default_root_object    = "index.html"
