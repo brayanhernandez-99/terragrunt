@@ -76,8 +76,8 @@ inputs = {
   ecs_task_role_arn           = dependency.task_role.outputs.role_arn
 
   ecs_task = {
-    cpu    = "2048"
-    memory = "4096"
+    cpu    = "8192"
+    memory = "16384"
     image  = "861262569826.dkr.ecr.us-east-1.amazonaws.com/microservice-${local.service}-#{aws_container_image}#:latest"
     portMappings = [
       {
