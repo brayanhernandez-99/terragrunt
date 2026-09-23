@@ -1,8 +1,3 @@
-output "quota_arn" {
-  description = "ARN de la cuota de AWS configurada"
-  value       = aws_servicequotas_service_quota.quota.quota_arn
-}
-
 output "service_code" {
   description = "Código del servicio de AWS"
   value       = aws_servicequotas_service_quota.quota.service_code
