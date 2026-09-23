@@ -13,6 +13,11 @@ variable "api_endpoint_type" {
   type        = string
 }
 
+variable "timeout_milliseconds" {
+  description = "API Gateway integration timeout in milliseconds"
+  type        = number
+}
+
 variable "vpc_link" {
   description = "VPC link asociado a la api gateway"
   type        = string
@@ -31,10 +36,4 @@ variable "nlb_listener" {
 variable "role_arn" {
   type        = string
   description = "ARN del IAM Role"
-}
-
-variable "timeout_milliseconds" {
-  description = "API Gateway integration timeout in milliseconds"
-  type        = number
-  default     = 29000
 }
