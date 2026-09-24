@@ -47,6 +47,7 @@ resource "aws_api_gateway_integration" "any_integration" {
   integration_http_method = "ANY"
   connection_type         = "VPC_LINK"
   connection_id           = var.vpc_link
+  timeout_milliseconds    = var.timeout_milliseconds
 
   uri = "http://${var.nlb_dns_name}:${var.nlb_listener}"
 }
@@ -59,6 +60,7 @@ resource "aws_api_gateway_integration" "proxy_any_integration" {
   integration_http_method = "ANY"
   connection_type         = "VPC_LINK"
   connection_id           = var.vpc_link
+  timeout_milliseconds    = var.timeout_milliseconds
 
   uri = "http://${var.nlb_dns_name}:${var.nlb_listener}/{proxy}"
 

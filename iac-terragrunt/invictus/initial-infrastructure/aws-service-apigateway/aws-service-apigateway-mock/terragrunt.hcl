@@ -28,11 +28,12 @@ dependency "vpc_link" {
 }
 
 inputs = {
-  api_name          = "#{aws_api_name_mock}#"
-  stage_name        = "prod"
-  api_endpoint_type = "REGIONAL"
-  nlb_listener      = "3001"
-  nlb_dns_name      = dependency.load_balancer.outputs.nlb_dns_name
-  vpc_link          = dependency.vpc_link.outputs.vpc_link_id
-  role_arn          = dependency.iam_role.outputs.role_arn
+  api_name             = "#{aws_api_name_mock}#"
+  stage_name           = "prod"
+  api_endpoint_type    = "REGIONAL"
+  timeout_milliseconds = 29000
+  nlb_listener         = "3001"
+  nlb_dns_name         = dependency.load_balancer.outputs.nlb_dns_name
+  vpc_link             = dependency.vpc_link.outputs.vpc_link_id
+  role_arn             = dependency.iam_role.outputs.role_arn
 }

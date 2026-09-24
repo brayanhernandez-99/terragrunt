@@ -13,18 +13,23 @@ variable "api_endpoint_type" {
   type        = string
 }
 
+variable "timeout_milliseconds" {
+  description = "API Gateway integration timeout in milliseconds"
+  type        = number
+}
+
 variable "vpc_link" {
-  description = "vpc link asociado a la api gateway"
+  description = "VPC link asociado a la api gateway"
   type        = string
 }
 
 variable "nlb_dns_name" {
-  description = "dns del load balancer"
+  description = "DNS del load balancer"
   type        = string
 }
 
 variable "nlb_listener" {
-  description = "listener del load balancer"
+  description = "Listener del load balancer"
   type        = string
 }
 
