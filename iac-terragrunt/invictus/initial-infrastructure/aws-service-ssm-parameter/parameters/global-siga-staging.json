@@ -89,6 +89,6 @@
   { "productInitials": "FCA", "replicate": true, "type": "collected" },
   { "productInitials": "RPV", "replicate": true, "type": "collected" },
   { "productInitials": "TRP", "replicate": true, "type": "package" },
-  { "productInitials": "TRN", "replicate": true, "type": "collected" },
+  { "productInitials": "TRN", "replicate": true, "type": "cell-recharge" },
   { "productInitials": "RAL", "replicate": true, "type": "collected" }
 ]

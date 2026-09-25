@@ -42,5 +42,11 @@
   { "productInitials": "KEN", "replicate": true, "type": "keno" },
   { "productInitials": "OTI", "replicate": true, "type": "collected" },
   { "productInitials": "RIL", "replicate": true, "type": "raspa" },
-  { "productInitials": "RAL", "replicate": true, "type": "collected" }
+  { "productInitials": "RAL", "replicate": true, "type": "collected" },
+  { "productInitials": "IT5", "replicate": true, "type": "chance" },
+  { "productInitials": "EBS", "replicate": true, "type": "collected" },
+  { "productInitials": "FSF", "replicate": true, "type": "collected" },
+  { "productInitials": "ONE", "replicate": true, "type": "collected" },
+  { "productInitials": "ACC", "replicate": true, "type": "collected" },
+  { "productInitials": "COP", "replicate": true, "type": "collected" }
 ]
