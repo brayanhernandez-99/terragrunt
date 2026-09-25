@@ -112,12 +112,37 @@ resource "aws_api_gateway_integration_response" "proxy_options_integration_respo
 }
 
 resource "aws_api_gateway_deployment" "deployment_api" {
+  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+
   depends_on = [
     aws_api_gateway_integration.any_integration,
     aws_api_gateway_integration.proxy_any_integration,
-    aws_api_gateway_integration.proxy_options_integration
+    aws_api_gateway_integration.proxy_options_integration,
+    aws_api_gateway_integration_response.proxy_options_integration_response
   ]
-  rest_api_id = aws_api_gateway_rest_api.api_gateway.id
+
+  triggers = {
+    redeployment = sha1(jsonencode({
+      timeout_milliseconds = var.timeout_milliseconds
+      nlb_dns_name         = var.nlb_dns_name
+      nlb_listener         = var.nlb_listener
+      vpc_link             = var.vpc_link
+
+      proxy_resource = aws_api_gateway_resource.proxy_resource.id
+
+      root_any_method      = aws_api_gateway_method.root_any.id
+      proxy_any_method     = aws_api_gateway_method.proxy_any.id
+      proxy_options_method = aws_api_gateway_method.proxy_options.id
+
+      root_integration    = aws_api_gateway_integration.any_integration.id
+      proxy_integration   = aws_api_gateway_integration.proxy_any_integration.id
+      options_integration = aws_api_gateway_integration.proxy_options_integration.id
+
+      options_method_response      = aws_api_gateway_method_response.proxy_options_response.id
+      options_integration_response = aws_api_gateway_integration_response.proxy_options_integration_response.id
+    }))
+  }
+
   lifecycle {
     create_before_destroy = true
   }
