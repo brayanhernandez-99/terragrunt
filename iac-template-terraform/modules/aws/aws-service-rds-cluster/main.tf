@@ -63,7 +63,7 @@ resource "aws_rds_cluster" "rds" {
   db_cluster_parameter_group_name       = aws_rds_cluster_parameter_group.custom_cluster_pg.name
   performance_insights_enabled          = true
   database_insights_mode                = "standard"
-  performance_insights_retention_period = 7
+  performance_insights_retention_period = 365
   monitoring_role_arn                   = aws_iam_role.rds_invictus_monitoring_role.arn
   monitoring_interval                   = 60
   enabled_cloudwatch_logs_exports = [
