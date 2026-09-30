@@ -9,5 +9,5 @@ terraform {
 inputs = {
   service_code = "apigateway"
   quota_code   = "L-E5AE38E3"
-  quota_value  = 120000
+  quota_value  = 600000
 }
