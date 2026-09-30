@@ -30,7 +30,7 @@ dependency "vpc_link" {
 dependency "apigateway_quota" {
   config_path = "../aws-service-apigateway-quota"
   mock_outputs = {
-    quota_value = "29000"
+    quota_value = 300000
   }
 }
 
@@ -38,7 +38,7 @@ inputs = {
   api_name             = "#{aws_api_name_metabase}#"
   stage_name           = "prod"
   api_endpoint_type    = "REGIONAL"
-  timeout_milliseconds = dependency.apigateway_quota.quota_value
+  timeout_milliseconds = dependency.apigateway_quota.outputs.quota_value
   nlb_listener         = "3000"
   nlb_dns_name         = dependency.load_balancer.outputs.nlb_dns_name
   vpc_link             = dependency.vpc_link.outputs.vpc_link_id
