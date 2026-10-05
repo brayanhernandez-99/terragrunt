@@ -43,21 +43,6 @@ inputs = {
             "AWS:SourceArn" = dependency.cloudfront.outputs.cloudfront_arn
           }
         }
-      },
-      {
-        Sid    = "AllowPipelineUpload"
-        Effect = "Allow"
-        Principal = {
-          AWS = "arn:aws:iam::${get_aws_account_id()}:user/User-pipeline"
-        }
-        Action = [
-          "s3:PutObject",
-          "s3:AbortMultipartUpload"
-        ]
-        Resource = [
-          "arn:aws:s3:::${dependency.s3.outputs.s3_bucket_name}/app/*"
-        ]
       }
-    ]
   }
 }
