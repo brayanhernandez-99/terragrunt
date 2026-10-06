@@ -28,6 +28,7 @@ dependency "rds_proxy" {
   }
 }
 
+# Los secretos a la RDS se deben de asociar al RDS PROXY, al role del PROXY y desplegar ambos
 inputs = {
   secret_name        = "${local.service}-relational-rds-secret"
   secret_description = "Secretos de la base de datos de ${local.service}"
