@@ -86,5 +86,6 @@
   { "productInitials": "PCP", "replicate": true, "type": "genericPayment" },
   { "productInitials": "RAL", "replicate": true, "type": "collected" },
   { "productInitials": "TRP", "replicate": true, "type": "package" },
-  { "productInitials": "TRN", "replicate": true, "type": "cell-recharge" }
+  { "productInitials": "TRN", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "REL", "replicate": true, "type": "collected" }
 ]
