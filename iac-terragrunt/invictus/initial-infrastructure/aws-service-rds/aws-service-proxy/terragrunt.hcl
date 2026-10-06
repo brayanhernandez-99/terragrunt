@@ -38,6 +38,7 @@ inputs = {
   connection_borrow_timeout    = 120
 
   secret_names = [
+    # "accounting-interface-relational-rds-secret",
     "astro-relational-rds-secret",
     "awards-relational-rds-secret",
     "biometrics-relational-rds-secret",
@@ -46,8 +47,8 @@ inputs = {
     "credits-relational-rds-secret",
     "dynamic-storage-relational-rds-secret",
     "external-wager-relational-rds-secret",
-    "hierarchies-relational-rds-secret",
     "generic-services-relational-rds-secret",
+    "hierarchies-relational-rds-secret",
     "lotteries-relational-rds-secret",
     "lotteries-games-relational-rds-secret",
     "lotteries-games-admin-relational-rds-secret",
@@ -65,11 +66,11 @@ inputs = {
     "raspa-relational-rds-secret",
     "recharges-relational-rds-secret",
     "remittances-relational-rds-secret",
+    # "restrictive-lists-relational-rds-secret",
+    # "scheduler-relational-rds-secret",
     "security-relational-rds-secret",
     "sellers-relational-rds-secret",
     "shopping-cart-relational-rds-secret",
-    "wiretransfer-relational-rds-secret",
-    "restrictive-lists-relational-rds-secret",
-    "accounting-interface-relational-rds-secret"
+    "wiretransfer-relational-rds-secret"
   ]
 }
