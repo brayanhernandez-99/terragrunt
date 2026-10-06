@@ -67,7 +67,7 @@ inputs = {
     "recharges-relational-rds-secret",
     "remittances-relational-rds-secret",
     "restrictive-lists-relational-rds-secret",
-    "scheduler-relational-rds-secret",
+    # "scheduler-relational-rds-secret",
     "security-relational-rds-secret",
     "sellers-relational-rds-secret",
     #"shopping-cart-relational-rds-secret",
