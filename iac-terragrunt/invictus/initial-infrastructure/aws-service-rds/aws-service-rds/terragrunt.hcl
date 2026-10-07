@@ -33,7 +33,7 @@ inputs = {
     master_credentials = {
       username = "#{aws_rds_master_credentials_username}#"
     }
-    backup_retention_period = null
+    backup_retention_period = 7
     preferred_backup_window = null
     multi_az_config = {
       db_cluster_instance_class = null
