@@ -38,7 +38,7 @@ inputs = {
   connection_borrow_timeout    = 120
 
   secret_names = [
-    # "accounting-interface-relational-rds-secret",
+    "accounting-interface-relational-rds-secret",
     "astro-relational-rds-secret",
     "awards-relational-rds-secret",
     "biometrics-relational-rds-secret",
