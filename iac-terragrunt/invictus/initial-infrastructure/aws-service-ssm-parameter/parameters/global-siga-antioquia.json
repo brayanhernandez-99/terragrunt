@@ -1,4 +1,5 @@
 [
+  { "productInitials": "IT1", "replicate": true, "type": "chance" },
   { "productInitials": "CHA", "replicate": true, "type": "chance" },
   { "productInitials": "CHG", "replicate": true, "type": "chanceGoleador" },
   { "productInitials": "CHT", "replicate": true, "type": "chance" },
