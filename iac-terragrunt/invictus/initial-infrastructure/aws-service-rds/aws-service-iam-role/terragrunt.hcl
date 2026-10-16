@@ -245,7 +245,7 @@ dependency "secret_wiretransfer" {
 }
 
 inputs = {
-  role_name = "rds-proxy-invictus-role"
+  role_name = get_aws_region() == "us-east-1" ? "rds-proxy-invictus" : "rds-proxy-west-invictus"
 
   assume_role_policy = {
     Version = "2012-10-17"
