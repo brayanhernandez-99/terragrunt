@@ -245,7 +245,7 @@ dependency "secret_wiretransfer" {
 }
 
 inputs = {
-  role_name = "rds-proxy-invictus-role"
+  role_name = "rds-proxy-#{aws_region}#-invictus-role"
 
   assume_role_policy = {
     Version = "2012-10-17"
