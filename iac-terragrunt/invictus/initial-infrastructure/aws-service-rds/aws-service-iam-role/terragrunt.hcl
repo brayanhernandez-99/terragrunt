@@ -202,12 +202,12 @@ dependency "secret_remittances" {
   }
 }
 
-dependency "secret_restrictive_lists" {
-  config_path = "../../../restrictive-lists/aws-service-secret-manager"
-  mock_outputs = {
-    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
-  }
-}
+# dependency "secret_restrictive_lists" {
+#   config_path = "../../../restrictive-lists/aws-service-secret-manager"
+#   mock_outputs = {
+#     secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+#   }
+# }
 
 # dependency "secret_scheduler" {
 #   config_path = "../../../scheduler/aws-service-secret-manager"
@@ -230,12 +230,12 @@ dependency "secret_sellers" {
   }
 }
 
-# dependency "secret_shopping_cart" {
-#   config_path = "../../../shopping-cart/aws-service-secret-manager"
-#   mock_outputs = {
-#     secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
-#   }
-# }
+dependency "secret_shopping_cart" {
+  config_path = "../../../shopping-cart/aws-service-secret-manager"
+  mock_outputs = {
+    secret_arn = "arn:aws:secretsmanager:us-east-1:123456789012:secret:secret"
+  }
+}
 
 dependency "secret_wiretransfer" {
   config_path = "../../../wiretransfer/aws-service-secret-manager"
@@ -298,11 +298,11 @@ inputs = {
           dependency.secret_raspa.outputs.secret_arn,
           dependency.secret_recharges.outputs.secret_arn,
           dependency.secret_remittances.outputs.secret_arn,
-          dependency.secret_restrictive_lists.outputs.secret_arn,
+          # dependency.secret_restrictive_lists.outputs.secret_arn,
           # dependency.secret_scheduler.outputs.secret_arn,
           dependency.secret_security.outputs.secret_arn,
           dependency.secret_sellers.outputs.secret_arn,
-          # dependency.secret_shopping_cart.outputs.secret_arn,
+          dependency.secret_shopping_cart.outputs.secret_arn,
           dependency.secret_wiretransfer.outputs.secret_arn
         ]
       }
