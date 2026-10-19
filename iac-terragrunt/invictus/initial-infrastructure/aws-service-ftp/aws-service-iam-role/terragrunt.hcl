@@ -14,6 +14,6 @@ dependency "s3" {
 }
 
 inputs = {
-  iam_role_name = "ftp-ec2-s3-role"
+  iam_role_name = "ftp-ec2-s3-#{aws_region}#-role"
   s3_bucket_arn = dependency.s3.outputs.s3_bucket_arn
 }
