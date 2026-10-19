@@ -7,5 +7,5 @@ terraform {
 }
 
 inputs = {
-  bucket_name = "ftp-collections-${get_aws_account_id()}"
+  bucket_name = "ftp-collections-${get_aws_account_id()}-#{aws_region}#"
 }
