@@ -3,6 +3,11 @@ variable "iam_role_name" {
   type        = string
 }
 
+variable "iam_policy_name" {
+  description = "IAM Policy Name"
+  type        = string
+}
+
 variable "s3_bucket_arn" {
   description = "ARN del bucket S3 FTP"
   type        = string

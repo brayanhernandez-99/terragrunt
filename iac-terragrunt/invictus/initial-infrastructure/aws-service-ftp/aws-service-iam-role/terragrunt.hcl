@@ -14,6 +14,7 @@ dependency "s3" {
 }
 
 inputs = {
-  iam_role_name = "ftp-ec2-s3-role"
-  s3_bucket_arn = dependency.s3.outputs.s3_bucket_arn
+  iam_role_name   = "ftp-invictus-#{aws_region}#-role"
+  iam_policy_name = "ftp-invictus-#{aws_region}#-policy"
+  s3_bucket_arn   = dependency.s3.outputs.s3_bucket_arn
 }
