@@ -28,7 +28,7 @@ dependency "iam" {
 }
 
 inputs = {
-  ami                   = "ami-08c40ec9ead489470"
+  ami                   = "#{aws_ftp_ec2_ami}#"
   instance_name         = "ftp-collections-invictus"
   instance_type         = "t3.medium"
   sg_id                 = dependency.sg.outputs.security_group_id
