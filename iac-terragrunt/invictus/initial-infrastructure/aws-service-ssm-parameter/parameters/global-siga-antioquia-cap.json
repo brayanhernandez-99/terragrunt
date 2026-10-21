@@ -97,6 +97,7 @@
   { "productInitials": "IT4", "replicate": true, "type": "chance" },
   { "productInitials": "IT5", "replicate": true, "type": "chance" },
   { "productInitials": "RIL", "replicate": true, "type": "raspa" },
-  { "productInitials": "TRN", "replicate": true, "type": "recharge" },
-  { "productInitials": "TRP", "replicate": true, "type": "package" }
+  { "productInitials": "TRN", "replicate": true, "type": "cell-recharge" },
+  { "productInitials": "TRP", "replicate": true, "type": "package" },
+  { "productInitials": "DCC", "replicate": true, "type": "genericPayment" }
 ]
