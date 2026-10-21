@@ -7,7 +7,8 @@ export PORT="000"
 export PASV_MIN="000"
 export PASV_MAX="000"
 export PUBLIC_IP="000.000.000.000"
-export BUCKET="ftp-collections-000"
+export AWS_REGION="us-...-0"
+export BUCKET="ftp-collections-000-us-...-0"
 export MYSQL_USER="..."
 export MYSQL_PASS="..."
 export MYSQL_HOST="..."
@@ -32,7 +33,7 @@ sudo chown -R ftp:ftp /mnt/ftp-bucket
 
 ## Configurar las credenciales de AWS para s3fs
 sudo sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf || true
-echo "$BUCKET /mnt/ftp-bucket fuse.s3fs _netdev,allow_other,nonempty,iam_role=auto,uid=ftp,gid=ftp,use_path_request_style,url=https://s3.amazonaws.com 0 0" | sudo tee -a /etc/fstab
+echo "$BUCKET /mnt/ftp-bucket fuse.s3fs _netdev,allow_other,nonempty,iam_role=ftp-invictus-${AWS_REGION}-role,uid=ftp,gid=ftp,use_path_request_style,url=https://s3.${AWS_REGION}.amazonaws.com,endpoint=${AWS_REGION} 0 0" | sudo tee -a /etc/fstab
 sudo mount -a
     # sudo df -h | grep ftp-bucket
     # sudo mount | grep /mnt/ftp-bucket
