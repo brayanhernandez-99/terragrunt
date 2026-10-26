@@ -14,63 +14,63 @@ terraform {
 # }
 
 dependency "s3_iotcore" {
-  config_path = "../aws-service-s3-iotcore"
+  config_path = "../aws-service-s3/s3-iotcore"
   mock_outputs = {
     s3_bucket_domain_name = "s3-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "s3_repo_config" {
-  config_path = "../aws-service-s3-repository-configuration"
+  config_path = "../aws-service-s3/s3-repository-configuration"
   mock_outputs = {
     s3_bucket_domain_name = "s3-bucket.s3.amazonaws.com"
   }
 }
 
 dependency "secret_manager_mipos" {
-  config_path = "../aws-service-secret-manager-mipos"
+  config_path = "../aws-service-secret-manager/secret-manager-mipos"
   mock_outputs = {
     secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_funds" {
-  config_path = "../aws-service-secret-manager-funds"
+  config_path = "../aws-service-secret-manager/secret-manager-funds"
   mock_outputs = {
     secret_name = "secret-name"
   }
 }
 
 dependency "secret_manager_aes" {
-  config_path = "../aws-service-secret-manager-aes"
+  config_path = "../aws-service-secret-manager/secret-manager-aes"
   mock_outputs = {
     secret_name = "secret-name"
   }
 }
 
-dependency "kinesis_ckm" {
-  config_path = "../aws-service-kinesis-cmk"
+dependency "kinesis_kms" {
+  config_path = "../aws-service-kms/kms-kinesis"
   mock_outputs = {
     kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
-dependency "dynamo_ckm" {
-  config_path = "../aws-service-dynamo-cmk"
+dependency "dynamo_kms" {
+  config_path = "../aws-service-kms/kms-dynamo"
   mock_outputs = {
     kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
-dependency "rds_ckm" {
-  config_path = "../aws-service-rds/aws-service-cmk"
+dependency "rds_kms" {
+  config_path = "../aws-service-rds/aws-service-kms"
   mock_outputs = {
     kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
 }
 
-dependency "secrets_ckm" {
-  config_path = "../aws-service-secrets-cmk"
+dependency "secrets_kms" {
+  config_path = "../aws-service-kms/kms-secrets"
   mock_outputs = {
     kms_key_id = "arn:aws:kms:us-east-1:123456789012:key/kms-key"
   }
@@ -165,25 +165,25 @@ inputs = {
     KMS_KINESIS = {
       type        = "String"
       name        = "/GLOBAL/KMS_KINESIS"
-      value       = dependency.kinesis_ckm.outputs.kms_key_id
+      value       = dependency.kinesis_kms.outputs.kms_key_id
       description = "Id de la llave de encripción para kinesis"
     }
     KMS_DYNAMO = {
       type        = "String"
       name        = "/GLOBAL/KMS_DYNAMO"
-      value       = dependency.dynamo_ckm.outputs.kms_key_id
+      value       = dependency.dynamo_kms.outputs.kms_key_id
       description = "Id de la llave de encripción para dynamo"
     }
     KMS_RDS = {
       type        = "String"
       name        = "/GLOBAL/KMS_RDS"
-      value       = dependency.rds_ckm.outputs.kms_key_id
+      value       = dependency.rds_kms.outputs.kms_key_id
       description = "Id de la llave de encripción para rds"
     }
     KMS_SECRETS = {
       type        = "String"
       name        = "/GLOBAL/KMS_SECRETS"
-      value       = dependency.secrets_ckm.outputs.kms_key_id
+      value       = dependency.secrets_kms.outputs.kms_key_id
       description = "Id de la llave de encripción para secrets"
     }
     IP_SOCKET_CEM = {
