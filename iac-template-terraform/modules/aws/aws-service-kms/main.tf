@@ -20,6 +20,6 @@ resource "aws_kms_key" "cmk" {
 }
 
 resource "aws_kms_alias" "cmk_alias" {
-  name          = var.name_cmk
+  name          = var.name
   target_key_id = aws_kms_key.cmk.id
 }

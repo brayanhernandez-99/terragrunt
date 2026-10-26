@@ -3,7 +3,7 @@ variable "aws_account_id" {
   type        = string
 }
 
-variable "name_cmk" {
+variable "name" {
   description = "Nombre de la clave KMS"
   type        = string
 }

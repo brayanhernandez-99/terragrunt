@@ -3,10 +3,10 @@ include "root" {
 }
 
 terraform {
-  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-cmk"
+  source = "${get_repo_root()}/iac-template-terraform/modules/aws/aws-service-kms"
 }
 
 inputs = {
   aws_account_id = "${get_aws_account_id()}"
-  name_cmk       = "alias/km-rds"
+  name           = "alias/km-dynamo"
 }

@@ -25,7 +25,7 @@ dependency "secret_manager" {
 }
 
 dependency "secret_manager_funds" {
-  config_path = "../../initial-infrastructure/aws-service-secret-manager-funds"
+  config_path = "../../initial-infrastructure/aws-service-secret-manager/secret-manager-funds"
   mock_outputs = {
     secret_name = "secret-name"
   }
